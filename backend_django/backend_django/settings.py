@@ -15,13 +15,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 
-DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = True
+# DEBUG = config('DEBUG', default=False, cast=bool)
 
 
 # 1️⃣ Django_Core
 WEBSITE_URL = "http://127.0.0.1:8000"
 AUTH_USER_MODEL = "users_accounts.User"
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "192.168.1.5", "172.23.232.133"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "192.168.1.5",
+                 "172.23.232.133", 'https://global-style-for-video.pages.dev/']
 AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",
     "allauth.account.auth_backends.AuthenticationBackend",
@@ -77,9 +79,9 @@ ACCOUNT_EMAIL_VERIFICATION = 'optional'
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_SIGNUP_FIELDS = ["email", "name", ]
 ACCOUNT_LOGIN_METHODS = {"email"}
-# LOGIN_REDIRECT_URL = "/"
+LOGIN_REDIRECT_URL = "/"
 # LOGIN_REDIRECT_URL = 'http://localhost:5173'
-LOGIN_REDIRECT_URL = '/accounts/google/login/callback/'
+# LOGIN_REDIRECT_URL = '/accounts/google/login/callback/'
 LOGOUT_REDIRECT_URL = "/accounts/login/"
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 SITE_ID = 1
@@ -104,7 +106,7 @@ CORS_ALLOW_HEADERS = [
     'x-requested-with',
 ]
 CORS_EXPOSE_HEADERS = ['Content-Type', 'X-CSRFToken']
-print("✅ Settings loaded Django")
+print(f"✅ Settings loaded Django")
 print(f"✅ AUTH_USER_MODEL: {AUTH_USER_MODEL}")
 print(f"✅ SOCIALACCOUNT_ADAPTER: {SOCIALACCOUNT_ADAPTER}")
 
@@ -129,6 +131,14 @@ CORS_ALLOWED_ORIGINS = [
 ]
 CORS_ALLOW_CREDENTIALS = True
 SECURE_CROSS_ORIGIN_OPENER_POLICY = None
+
+
+# 7️⃣ Debug Toolbar settings
+INTERNAL_IPS = [
+    '127.0.0.1',
+    'localhost',
+]
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -156,17 +166,21 @@ INSTALLED_APPS = [
     "djoser",
     # 5️⃣ corsheaders
     "corsheaders",
+    # 6️⃣ debug_toolbar
+    'debug_toolbar',
 
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
     # Libraries [ Django Cors Headers ]
     "corsheaders.middleware.CorsMiddleware",
     # Add AccountMiddleware for allauth
     "allauth.account.middleware.AccountMiddleware",
+    # debug_toolbar
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',

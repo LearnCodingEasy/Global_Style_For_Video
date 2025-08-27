@@ -39,30 +39,6 @@ class MySocialAccountAdapter(DefaultSocialAccountAdapter):
 
         return user
 
-    # def get_login_redirect_url(self, request):
-
-    #     user = request.user
-
-    #     refresh = RefreshToken.for_user(user)
-    #     access_token = str(refresh.access_token)
-    #     refresh_token = str(refresh)
-
-    #     user.is_online = True
-    #     user.save(update_fields=['is_online'])
-
-    #     tokens_data = {
-    #         'access': access_token,
-    #         'refresh': refresh_token,
-    #         'user_id': str(user.id),
-    #         'email': user.email,
-    #         'name': user.name,
-    #         'surname': user.surname,
-    #         'avatar': user.avatar or ''
-    #     }
-
-    #     encoded_data = urlencode(tokens_data)
-    #     return f"http://localhost:5173/auth-callback?{encoded_data}"
-
     def get_login_redirect_url(self, request):
         user = request.user
         refresh = RefreshToken.for_user(user)

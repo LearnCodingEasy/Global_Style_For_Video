@@ -14,6 +14,8 @@ from django.conf.urls.static import static
 from users_accounts.views import MyTokenObtainPairView,  LogoutAPIView, GoogleLoginToJWTView, GoogleAuthInitView
 from django.views.generic import RedirectView
 
+from debug_toolbar.toolbar import debug_toolbar_urls
+
 
 urlpatterns = [
     # Django-allauth
@@ -36,4 +38,6 @@ urlpatterns = [
     path("api/notifications/", include("notification.urls")),
     # Admin
     path('admin/', admin.site.urls),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    #
+
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + debug_toolbar_urls()
