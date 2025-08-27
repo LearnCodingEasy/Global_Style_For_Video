@@ -33,6 +33,7 @@ CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5174",
     "http://192.168.1.5:5173",
     "http://192.168.1.5:5174",
+    'https://global-style-for-video.pages.dev/'
 ]
 CORS_ALLOW_ALL_ORIGINS = True
 CSRF_COOKIE_SECURE = False
