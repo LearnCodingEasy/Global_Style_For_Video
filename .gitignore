@@ -20,3 +20,8 @@ Automation/
 Build/
 Build/
 
+# إعدادات البيئة
+.env
+*.env
+.env.local
+.env.production
