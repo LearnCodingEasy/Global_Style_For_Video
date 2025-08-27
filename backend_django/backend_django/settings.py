@@ -15,7 +15,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
+
 
 # 1️⃣ Django_Core
 WEBSITE_URL = "http://127.0.0.1:8000"
