@@ -91,7 +91,7 @@ export default {
           detail: `${res.data.name}`,
           life: 3000,
         })
-        this.$router.push('/')
+        this.$router.push('/products')
       } catch (err) {
         console.log('err: ', err)
         this.$toast.add({

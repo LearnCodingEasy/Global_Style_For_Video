@@ -11,8 +11,14 @@ from rest_framework.decorators import action
 from .models import Category
 from .serializers import CategorySerializer
 
+from datetime import datetime
+import uuid
+
+
 # Console
 from rich.console import Console
+from rich.table import Table
+from rich import box
 from rich import print
 console = Console()
 
@@ -44,6 +50,55 @@ class CategoryView(viewsets.ModelViewSet):
             {"message": "Categories list", "data": serializer.data},
             status=status.HTTP_200_OK,
         )
+    # --- تابع مساعد لطباعة الجدول في الكونسول ---
+
+    def _print_table_console(self, data_list):
+        """
+        data_list: list of dict (مثلاً serializer.data)
+        هينشئ جدول مرتب ويطبعه في الكونسول باستخدام rich.Table
+        """
+        if not data_list:
+            console.print("[yellow]No data to display[/yellow]")
+            return
+
+        # حدد الأعمدة اللي عايز تعرضها وبالترتيب
+        columns = ['id', 'name', 'description', 'slug', 'ordering',
+                   'created_by', 'created_at', 'created_at_formatted', 'image']
+
+        table = Table(title="All Category", box=box.SIMPLE_HEAVY)
+        # أنشئ رؤوس الأعمدة
+        for col in columns:
+            table.add_column(col, overflow="fold", no_wrap=False)
+
+        # أضف كل صف من البيانات
+        for item in data_list:
+            row = []
+            for col in columns:
+                val = item.get(col, None)
+
+                # تنسيقات صغيرة لكل نوع بيانات
+                if val is None:
+                    cell = "-"
+                elif col == 'created_by':
+                    # لو قيمة UUID object أو string
+                    if isinstance(val, (uuid.UUID,)):
+                        cell = str(val)
+                    else:
+                        # ممكن يكون تم تمثيله كـ "UUID('...')" أو string
+                        cell = str(val)
+                elif col in ('created_at', 'updated_at'):
+                    # لو التاريخ ISO string، حاول نخليه أقصر
+                    try:
+                        dt = datetime.fromisoformat(val.replace('Z', '+00:00'))
+                        cell = dt.strftime("%Y-%m-%d %H:%M")
+                    except Exception:
+                        cell = str(val)
+                else:
+                    cell = str(val)
+                row.append(cell)
+            table.add_row(*row)
+
+        console.print(table)
 
     def get_queryset(self):
         # admin يشوف كل حاجة
@@ -112,4 +167,3 @@ class CategoryView(viewsets.ModelViewSet):
         return Response(
             {"message": "✅ Status toggled", "is_active": category.is_active}
         )
-
