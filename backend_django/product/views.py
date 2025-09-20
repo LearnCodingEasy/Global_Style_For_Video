@@ -1,7 +1,7 @@
 # 📄 [ Vendor/api.py ] ملف
 
 
-# rest_framework
+# Rest Framework
 from rest_framework import viewsets, filters, status, permissions
 from rest_framework.exceptions import PermissionDenied
 from rest_framework.response import Response
@@ -44,8 +44,6 @@ class CategoryView(viewsets.ModelViewSet):
             status=status.HTTP_200_OK,
         )
 
-    # ✅ تخصيص الـ queryset
-
     def get_queryset(self):
         # admin يشوف كل حاجة
         if self.request.user.is_staff:
@@ -53,6 +51,7 @@ class CategoryView(viewsets.ModelViewSet):
         # الباقي يشوف الحاجات اللي هو عملها بس
         return Category.objects.filter(created_by=self.request.user)
 
+    # -------- CREATE --------
     def perform_create(self, serializer):
         """
         When creating the item
@@ -69,6 +68,17 @@ class CategoryView(viewsets.ModelViewSet):
 
         # ✅ عند التحديث
 
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+
+        return Response(
+            {"message": "✅ Category created successfully", "data": serializer.data},
+            status=status.HTTP_201_CREATED,
+        )
+
+    # -------- UPDATE --------
     def perform_update(self, serializer):
         obj = self.get_object()
         if self.request.user != obj.created_by and not self.request.user.is_staff:
@@ -78,3 +88,16 @@ class CategoryView(viewsets.ModelViewSet):
         console.print(f"[yellow]Name:[/yellow] {instance.name}")
         console.print(f"[cyan]Updated By:[/cyan] {self.request.user}")
         console.rule()
+
+    # -------- DELETE --------
+    def perform_destroy(self, instance):
+        if self.request.user != instance.created_by and not self.request.user.is_staff:
+            raise PermissionDenied(
+                "❌ You are not allowed to delete this category")
+
+        console.rule("[bold red]Category Deleted")
+        console.print(f"[yellow]Name:[/yellow] {instance.name}")
+        console.print(f"[cyan]Deleted By:[/cyan] {self.request.user}")
+        console.rule()
+
+        instance.delete()
