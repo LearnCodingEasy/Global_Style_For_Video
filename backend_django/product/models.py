@@ -45,18 +45,17 @@ class Category(models.Model):
     def created_at_formatted(self):
         return timesince(self.created_at)
 
-    def get_slug(self):
-        if self.slug:
-            return self.slug
-        else:
-            if self.name:
-                newName = self.name.replace(" ", "-")
-                self.slug = newName
-                self.save()
-                return self.slug
+    # Auto Save Slug
+
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.name)
+            base_slug = slugify(self.name)
+            slug = base_slug
+            counter = 1
+            while Category.objects.filter(slug=slug).exists():
+                slug = f"{base_slug}-{counter}"
+                counter += 1
+            self.slug = slug
         super().save(*args, **kwargs)
 
     # def get_thumbnail(self):

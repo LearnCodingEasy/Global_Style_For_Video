@@ -63,7 +63,7 @@ export default {
     },
   },
   async mounted() {
-    await this.getProducts()
+    // await this.getProducts()
   },
   components: {
     Categories,

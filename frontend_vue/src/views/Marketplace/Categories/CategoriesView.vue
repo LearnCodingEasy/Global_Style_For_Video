@@ -41,7 +41,7 @@ export default {
       try {
         const res = await axios.get('http://localhost:8000/api/products/category/')
         console.log('category: ', res.data)
-        this.category = res.data
+        this.category = res.data.data
       } catch (err) {
         this.$toast.add({
           severity: 'error',

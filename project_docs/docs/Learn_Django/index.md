@@ -1,0 +1,187 @@
+# Learn Django
+
+## Virtual Environment
+
+<div dir="rtl" style="font-size:2vw">إنشاء البياء الافتراضية للمشروع </div>
+
+[Virtual Environment](virtual_environment.md)
+
+## Install Django
+
+<div dir="rtl" style="font-size:2vw">تثبيت Django </div>
+
+[Install Django](install_django.md)
+
+### Django Libraries
+
+<div dir="rtl" style="font-size:2vw">تثبيت المكتبات </div>
+
+##### 👥 User Authentication and Registration
+
+```
+djangorestframework
+djangorestframework_simplejwt
+django_allauth
+djoser
+```
+
+[Rest Framework](djangorestframework.md)
+
+[Rest Framework Simplejwt](djangorestframework_simplejwt.md)
+
+[django Allauth](django_allauth.md)
+
+[Djoser](djoser.md)
+
+[Django Core](Django_Core.md)
+
+[Cors Headers](django_cors_headers.md)
+
+##### 📸 Images
+
+[Pillow](pillow.md)
+
+[Requests](requests.md)
+
+##### 🕸️ Scraper
+
+[Beautiful Soup](beautifulsoup4.md)
+
+##### 🔒 Decouple
+
+[Decouple](decouple.md)
+
+##### 🗄️ PostgreSQL 🐘
+
+[PostgreSQL](PostgreSQL.md)
+
+##### 🐞 Debug
+
+[Debug](debug.md)
+
+##### 🖨️ Console
+
+[Console](rich.md)
+
+##### 📋 Document APIs
+
+[spectacular](spectacular.md)
+
+-
+
+[freeze](freeze.md)
+
+## 💡 Start Project
+
+<div dir="rtl" style="font-size:2vw">إنشاء المشروع الرئيسى</div>
+
+[Start Project](start_project.md)
+
+## 📲 Start App
+
+<div dir="rtl" style="font-size:2vw">إنشاء التطبيقات الخاصة بى المشروع </div>
+
+[Start App](start_app.md)
+
+## 📲 Setting
+
+<div dir="rtl" style="font-size:2vw">إعدادات المشروع </div>
+
+[Setting ](settings.md)
+
+## 📦 Models (النماذج)
+
+<div dir="rtl" style="font-size:2vw">إنشاء قاعدة البيانات</div>
+
+[Models](models.md)
+
+## 👨‍💼 Admin (لوحة الإدارة)
+
+<div dir="rtl" style="font-size:2vw">العناصر المراية و طريقة العرض و الفلاتر</div>
+
+[Admin ](admin.md)
+
+## 📨 Serializers (المسلسلات)
+
+<div dir="rtl" style="font-size:2vw">العناصر المراية و طريقة العرض و الفلاتر</div>
+
+[Serializers ](Serializers.md)
+
+## 📝 Forms (النماذج)
+
+<div dir="rtl" style="font-size:2vw"></div>
+
+[ forms ](forms.md)
+
+## 🌐 API (واجهة برمجة التطبيقات)
+
+<div dir="rtl" style="font-size:2vw">العناصر المراية و طريقة العرض و الفلاتر</div>
+
+[Api Or Views ](api.md)
+
+## 🔗 Urls (الروابط)
+
+<div dir="rtl" style="font-size:2vw"></div>
+
+[ Urls ](urls.md)
+
+## 🧱 Makemigrations
+
+<div dir="rtl" style="font-size:2vw"> نقل التغييرات من قاعدة البيانات الى </div>
+
+[Makemigrations ](makemigrations.md)
+
+## 📄 Migrate
+
+<div dir="rtl" style="font-size:2vw"> نقل التغييرات من الوكال الى المستودع </div>
+
+[Migrate ](migrate.md)
+
+## 📸 Media
+
+<div dir="rtl" style="font-size:2vw">  </div>
+
+[Media ](media.md)
+
+## 👥 Create Superuser
+
+<div dir="rtl" style="font-size:2vw"> انشاء المستخدام الادمان  </div>
+
+[Create Super User ](create_super_user.md)
+
+## 🚀 Runserver
+
+<div dir="rtl" style="font-size:2vw"> تشغيل السيرفار  </div>
+
+[Runserver ](runserver.md)
+
+## 👥 User Accounts
+
+<div dir="rtl" style="font-size:2vw"> حساات المستخدم  </div>
+
+[User Accounts ](users_accounts.md)
+
+## 📦 Marketplace
+
+<div dir="rtl" style="font-size:2vw"> التسوق  </div>
+
+[Marketplace ](marketplace.md)
+
+## 🔍 Search
+
+[Search ](search.md)
+
+## 🌐 Deploying
+
+[Deploying ](deploying.md)
+
+```
+pip install python-dotenv
+pip install dj-rest-auth
+
+```
+
+```
+learncodingeasy0100@gmail.com
+
+```

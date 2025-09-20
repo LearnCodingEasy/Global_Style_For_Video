@@ -20,7 +20,6 @@ class CategorySerializer(serializers.ModelSerializer):
             "name",
             "description",
             "slug",
-            "get_slug",
             "ordering",
             "created_by",
             "created_at",
