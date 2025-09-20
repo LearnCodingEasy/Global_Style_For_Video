@@ -1,31 +1,23 @@
 <script setup>
 import { RouterLink, RouterView, useRouter } from 'vue-router'
 import axios from 'axios'
-
-//
 import { onMounted, ref } from 'vue'
-
 import { useUserStore } from '@/stores/user'
 const router = useRouter()
 const userStore = useUserStore()
-
 // للتحكم في القائمة المنسدلة
 const isDropdownOpen = ref(false)
 const toggleDropdown = () => {
   isDropdownOpen.value = !isDropdownOpen.value
 }
-
 const closeDropdown = () => {
   isDropdownOpen.value = false
 }
-
 // تسجيل الخروج
 const logout = async () => {
   console.log('ضغطت على تسجيل الخروج')
-
   try {
     await userStore.logout()
-    console.log('تم إرسال الريكويست للسيرفر')
     console.log(` تم تسجيل الخروج بنجاح`)
   } catch (error) {
     console.log(` حصل خطأ أثناء تسجيل الخروج`)
@@ -36,7 +28,6 @@ const logout = async () => {
     router.push('/login')
   }
 }
-
 onMounted(() => {
   userStore.initStore()
   const token = userStore.user.access
@@ -112,17 +103,17 @@ onMounted(() => {
                         <div class="header_main_links hidden sm:ml-6 sm:block">
                           <div class="header_main_link flex space-x-4">
                             <RouterLink
-                              to="/"
+                              to="/Vendors"
                               class="rounded-md px-3 py-2 text-md"
                               aria-current="page"
                             >
-                              workspace</RouterLink
+                              Vendors</RouterLink
                             >
-                            <RouterLink to="/" class="rounded-md px-3 py-2 text-md"
-                              >Jop
+                            <RouterLink to="/about" class="rounded-md px-3 py-2 text-md"
+                              >About
                             </RouterLink>
-                            <RouterLink to="/" class="rounded-md px-3 py-2 text-md"
-                              >Starred
+                            <RouterLink to="/products" class="rounded-md px-3 py-2 text-md"
+                              >Products
                             </RouterLink>
                           </div>
                         </div>

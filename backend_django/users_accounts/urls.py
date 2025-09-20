@@ -8,10 +8,14 @@ from rest_framework_simplejwt.views import (
 )
 from . import api
 
+from .views import google_callback
 
 urlpatterns = [
     path("me/", api.me, name="me"),
     path("signup/", api.signup, name="signup"),
+    path('auth/google/callback/', google_callback, name='google_callback'),
+
+
     # ___________________________
     # ___________________________
     # ___________________________

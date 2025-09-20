@@ -49,8 +49,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_superuser = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
-
     objects = CustomUserManager()
+
     # 👥 الأصدقاء وخصائص الصداقات
     friends = models.ManyToManyField("self")
     friends_count = models.IntegerField(default=0)
@@ -72,6 +72,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     skills = models.JSONField(default=list, blank=True, null=True)
     task_count = models.IntegerField(default=0)
     is_online = models.BooleanField(default=False)
+    is_vendor = models.BooleanField(default=False)
 
     USERNAME_FIELD = "email"
     EMAIL_FIELD = "email"

@@ -22,19 +22,29 @@ DEBUG = True
 # 1️⃣ Django_Core
 WEBSITE_URL = "http://127.0.0.1:8000"
 AUTH_USER_MODEL = "users_accounts.User"
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "192.168.1.5",
-                 "172.23.232.133", 'https://global-style-for-video.pages.dev/']
-AUTHENTICATION_BACKENDS = (
-    "django.contrib.auth.backends.ModelBackend",
-    "allauth.account.auth_backends.AuthenticationBackend",
-)
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    "192.168.1.5",
+    "172.23.232.133",
+    "localhost:5173",
+    "localhost:5174",
+    'https://global-style-for-video.pages.dev/'
+]
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
     "http://localhost:5174",
     "http://192.168.1.5:5173",
     "http://192.168.1.5:5174",
+    "http://127.0.0.1:5173",
+    "http://127.0.0.1:5174",
     'https://global-style-for-video.pages.dev/'
 ]
+AUTHENTICATION_BACKENDS = (
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
+
 CORS_ALLOW_ALL_ORIGINS = True
 CSRF_COOKIE_SECURE = False
 SESSION_COOKIE_SECURE = False
@@ -53,7 +63,17 @@ REST_FRAMEWORK = {
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
     "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+
 }
+# 0️⃣1️⃣ Document
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Your Project API',
+    'DESCRIPTION': 'Your project description',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+}
+
 
 # 4️⃣ django-allauth
 ACCOUNT_LOGOUT_ON_GET = True
@@ -80,9 +100,11 @@ ACCOUNT_EMAIL_VERIFICATION = 'optional'
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_SIGNUP_FIELDS = ["email", "name", ]
 ACCOUNT_LOGIN_METHODS = {"email"}
-LOGIN_REDIRECT_URL = "/"
-# LOGIN_REDIRECT_URL = 'http://localhost:5173'
+# LOGIN_REDIRECT_URL = "/"
+# LOGIN_REDIRECT_URL = 'http://localhost:5173/'
+# LOGIN_REDIRECT_URL = 'http://localhost:5173/about/'
 # LOGIN_REDIRECT_URL = '/accounts/google/login/callback/'
+LOGIN_REDIRECT_URL = 'http://localhost:5173/auth/callback'
 LOGOUT_REDIRECT_URL = "/accounts/login/"
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 SITE_ID = 1
@@ -94,7 +116,7 @@ SESSION_COOKIE_AGE = 60 * 60 * 24 * 7  # 7 أيام
 SESSION_SAVE_EVERY_REQUEST = True
 ACCOUNT_LOGOUT_REDIRECT_URL = 'http://localhost:5173/login'
 ACCOUNT_SIGNUP_REDIRECT_URL = 'http://localhost:5173'
-SOCIALACCOUNT_LOGIN_REDIRECT_URL = 'http://localhost:5173/profile/'
+SOCIALACCOUNT_LOGIN_REDIRECT_URL = 'http://localhost:5173/auth-callback/'
 CORS_ALLOW_HEADERS = [
     'accept',
     'accept-encoding',
@@ -128,6 +150,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5174",
     "http://192.168.1.5:5173",
     "http://127.0.0.1:5173",
+    "http://127.0.0.1:5174",
 
 ]
 CORS_ALLOW_CREDENTIALS = True
@@ -140,6 +163,12 @@ INTERNAL_IPS = [
     'localhost',
 ]
 
+DEBUG_TOOLBAR_CONFIG = {
+    'SHOW_TOOLBAR_CALLBACK': lambda request: False,
+}
+
+#
+REST_USE_JWT = True
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -151,12 +180,22 @@ INSTALLED_APPS = [
     # App
     'users_accounts',
     "notification",
+    "vendor",
+    "product",
+
+    # "marketplace.vendor",
+
+
+
     # 📚 Libraries
     # 1️⃣ djangorestframework
     'rest_framework',
+    'rest_framework.authtoken',
     # 2️⃣ djangorestframework-simplejwt
     "rest_framework_simplejwt",
     'rest_framework_simplejwt.token_blacklist',
+    #
+    # 'dj_rest_auth',
     # 3️⃣ django-allauth
     'django.contrib.sites',
     'allauth',
@@ -169,6 +208,9 @@ INSTALLED_APPS = [
     "corsheaders",
     # 6️⃣ debug_toolbar
     'debug_toolbar',
+    # 7️⃣
+    'drf_spectacular',
+
 
 ]
 
@@ -181,6 +223,8 @@ MIDDLEWARE = [
     "allauth.account.middleware.AccountMiddleware",
     # debug_toolbar
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    # My Middleware for debug
+    # 'users_accounts.middleware.LogRequestResponseMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',

@@ -91,7 +91,7 @@ export default {
         this.userStore.setUserInfo(userRes.data)
         this.$router.push('/')
       } catch (err) {
-        console.log('err: ', err);
+        console.log('err: ', err)
         this.$toast.add({
           severity: 'error',
           summary: 'Login Failed',
@@ -101,7 +101,26 @@ export default {
       }
     },
     loginWithGoogle() {
-      window.location.href = 'http://127.0.0.1:8000/accounts/google/login/'
+      const width = 500
+      const height = 600
+      const left = (screen.width - width) / 2
+      const top = (screen.height - height) / 2
+      const url = 'http://127.0.0.1:8000/accounts/google/login/'
+
+      const popup = window.open(
+        url,
+        'GoogleLogin',
+        `width=${width},height=${height},top=${top},left=${left}`,
+      )
+
+      // استمع للرسالة بعد نجاح تسجيل الدخول
+      window.addEventListener('message', (event) => {
+        if (event.origin !== 'http://127.0.0.1:8000') return
+        const { token, user } = event.data
+        localStorage.setItem('token', token)
+        localStorage.setItem('user', JSON.stringify(user))
+        popup.close()
+      })
     },
     loginWithFacebook() {
       window.location.href = 'http://127.0.0.1:8000/accounts/facebook/login/'

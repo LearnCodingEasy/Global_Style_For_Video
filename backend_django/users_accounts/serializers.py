@@ -24,6 +24,7 @@ class UserSerializer(serializers.ModelSerializer):
             "last_login",
             "last_login_formatted",
             "is_online",
+            "is_vendor",
             "skills",
         )
 

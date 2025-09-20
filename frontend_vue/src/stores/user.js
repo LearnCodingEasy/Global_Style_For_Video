@@ -129,7 +129,7 @@ export const useUserStore = defineStore('user', {
     removeToken() {
       // نرجع كل القيم لحالتها الافتراضية
       this.resetUser()
-      // مسح كل البيانات من localStorage
+      // localStorage مسح كل البيانات من
       const fields = [
         'access',
         'refresh',
@@ -167,7 +167,7 @@ export const useUserStore = defineStore('user', {
       this.user.task_count = user.task_count
       this.user.is_online = user.is_online
       this.user.skills = user.skills
-      // تخزين القيم في localStorage
+      // localStorage تخزين القيم في
       Object.keys(this.user).forEach((key) => {
         if (key === 'skills') {
           localStorage.setItem(`user.${key}`, JSON.stringify(this.user[key]))
@@ -178,7 +178,7 @@ export const useUserStore = defineStore('user', {
     },
 
     // --------------------------------
-    // 🔄 5. تحديث رمز الدخول (Access Token)
+    // 🔄 5. (Access Token) تحديث رمز الدخول
     // --------------------------------
     async refreshToken() {
       try {

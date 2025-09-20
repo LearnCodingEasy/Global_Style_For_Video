@@ -11,11 +11,13 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from django.shortcuts import render
-
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from .models import User
 from django.shortcuts import get_object_or_404
+from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
+from rest_framework.decorators import api_view
+from dj_rest_auth.registration.views import SocialLoginView
 
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
@@ -112,3 +114,26 @@ class GoogleTokenView(APIView):
             'access': str(refresh.access_token),
             'refresh': str(refresh),
         })
+
+
+class GoogleLogin(SocialLoginView):
+    adapter_class = GoogleOAuth2Adapter
+
+# أو لو عايز تعمل endpoint يدوي:
+
+
+@api_view(['GET'])
+def google_callback(request):
+    user = request.user
+    if user.is_authenticated:
+        refresh = RefreshToken.for_user(user)
+        return Response({
+            'access': str(refresh.access_token),
+            'refresh': str(refresh),
+            'user': {
+                'id': user.id,
+                'email': user.email,
+                'username': user.username
+            }
+        })
+    return Response({'error': 'Authentication failed'}, status=400)
