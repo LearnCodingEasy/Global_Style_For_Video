@@ -5,6 +5,7 @@
 from rest_framework import viewsets, filters, status, permissions
 from rest_framework.exceptions import PermissionDenied
 from rest_framework.response import Response
+from rest_framework.decorators import action
 
 # Element
 from .models import Category
@@ -101,3 +102,14 @@ class CategoryView(viewsets.ModelViewSet):
         console.rule()
 
         instance.delete()
+
+    # ----- Toggle Active -----
+    @action(detail=True, methods=['post'])
+    def toggle_active(self, request, pk=None):
+        category = self.get_object()
+        category.is_active = not category.is_active
+        category.save()
+        return Response(
+            {"message": "✅ Status toggled", "is_active": category.is_active}
+        )
+
