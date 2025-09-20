@@ -41,65 +41,31 @@ class CategoryView(viewsets.ModelViewSet):
 
         serializer = self.get_serializer(queryset, many=True)
 
-        # Print in console
-        console.rule("[bold green]All Category")
-        console.print(f"[yellow]📋 Data:[/yellow] {serializer.data}")
+        # ✅ Create Table
+        console.rule("[bold green]All Category Table")
+        table = Table(
+            title="All Categories",
+            box=box.SIMPLE_HEAVY,
+            header_style="bold magenta"
+        )
+        table.add_column("Name", style="green")
+        table.add_column("Slug", style="yellow")
+        table.add_column("Created At", style="red")
+        for item in serializer.data:
+            table.add_row(
+                str(item.get("name", "")),
+                str(item.get("slug", "")),
+                str(item.get("created_at_formatted", item.get("created_at", ""))),
+            )
+        console.print(table)
         console.rule()
 
         return Response(
             {"message": "Categories list", "data": serializer.data},
             status=status.HTTP_200_OK,
         )
-    # --- تابع مساعد لطباعة الجدول في الكونسول ---
 
-    def _print_table_console(self, data_list):
-        """
-        data_list: list of dict (مثلاً serializer.data)
-        هينشئ جدول مرتب ويطبعه في الكونسول باستخدام rich.Table
-        """
-        if not data_list:
-            console.print("[yellow]No data to display[/yellow]")
-            return
-
-        # حدد الأعمدة اللي عايز تعرضها وبالترتيب
-        columns = ['id', 'name', 'description', 'slug', 'ordering',
-                   'created_by', 'created_at', 'created_at_formatted', 'image']
-
-        table = Table(title="All Category", box=box.SIMPLE_HEAVY)
-        # أنشئ رؤوس الأعمدة
-        for col in columns:
-            table.add_column(col, overflow="fold", no_wrap=False)
-
-        # أضف كل صف من البيانات
-        for item in data_list:
-            row = []
-            for col in columns:
-                val = item.get(col, None)
-
-                # تنسيقات صغيرة لكل نوع بيانات
-                if val is None:
-                    cell = "-"
-                elif col == 'created_by':
-                    # لو قيمة UUID object أو string
-                    if isinstance(val, (uuid.UUID,)):
-                        cell = str(val)
-                    else:
-                        # ممكن يكون تم تمثيله كـ "UUID('...')" أو string
-                        cell = str(val)
-                elif col in ('created_at', 'updated_at'):
-                    # لو التاريخ ISO string، حاول نخليه أقصر
-                    try:
-                        dt = datetime.fromisoformat(val.replace('Z', '+00:00'))
-                        cell = dt.strftime("%Y-%m-%d %H:%M")
-                    except Exception:
-                        cell = str(val)
-                else:
-                    cell = str(val)
-                row.append(cell)
-            table.add_row(*row)
-
-        console.print(table)
-
+    # -------- Control user View --------
     def get_queryset(self):
         # admin يشوف كل حاجة
         if self.request.user.is_staff:
@@ -122,7 +88,7 @@ class CategoryView(viewsets.ModelViewSet):
         console.print(f"[magenta]ID:[/magenta] {instance.id}")
         console.rule()
 
-        # ✅ عند التحديث
+    # ✅ عند التحديث
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
