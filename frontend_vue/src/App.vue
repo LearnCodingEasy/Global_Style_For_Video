@@ -97,7 +97,7 @@ onMounted(() => {
                       >
                         <div class="header_logo_link flex flex-shrink-0 items-center">
                           <RouterLink to="/" class="logo flex">
-                            <span class=""> Work Remotely </span>
+                            <span class=""> Logo </span>
                           </RouterLink>
                         </div>
                         <div class="header_main_links hidden sm:ml-6 sm:block">

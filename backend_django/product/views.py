@@ -1,8 +1,7 @@
-# 📄 [ Vendor/api.py ] ملف
-
+# 📄 [ Product/api.py ] ملف
 
 # Rest Framework
-from rest_framework import viewsets, filters, status, permissions
+from rest_framework import viewsets, filters, permissions, status
 from rest_framework.exceptions import PermissionDenied
 from rest_framework.response import Response
 from rest_framework.decorators import action
@@ -10,10 +9,6 @@ from rest_framework.decorators import action
 # Element
 from .models import Category
 from .serializers import CategorySerializer
-
-from datetime import datetime
-import uuid
-
 
 # Console
 from rich.console import Console
@@ -61,11 +56,14 @@ class CategoryView(viewsets.ModelViewSet):
         console.rule()
 
         return Response(
-            {"message": "Categories list", "data": serializer.data},
+            {
+                "message": "Categories List",
+                "data": serializer.data
+            },
             status=status.HTTP_200_OK,
         )
 
-    # -------- Control user View --------
+    # -- Control user View --
     def get_queryset(self):
         # admin يشوف كل حاجة
         if self.request.user.is_staff:
@@ -94,9 +92,11 @@ class CategoryView(viewsets.ModelViewSet):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
-
         return Response(
-            {"message": "✅ Category created successfully", "data": serializer.data},
+            {
+                "message": "Category Created Successfully",
+                "data": serializer.data
+            },
             status=status.HTTP_201_CREATED,
         )
 
@@ -116,15 +116,23 @@ class CategoryView(viewsets.ModelViewSet):
         if self.request.user != instance.created_by and not self.request.user.is_staff:
             raise PermissionDenied(
                 "❌ You are not allowed to delete this category")
-
         console.rule("[bold red]Category Deleted")
         console.print(f"[yellow]Name:[/yellow] {instance.name}")
         console.print(f"[cyan]Deleted By:[/cyan] {self.request.user}")
         console.rule()
-
         instance.delete()
 
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object()
+        self.perform_destroy(instance)
+        return Response(
+            {
+                "message": "Category Delete Successfully",
+            },
+            status=status.HTTP_201_CREATED,
+        )
     # ----- Toggle Active -----
+
     @action(detail=True, methods=['post'])
     def toggle_active(self, request, pk=None):
         category = self.get_object()

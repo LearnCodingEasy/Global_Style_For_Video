@@ -180,8 +180,12 @@ INSTALLED_APPS = [
     # App
     'users_accounts',
     "notification",
+
+    # Marketplace
     "vendor",
     "product",
+    # 
+    "client",
 
     # "marketplace.vendor",
 

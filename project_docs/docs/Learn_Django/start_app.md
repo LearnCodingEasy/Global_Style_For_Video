@@ -15,7 +15,15 @@ python manage.py startapp notification
 ```
 
 ```cmd
+python manage.py startapp vendor
+```
+
+```cmd
 python manage.py startapp product
+```
+
+```cmd
+python manage.py startapp client
 ```
 
 ```cmd

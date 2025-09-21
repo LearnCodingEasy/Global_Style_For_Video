@@ -1,6 +1,6 @@
 <template>
   <div class="Component-Name">
-    <form @submit.prevent="submitFormVendor">
+    <form @submit.prevent="submitFormCategory">
       <prime_card class="prime_card_form_login">
         <template #header>
           <div class="flex justify-between items-center w-full">
@@ -16,20 +16,38 @@
             <div class="">
               <!-- Name -->
               <prime_fluid class="prime_card_form_login_content">
-                <prime_input_text placeholder="Name" v-model="formLoginVendor.name" />
+                <prime_input_text placeholder="Name" v-model="formCategory.name" />
               </prime_fluid>
               <!-- Name -->
               <prime_fluid class="prime_card_form_login_content">
-                <prime_input_text placeholder="Name" v-model="formLoginVendor.description" />
+                <prime_input_text placeholder="Name" v-model="formCategory.description" />
               </prime_fluid>
               <!-- ordering -->
               <prime_fluid class="prime_card_form_login_content">
-                <prime_input_text placeholder="Name" v-model="formLoginVendor.ordering" />
+                <prime_input_text placeholder="Name" v-model="formCategory.ordering" />
               </prime_fluid>
               <!-- is_active -->
               <prime_fluid class="prime_card_form_login_content">
-                <prime_input_text placeholder="Name" v-model="formLoginVendor.is_active" />
+                <prime_input_text placeholder="Name" v-model="formCategory.is_active" />
               </prime_fluid>
+              <div
+                class="new_data mobile_item_12 tablet_item_12 laptop_item_12 laptop_lg_item_12 desktop_item_6 desktop_lg_item_6"
+              >
+                <label for="websiteImage" class="font-semibold block my-2">Avatar</label>
+                <prime_file_upload
+                  type="file"
+                  ref="fileAvatar"
+                  :multiple="true"
+                  name="demo[]"
+                  @select="handleCategoryFileUpload"
+                  accept="image/*"
+                  :maxFileSize="1000000"
+                >
+                  <template #empty>
+                    <span>Drag and drop files to here to upload.</span>
+                  </template>
+                </prime_file_upload>
+              </div>
             </div>
           </div>
         </template>
@@ -49,27 +67,91 @@ export default {
   name: 'AddCategoryView',
   data() {
     return {
-      formLoginVendor: {
+      formCategory: {
         name: '',
         description: '',
         ordering: 0,
         is_active: true,
+        image: null,
       },
+      selectedImageCategoryFile: null,
       errorsLogin: [],
     }
   },
   methods: {
-    async submitFormVendor() {
+    // For Upload Avatar Image to Post Store and for Post
+    handleCategoryFileUpload(event) {
+      const file = event.files ? event.files[0] : null
+      if (file) {
+        console.log('file: ', file)
+        this.selectedImageCategoryFile = file
+        this.formCategory.image = this.selectedImageCategoryFile
+        console.log('FormData contains image:', this.selectedImageCategoryFile.name)
+        // Send Image to View
+        this.$toast.add({
+          severity: 'success',
+          summary: `Data contains image`,
+          detail: `${this.selectedImageCategoryFile.name}`,
+          life: 3000,
+        })
+      } else {
+        console.log('No file selected.')
+      }
+    },
+    async submitFormCategory() {
       this.errorsLogin = []
-
-      if (!this.formLoginVendor.name) {
+      let formData = new FormData()
+      // Name
+      if (!this.formCategory.name) {
         this.$toast.add({
           severity: 'error',
           summary: 'Missing Data',
-          detail: 'name and Password are required!',
+          detail: 'Name Is Required!',
           life: 3000,
         })
         return
+      } else {
+        formData.append('name', this.formCategory.name)
+      }
+      // Description
+      if (!this.formCategory.description) {
+        this.$toast.add({
+          severity: 'error',
+          summary: 'Missing Data',
+          detail: 'Description Is Required!',
+          life: 3000,
+        })
+        return
+      } else {
+        formData.append('description', this.formCategory.description)
+      }
+      // Ordering
+      if (!this.formCategory.ordering) {
+        this.$toast.add({
+          severity: 'error',
+          summary: 'Missing Data',
+          detail: 'Ordering Is Required!',
+          life: 3000,
+        })
+        return
+      } else {
+        formData.append('ordering', this.formCategory.ordering)
+      }
+      // Is Active
+      if (!this.formCategory.is_active) {
+        this.$toast.add({
+          severity: 'error',
+          summary: 'Missing Data',
+          detail: 'Is Active Is Required!',
+          life: 3000,
+        })
+        return
+      } else {
+        formData.append('is_active', this.formCategory.is_active)
+      }
+      if (this.selectedImageCategoryFile) {
+        // this.formCategory.append('image', this.selectedImageCategoryFile)
+        // formData.append('image', this.selectedImageCategoryFile)
       }
 
       try {
@@ -77,7 +159,8 @@ export default {
 
         const res = await axios.post(
           'http://localhost:8000/api/products/category/',
-          this.formLoginVendor,
+          this.formCategory,
+          // this.formData,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -85,19 +168,30 @@ export default {
           },
         )
         console.log('res: ', res)
-        this.$toast.add({
-          severity: 'success',
-          summary: `Welcome Vendor`,
-          detail: `${res.data.name}`,
-          life: 3000,
-        })
-        this.$router.push('/products')
+        console.log('res: ', res.data)
+        console.log('res: ', res.data.message)
+        if (res.data.message == 'Category Created Successfully') {
+          this.$toast.add({
+            severity: 'success',
+            summary: `Category Created`,
+            detail: `${res.data.message}`,
+            life: 3000,
+          })
+          this.$router.push('/products/')
+        } else {
+          this.toast.add({
+            severity: 'error',
+            summary: `Error Created Category`,
+            detail: `Cent Add Category`,
+            life: 3000,
+          })
+        }
       } catch (err) {
         console.log('err: ', err)
         this.$toast.add({
           severity: 'error',
-          summary: 'Login Failed',
-          detail: 'name or password incorrect.',
+          summary: 'Error Created Category Failed',
+          detail: 'Error Created Category.',
           life: 3000,
         })
       }

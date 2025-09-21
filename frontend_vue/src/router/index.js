@@ -6,9 +6,11 @@ import AuthCallback from '../views/Authentication/AuthCallback.vue'
 import Vendors from '../views/Marketplace/VendorsView.vue'
 import DetailVendor from '../views/Marketplace/VendorView.vue'
 import EditVendor from '../views/Marketplace/EditVendorView.vue'
+
+// Products
 import Products from '../views/Marketplace/ProductsView.vue'
 import Categories from '../views/Marketplace/Categories/CategoriesView.vue'
-import AddCategoryView from '../views/Marketplace/Categories/AddCategoryView.vue'
+import AddCategory from '../views/Marketplace/Categories/AddCategoryView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -55,15 +57,12 @@ const router = createRouter({
       component: Vendors,
     },
     {
-      // path: '/Vendors/:id',
-      // path: '/Vendors/DetailVendor/:id',
-      path: '/:id',
+      path: '/Vendors/:id',
       name: 'DetailVendor',
       component: DetailVendor,
     },
     {
-      // path: '/Vendors/:id',
-      path: '/:id/edit',
+      path: '/Vendors/:id/edit',
       name: 'EditVendor',
       component: EditVendor,
     },
@@ -80,12 +79,12 @@ const router = createRouter({
       component: Categories,
     },
     {
-      path: '/AddCategoryView',
-      name: 'AddCategoryView',
-      component: AddCategoryView,
+      path: '/AddCategory',
+      name: 'AddCategory',
+      component: AddCategory,
     },
     {
-      // path: '/Categories/:id',
+      // path: '/Category/:id',
       // path: '/Categories/:id',
       // name: 'Category',
       // component: Category,

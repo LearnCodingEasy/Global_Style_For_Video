@@ -120,31 +120,37 @@ onMounted(() => {
 <template>
   <div class="wrapper">
     <div class="container m-auto">
-      <div class="inner grid xxlg_grid_3 xlg_grid_3 laptop_lg_grid_2 md_grid_3 gap_20">
+      <h2 class="text-center py-5 my-10 text-7xl text-capitalize">Vendors</h2>
+      <div
+        class="inner grid xxlg_grid_3 xlg_grid_3 laptop_lg_grid_2 md_grid_3 gap_20"
+        v-if="vendors.length != []"
+      >
         <!-- <div class="" v-if="vendors != []"> -->
-        <div class="" v-if="vendors.length != []">
-          <prime_card class="" v-for="vendor in vendors" :key="vendor.id">
-            <template #header>
-              <div class="flex justify-between items-center w-full">
-                <div class="text font-bold text-5xl text-center">Vendors</div>
-              </div>
-            </template>
-
-            <template #content>
-              <div class="">
+        <prime_card class="" v-for="vendor in vendors" :key="vendor.id">
+          <template #header>
+            <div class="flex justify-between items-center w-full">
+              <div class="text font-bold text-5xl text-center">
                 {{ vendor.name }}
               </div>
-            </template>
+            </div>
+          </template>
 
-            <template #footer>
-              <router-link class="class_name" :to="vendor.id"> Show Vendor Details </router-link>
-            </template>
-          </prime_card>
-        </div>
-        <div class="" v-else>
-          <h2>Become Vendor</h2>
-          <AddVendor></AddVendor>
-        </div>
+          <template #content>
+            <div class="">
+              {{ vendor.name }}
+            </div>
+          </template>
+
+          <template #footer>
+            <router-link class="class_name" :to="'Vendors/' + vendor.id">
+              Show Vendor Details
+            </router-link>
+          </template>
+        </prime_card>
+      </div>
+      <div class="" v-else>
+        <h2>Become Vendor</h2>
+        <AddVendor></AddVendor>
       </div>
     </div>
   </div>
@@ -167,7 +173,7 @@ export default {
         const res = await axios.get('http://localhost:8000/api/vendors/')
 
         console.log('res.data: ', res.data)
-        this.vendors = res.data
+        this.vendors = res.data.data
         console.log('this.vendors: ', this.vendors)
         if (this.vendors != this.vendors) {
           this.$toast.add({

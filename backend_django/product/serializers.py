@@ -26,5 +26,6 @@ class CategorySerializer(serializers.ModelSerializer):
             "updated_at",
             "created_at_formatted",
             "image",
-            # "thumbnail",
+            "thumbnail",
+            "get_thumbnail",
         )
