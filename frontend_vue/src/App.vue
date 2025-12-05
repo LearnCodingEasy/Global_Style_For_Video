@@ -102,6 +102,9 @@ onMounted(() => {
                         </div>
                         <div class="header_main_links hidden sm:ml-6 sm:block">
                           <div class="header_main_link flex space-x-4">
+                            <RouterLink to="/automation" class="rounded-md px-3 py-2 text-md"
+                              >automation
+                            </RouterLink>
                             <RouterLink
                               to="/Vendors"
                               class="rounded-md px-3 py-2 text-md"

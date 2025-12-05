@@ -110,6 +110,10 @@ class CategoryView(viewsets.ModelViewSet):
         console.print(f"[yellow]Name:[/yellow] {instance.name}")
         console.print(f"[cyan]Updated By:[/cyan] {self.request.user}")
         console.rule()
+        return Response({
+            "message": "Category Updated Successfully",
+            "data": serializer.data
+        }, status=status.HTTP_200_OK)
 
     # -------- DELETE --------
     def perform_destroy(self, instance):
@@ -129,7 +133,7 @@ class CategoryView(viewsets.ModelViewSet):
             {
                 "message": "Category Delete Successfully",
             },
-            status=status.HTTP_201_CREATED,
+            status=status.HTTP_204_NO_CONTENT,
         )
     # ----- Toggle Active -----
 

@@ -8,24 +8,23 @@
 <h3 id="django-libraries" tabindex="-1"><a class="header-anchor" href="#django-libraries"><span>Django Libraries</span></a></h3>
 <div dir="rtl" style="font-size:2vw">تثبيت المكتبات </div>
 <h5 id="👥-user-authentication-and-registration" tabindex="-1"><a class="header-anchor" href="#👥-user-authentication-and-registration"><span>👥 User Authentication and Registration</span></a></h5>
-<div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre v-pre><code><span class="line">djangorestframework</span>
-<span class="line">djangorestframework_simplejwt</span>
-<span class="line">django_allauth</span>
-<span class="line">djoser</span>
+<div class="language-cmd line-numbers-mode" data-highlighter="prismjs" data-ext="cmd"><pre v-pre><code><span class="line">pip install djangorestframework djangorestframework_simplejwt django_allauth djoser django-cors-headers</span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><RouteLink to="/Learn_Django/djangorestframework.html">Rest Framework</RouteLink></p>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p><RouteLink to="/Learn_Django/djangorestframework.html">Rest Framework</RouteLink></p>
 <p><RouteLink to="/Learn_Django/djangorestframework_simplejwt.html">Rest Framework Simplejwt</RouteLink></p>
 <p><RouteLink to="/Learn_Django/django_allauth.html">django Allauth</RouteLink></p>
 <p><RouteLink to="/Learn_Django/djoser.html">Djoser</RouteLink></p>
 <p><RouteLink to="/Learn_Django/Django_Core.html">Django Core</RouteLink></p>
 <p><RouteLink to="/Learn_Django/django_cors_headers.html">Cors Headers</RouteLink></p>
 <h5 id="📸-images" tabindex="-1"><a class="header-anchor" href="#📸-images"><span>📸 Images</span></a></h5>
-<p><RouteLink to="/Learn_Django/pillow.html">Pillow</RouteLink></p>
+<div class="language-cmd line-numbers-mode" data-highlighter="prismjs" data-ext="cmd"><pre v-pre><code><span class="line">pip install pillow requests</span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p><RouteLink to="/Learn_Django/pillow.html">Pillow</RouteLink></p>
 <p><RouteLink to="/Learn_Django/requests.html">Requests</RouteLink></p>
-<h5 id="🕸️-scraper" tabindex="-1"><a class="header-anchor" href="#🕸️-scraper"><span>🕸️ Scraper</span></a></h5>
-<p><RouteLink to="/Learn_Django/beautifulsoup4.html">Beautiful Soup</RouteLink></p>
 <h5 id="🔒-decouple" tabindex="-1"><a class="header-anchor" href="#🔒-decouple"><span>🔒 Decouple</span></a></h5>
-<p><RouteLink to="/Learn_Django/decouple.html">Decouple</RouteLink></p>
+<div class="language-cmd line-numbers-mode" data-highlighter="prismjs" data-ext="cmd"><pre v-pre><code><span class="line">pip install python-decouple</span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p><RouteLink to="/Learn_Django/decouple.html">Decouple</RouteLink></p>
 <h5 id="🗄️-postgresql-🐘" tabindex="-1"><a class="header-anchor" href="#🗄️-postgresql-🐘"><span>🗄️ PostgreSQL 🐘</span></a></h5>
 <p><RouteLink to="/Learn_Django/PostgreSQL.html">PostgreSQL</RouteLink></p>
 <h5 id="🐞-debug" tabindex="-1"><a class="header-anchor" href="#🐞-debug"><span>🐞 Debug</span></a></h5>
@@ -33,10 +32,15 @@
 <h5 id="🖨️-console" tabindex="-1"><a class="header-anchor" href="#🖨️-console"><span>🖨️ Console</span></a></h5>
 <p><RouteLink to="/Learn_Django/rich.html">Console</RouteLink></p>
 <h5 id="📋-document-apis" tabindex="-1"><a class="header-anchor" href="#📋-document-apis"><span>📋 Document APIs</span></a></h5>
-<p><RouteLink to="/Learn_Django/spectacular.html">spectacular</RouteLink></p>
-<ul>
-<li></li>
-</ul>
+<div class="language-cmd line-numbers-mode" data-highlighter="prismjs" data-ext="cmd"><pre v-pre><code><span class="line">pip install drf-spectacular</span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p><RouteLink to="/Learn_Django/spectacular.html">spectacular</RouteLink></p>
+<h5 id="🕸️-scraper" tabindex="-1"><a class="header-anchor" href="#🕸️-scraper"><span>🕸️ Scraper</span></a></h5>
+<p><RouteLink to="/Learn_Django/beautifulsoup4.html">Beautiful Soup</RouteLink></p>
+<h5 id="🕸️-automation" tabindex="-1"><a class="header-anchor" href="#🕸️-automation"><span>🕸️ Automation</span></a></h5>
+<div class="language-cmd line-numbers-mode" data-highlighter="prismjs" data-ext="cmd"><pre v-pre><code><span class="line">pip install pyautogui</span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p><RouteLink to="/Learn_Django/pyautogui.html">pyautogui</RouteLink></p>
 <p><RouteLink to="/Learn_Django/freeze.html">freeze</RouteLink></p>
 <h2 id="💡-start-project" tabindex="-1"><a class="header-anchor" href="#💡-start-project"><span>💡 Start Project</span></a></h2>
 <div dir="rtl" style="font-size:2vw">إنشاء المشروع الرئيسى</div>
@@ -81,10 +85,10 @@
 <div dir="rtl" style="font-size:2vw"> تشغيل السيرفار  </div>
 <p><RouteLink to="/Learn_Django/runserver.html">Runserver </RouteLink></p>
 <h2 id="👥-user-accounts" tabindex="-1"><a class="header-anchor" href="#👥-user-accounts"><span>👥 User Accounts</span></a></h2>
-<div dir="rtl" style="font-size:2vw"> حساات المستخدم  </div>
+<div dir="rtl" style="font-size:2vw"> حسابات المستخدم  </div>
 <p><RouteLink to="/Learn_Django/users_accounts.html">User Accounts </RouteLink></p>
 <h2 id="📦-marketplace" tabindex="-1"><a class="header-anchor" href="#📦-marketplace"><span>📦 Marketplace</span></a></h2>
-<div dir="rtl" style="font-size:2vw"> التسوق  </div>
+<div dir="rtl" style="font-size:2vw"> التسويق  </div>
 <p><RouteLink to="/Learn_Django/marketplace.html">Marketplace </RouteLink></p>
 <h2 id="🔍-search" tabindex="-1"><a class="header-anchor" href="#🔍-search"><span>🔍 Search</span></a></h2>
 <p><RouteLink to="/Learn_Django/search.html">Search </RouteLink></p>

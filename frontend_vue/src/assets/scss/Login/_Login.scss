@@ -96,16 +96,19 @@
                         .prime_card_form_signup_content {
                           > div {
                             display: flex;
-                            flex-direction: column;
+                            flex-direction: row;
                             justify-content: space-between;
                             > div {
                               margin-top: 1rem;
                             }
                           }
+                          & .gender {
+                            flex-direction: row;
+                          }
                         }
                       }
                       div.p-card-footer {
-                        height: 10%;
+                        height: 20%;
                         display: flex;
                         justify-content: center;
                         align-items: center;

@@ -18,11 +18,8 @@
 
 ##### 👥 User Authentication and Registration
 
-```
-djangorestframework
-djangorestframework_simplejwt
-django_allauth
-djoser
+```cmd
+pip install djangorestframework djangorestframework_simplejwt django_allauth djoser django-cors-headers
 ```
 
 [Rest Framework](djangorestframework.md)
@@ -39,15 +36,19 @@ djoser
 
 ##### 📸 Images
 
+```cmd
+pip install pillow requests
+```
+
 [Pillow](pillow.md)
 
 [Requests](requests.md)
 
-##### 🕸️ Scraper
-
-[Beautiful Soup](beautifulsoup4.md)
-
 ##### 🔒 Decouple
+
+```cmd
+pip install python-decouple
+```
 
 [Decouple](decouple.md)
 
@@ -65,9 +66,23 @@ djoser
 
 ##### 📋 Document APIs
 
+```cmd
+pip install drf-spectacular
+```
+
 [spectacular](spectacular.md)
 
--
+##### 🕸️ Scraper
+
+[Beautiful Soup](beautifulsoup4.md)
+
+##### 🕸️ Automation
+
+```cmd
+pip install pyautogui
+```
+
+[pyautogui](pyautogui.md)
 
 [freeze](freeze.md)
 
@@ -157,13 +172,13 @@ djoser
 
 ## 👥 User Accounts
 
-<div dir="rtl" style="font-size:2vw"> حساات المستخدم  </div>
+<div dir="rtl" style="font-size:2vw"> حسابات المستخدم  </div>
 
 [User Accounts ](users_accounts.md)
 
 ## 📦 Marketplace
 
-<div dir="rtl" style="font-size:2vw"> التسوق  </div>
+<div dir="rtl" style="font-size:2vw"> التسويق  </div>
 
 [Marketplace ](marketplace.md)
 

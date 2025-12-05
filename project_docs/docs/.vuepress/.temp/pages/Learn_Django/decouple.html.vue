@@ -6,12 +6,11 @@
 <p><a href="https://pypi.org/project/python-decouple/" target="_blank" rel="noopener noreferrer">Decouple</a></p>
 <h2 id="install" tabindex="-1"><a class="header-anchor" href="#install"><span>Install</span></a></h2>
 <div class="" dir="rtl">
-1️⃣ ثبّت المكتبة
+1️⃣ ثابت المكتبة
 </div>
 <div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre v-pre><code><span class="line">pip install python-decouple</span>
-<span class="line"></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="create" tabindex="-1"><a class="header-anchor" href="#create"><span>Create</span></a></h2>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h2 id="create" tabindex="-1"><a class="header-anchor" href="#create"><span>Create</span></a></h2>
 <div class="" dir="rtl">
 2️⃣ أنشئ ملف .env في جذر المشروع
 <p>في نفس مسار manage.py، أنشئ ملف جديد اسمه:</p>

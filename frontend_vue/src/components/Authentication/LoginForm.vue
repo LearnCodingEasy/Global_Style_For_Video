@@ -14,17 +14,21 @@
       <template #content>
         <prime_fluid class="prime_card_form_login_content">
           <!-- Email -->
-          <prime_input_text placeholder="Email" v-model="formLogin.email" />
+          <prime_input_text
+          placeholder="Email"
+          v-model="formLogin.email"
+          class="mt-2"
+          />
           <!-- Password -->
           <prime_input_password
             placeholder="Password"
             v-model="formLogin.password"
             autocomplete="off"
+            class="mt-2"
           />
         </prime_fluid>
-
         <!-- Social login -->
-        <div class="mt-4">
+        <div class="mt-2">
           <prime_button
             icon="pi pi-google"
             label="تسجيل عبر Google"
@@ -35,7 +39,7 @@
             icon="pi pi-facebook"
             label="تسجيل عبر Facebook"
             severity="info"
-            class="ml-2"
+            class="mt-2"
             @click="loginWithFacebook"
           />
         </div>

@@ -1,8 +1,7 @@
 from django.contrib import admin
 
-from .models import Category
-
-# 🖥️ تخصيص عرض النموذج في لوحة الإدارة
+# from .models import Category
+from .models import Category, Product
 
 
 @admin.register(Category)
@@ -34,29 +33,28 @@ class CategoryAdmin(admin.ModelAdmin):
         "image")
 
 
-# 🖥️ تخصيص عرض النموذج في لوحة الإدارة
-# @admin.register(Product)
-# class ProductAdmin(admin.ModelAdmin):
-#     # 🌟 الحقول التي ستظهر في قائمة الإدارة
-#     list_display = (
-#         "name",
-#     )
+@admin.register(Product)
+class ProductAdmin(admin.ModelAdmin):
+    # 🌟 الحقول التي ستظهر في قائمة الإدارة
+    list_display = (
+        "name",
+    )
 
-#     # 🔍 تمكين البحث عبر الحقول
-#     search_fields = ("name", )
+    # 🔍 تمكين البحث عبر الحقول
+    search_fields = ("name", )
 
-#     # 🗂️ إضافة فلاتر حسب اللغة
-#     list_filter = ("name",)
+    # 🗂️ إضافة فلاتر حسب اللغة
+    list_filter = ("name",)
 
-#     # 🔃 ترتيب النتائج حسب الاسم
-#     ordering = ("name",)
+    # 🔃 ترتيب النتائج حسب الاسم
+    ordering = ("name",)
 
-#     # 📝 تحديد الحقول التي يمكن تعديلها داخل شاشة تحرير المستخدم
-#     fields = (
-#         "category",
-#         "vendor",
-#         "name",
-#         "description",
-#         "price",
-#         "image"
-#     )
+    # 📝 تحديد الحقول التي يمكن تعديلها داخل شاشة تحرير المستخدم
+    fields = (
+        "category",
+        "vendor",
+        "name",
+        "description",
+        "price",
+        "image"
+    )

@@ -1,9 +1,9 @@
-import './assets/main.css'
 // Tailwind
 import './assets/Tailwind/tailwind.css'
 import 'tailwindcss/tailwind.css'
 
 // My Style
+import './assets/main.css'
 import './assets/scss/style.scss'
 
 import { createApp } from 'vue'
@@ -132,6 +132,26 @@ import Skeleton from 'primevue/skeleton'
 import Badge from 'primevue/badge'
 import OverlayBadge from 'primevue/overlaybadge'
 
+
+// --------------- Paginator Components ---------------
+// استيراد مكون Paginator للتنقل بين الصفحات
+import Paginator from 'primevue/paginator'
+
+
+
+//
+
+import ProgressBar from 'primevue/progressbar'
+
+//
+import Tooltip from 'primevue/tooltip'
+
+//
+import Slider from 'primevue/slider'
+
+//
+
+import Tree from 'primevue/tree'
 // --------------- Styles ---------------
 // Import necessary styles for PrimeVue and Tailwind CSS
 import 'primeicons/primeicons.css'
@@ -237,5 +257,26 @@ app.component('prime_skeleton', Skeleton)
 // Badge is a small status indicator for another element.
 app.component('prime_badge', Badge)
 app.component('prime_overlay_badge', OverlayBadge)
+
+// مكون Paginator
+app.component('prime_paginator', Paginator)
+
+//
+app.component('prime_progress_bar', ProgressBar)
+
+//
+app.component('prime_slider', Slider)
+
+//
+app.component('prime_stepper', Stepper)
+app.component('prime_step_list ', StepList)
+app.component('prime_step_panels', StepPanels)
+app.component('prime_step_item ', StepItem)
+app.component('prime_step', Step)
+app.component('prime_step_panel', StepPanel)
+//
+app.component('prime_tree', Tree)
+
+app.directive('tooltip', Tooltip)
 
 app.mount('#app')

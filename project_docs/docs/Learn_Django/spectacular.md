@@ -4,7 +4,6 @@
 
 ```cmd
 pip install drf-spectacular
-
 ```
 
 ```python

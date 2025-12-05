@@ -13,12 +13,11 @@
 ## Install
 
 <div class="" dir="rtl">
-1️⃣ ثبّت المكتبة
+1️⃣ ثابت المكتبة
 </div>
 
 ```
 pip install python-decouple
-
 ```
 
 ## Create

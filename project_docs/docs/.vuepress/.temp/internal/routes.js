@@ -53,6 +53,7 @@ export const routes = Object.fromEntries([
   ["/Learn_Vue/scss.html", { loader: () => import(/* webpackChunkName: "Learn_Vue_scss.html" */"D:/Global_Style_For_Video/project_docs/docs/.vuepress/.temp/pages/Learn_Vue/scss.html.js"), meta: {"title":""} }],
   ["/Learn_Vue/tailwind.html", { loader: () => import(/* webpackChunkName: "Learn_Vue_tailwind.html" */"D:/Global_Style_For_Video/project_docs/docs/.vuepress/.temp/pages/Learn_Vue/tailwind.html.js"), meta: {"title":""} }],
   ["/404.html", { loader: () => import(/* webpackChunkName: "404.html" */"D:/Global_Style_For_Video/project_docs/docs/.vuepress/.temp/pages/404.html.js"), meta: {"title":""} }],
+  ["/Learn_Django/pyautogui.html", { loader: () => import(/* webpackChunkName: "Learn_Django_pyautogui.html" */"D:/Global_Style_For_Video/project_docs/docs/.vuepress/.temp/pages/Learn_Django/pyautogui.html.js"), meta: {"title":"🕸️ Automation"} }],
 ]);
 
 if (import.meta.webpackHot) {

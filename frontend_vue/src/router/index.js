@@ -6,6 +6,7 @@ import AuthCallback from '../views/Authentication/AuthCallback.vue'
 import Vendors from '../views/Marketplace/VendorsView.vue'
 import DetailVendor from '../views/Marketplace/VendorView.vue'
 import EditVendor from '../views/Marketplace/EditVendorView.vue'
+import Automation from '../views/AutomationView.vue'
 
 // Products
 import Products from '../views/Marketplace/ProductsView.vue'
@@ -19,6 +20,12 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView,
+    },
+    // Automation
+    {
+      path: '/automation',
+      name: 'automation',
+      component: Automation,
     },
     // Authentication [ Login ]
     {

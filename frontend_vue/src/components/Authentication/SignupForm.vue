@@ -33,7 +33,7 @@
 
           <!-- Gender -->
           <div>Gender</div>
-          <div class="flex gap-2">
+          <div class="flex gap-2 gender">
             <prime_radio_button v-model="formSignup.gender" inputId="female" value="Female" />
             <label for="female">Female</label>
 
