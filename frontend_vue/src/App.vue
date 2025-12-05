@@ -5,7 +5,6 @@ import { onMounted, ref } from 'vue'
 import { useUserStore } from '@/stores/user'
 const router = useRouter()
 const userStore = useUserStore()
-// للتحكم في القائمة المنسدلة
 const isDropdownOpen = ref(false)
 const toggleDropdown = () => {
   isDropdownOpen.value = !isDropdownOpen.value
@@ -13,7 +12,6 @@ const toggleDropdown = () => {
 const closeDropdown = () => {
   isDropdownOpen.value = false
 }
-// تسجيل الخروج
 const logout = async () => {
   console.log('ضغطت على تسجيل الخروج')
   try {
@@ -95,10 +93,64 @@ onMounted(() => {
                       <div
                         class="header_wrapper_links flex flex-1 items-center justify-center sm:items-stretch sm:justify-start"
                       >
-                        <div class="header_logo_link flex flex-shrink-0 items-center">
+                        <!-- <div class="header_logo_link flex flex-shrink-0 items-center">
                           <RouterLink to="/" class="logo flex">
                             <span class=""> Logo </span>
                           </RouterLink>
+                        </div> -->
+                        <div class="header_left_section flex items-center space-x-1 basis-1/4">
+                          <!-- Logo -->
+                          <RouterLink to="/" class="logo">
+                            <!-- <i class="fab fa-facebook fa-fw"></i> -->
+                            <!-- <fa :icon="['fab', 'facebook']" /> -->
+                            <svg
+                              fill="#0866ff"
+                              version="1.1"
+                              id="Capa_1"
+                              xmlns="http://www.w3.org/2000/svg"
+                              xmlns:xlink="http://www.w3.org/1999/xlink"
+                              width="254px"
+                              height="254px"
+                              viewBox="-12.4 -12.4 148.80 148.80"
+                              xml:space="preserve"
+                              stroke="#0866ff"
+                              stroke-width="4.216"
+                            >
+                              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                              <g
+                                id="SVGRepo_tracerCarrier"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke="#CCCCCC"
+                                stroke-width="0.744"
+                              ></g>
+                              <g id="SVGRepo_iconCarrier">
+                                <g>
+                                  <path
+                                    d="M121.4,89.5H2.6c-1.4,0-2.6,1.2-2.6,2.6v9.801c0,1.399,1.2,2.6,2.6,2.6h118.8c1.399,0,2.6-1.2,2.6-2.6V92.1 C124,90.7,122.8,89.5,121.4,89.5z"
+                                  ></path>
+                                  <path
+                                    d="M2.7,77.5h11.9c1.7,0,3.4-1.7,3.4-3.4V56.7c0-1.7,1-3.2,2.7-3.2h13.6c1.7,0,2.8,1.5,2.8,3.2v17.5 c0,1.7,1.6,3.399,3.3,3.399h12c1.7,0,2.7-1.699,2.7-3.399V22c0-1.7-1-2.5-2.7-2.5h-12c-1.7,0-3.3,0.9-3.3,2.5v14.3 c0,1.7-1.1,3.2-2.8,3.2H20.7C19,39.5,18,38,18,36.3V22c0-1.7-1.7-2.5-3.4-2.5H2.7C1,19.5,0,20.4,0,22v52.1C0,75.8,1,77.5,2.7,77.5z "
+                                  ></path>
+                                  <path
+                                    d="M109.9,50.3c0.899-0.3,1.6-0.7,2.3-1.1c2.399-1.5,4.3-3.4,5.7-5.7c1.399-2.3,2.1-5.1,2.1-8.3c0-3.7-0.9-6.8-2.7-9.4 c-1.8-2.6-4.2-4.1-7.1-5.1c-2.9-1-7.2-1.2-12.7-1.2H69.1c-0.899,0-2.1,0.2-2.1,1.1v55c0,0.9,1.2,1.9,2.1,1.9H84 c0.9,0,2.1-1,2.1-1.9V55.1c0-0.9,0.5-1.6,1.301-1.6c1.6,0,3,0.4,4.3,1.3c1,0.7,2,2.2,3.2,4.5l9.1,17.2c0.3,0.5,0.8,1,1.4,1h16.8 c1.2,0,2-1.4,1.399-2.5c-2.6-5.1-4.899-10.5-8.199-15.3c-1.301-1.9-2.7-4.1-4.4-5.6C109.9,53.2,107.7,51.2,109.9,50.3z M101,39.6 c-0.9,1.2-2.3,2-3.8,2.4c-3.2,0.9-6.601,0.6-9.9,0.6C86.4,42.6,86,41.9,86,41v-8.7c0-0.9,0.2-1.8,1.1-1.8H93.4 c2.8,0,5.8,0.2,7.6,2.8C102.3,35.1,102.3,37.8,101,39.6z"
+                                  ></path>
+                                </g>
+                              </g>
+                            </svg>
+                          </RouterLink>
+                          <!-- Search Bar -->
+                          <div class="search_bar w-full">
+                            <span class="icon">
+                              <!-- <i class="fas fa-search fa-fw"></i> -->
+                              <fa :icon="['fas', 'search']" />
+                            </span>
+                            <input
+                              type="text"
+                              class="w-full p-2 rounded-full focus:outline-none"
+                              placeholder="Search"
+                            />
+                          </div>
                         </div>
                         <div class="header_main_links hidden sm:ml-6 sm:block">
                           <div class="header_main_link flex space-x-4">
