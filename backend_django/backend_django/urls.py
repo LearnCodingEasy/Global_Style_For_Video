@@ -41,6 +41,8 @@ urlpatterns = [
     # Ma
     path('api/vendors/', include('vendor.urls')),
     path('api/products/', include('product.urls')),
+    # Automation
+    path('api/automation/', include('automation.urls')),
     # Admin
     path('admin/', admin.site.urls),
     # 0️⃣1️⃣ Document

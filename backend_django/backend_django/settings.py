@@ -188,6 +188,7 @@ INSTALLED_APPS = [
     "client",
 
     # "marketplace.vendor",
+    "automation",
 
 
 

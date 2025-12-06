@@ -6,13 +6,18 @@ import AuthCallback from '../views/Authentication/AuthCallback.vue'
 import Vendors from '../views/Marketplace/VendorsView.vue'
 import DetailVendor from '../views/Marketplace/VendorView.vue'
 import EditVendor from '../views/Marketplace/EditVendorView.vue'
-import Automation from '../views/AutomationView.vue'
 
 // Products
 import Products from '../views/Marketplace/ProductsView.vue'
 import Categories from '../views/Marketplace/Categories/CategoriesView.vue'
 import AddCategory from '../views/Marketplace/Categories/AddCategoryView.vue'
 
+import Automation from '../views/Automation/AutomationView.vue'
+import Dashboard from '../views/Automation/DashboardView.vue'
+import ProgramList from '../views/Automation/ProgramList.vue'
+import ProgramCreate from '../views/Automation/ProgramCreate.vue'
+import TaskCreate from '../views/Automation/TaskCreate.vue'
+import TaskEditor from '../views/Automation/TaskEditor.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -27,6 +32,32 @@ const router = createRouter({
       name: 'automation',
       component: Automation,
     },
+    {
+      path: '/automation_Dashboard',
+      name: 'automation_Dashboard',
+      component: Dashboard,
+    },
+    {
+      path: '/automation_ProgramList',
+      name: 'automation_ProgramList',
+      component: ProgramList,
+    },
+    {
+      path: '/automation_programs_create',
+      name: 'automation_programs_create',
+      component: ProgramCreate,
+    },
+    {
+      path: '/automation_TaskCreate',
+      name: 'automation_TaskCreate',
+      component: TaskCreate,
+    },
+    {
+      path: '/automation_TaskEditor',
+      name: 'automation_TaskEditor',
+      component: TaskEditor,
+    },
+
     // Authentication [ Login ]
     {
       path: '/login',
