@@ -182,6 +182,12 @@ pip install pyautogui
 
 [Marketplace ](marketplace.md)
 
+## 📦 Automation
+
+<div dir="rtl" style="font-size:2vw"> automation automation  </div>
+
+[Automation ](automation.md)
+
 ## 🔍 Search
 
 [Search ](search.md)

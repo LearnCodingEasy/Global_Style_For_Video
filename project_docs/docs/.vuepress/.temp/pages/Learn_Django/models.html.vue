@@ -192,7 +192,7 @@
 <span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h3 id="decimalfield" tabindex="-1"><a class="header-anchor" href="#decimalfield"><span>DecimalField</span></a></h3>
 <div class="" dir="rtl">
-  حقل تخزين الاعداد العشرية دقة عسالية
+  حقل تخزين الاعداد العشرية دقة عالية
 </div>
 <div class="language-python line-numbers-mode" data-highlighter="prismjs" data-ext="py"><pre v-pre><code><span class="line">price <span class="token operator">=</span> models<span class="token punctuation">.</span>DecimalField<span class="token punctuation">(</span>max_digits<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">,</span> decimal_places<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span></span>
 <span class="line"></span></code></pre>

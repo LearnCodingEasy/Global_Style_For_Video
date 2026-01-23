@@ -11,8 +11,11 @@
 <p><RouteLink to="/Learn_Vue/fortawesome.html">Font Awesome </RouteLink></p>
 <p><RouteLink to="/Learn_Vue/pwa.html">PWA </RouteLink></p>
 <p><RouteLink to="/Learn_Vue/animate_css.html">Animate Css </RouteLink></p>
+<p><RouteLink to="/Learn_Vue/Drag_And_Drop.html">Drag Drop </RouteLink></p>
 <h2 id="🚀-run-vue-project" tabindex="-1"><a class="header-anchor" href="#🚀-run-vue-project"><span>🚀 Run Vue Project</span></a></h2>
 <p><RouteLink to="/Learn_Vue/runserver.html">Run Vue Project </RouteLink></p>
+<h2 id="📋-vue-django" tabindex="-1"><a class="header-anchor" href="#📋-vue-django"><span>📋 Vue Django</span></a></h2>
+<p><RouteLink to="/Learn_Vue/VueDjangoSndData.html"> Data </RouteLink></p>
 </div></template>
 
 

@@ -6,6 +6,18 @@
 cd backend_django
 ```
 
+```cmd
+python manage.py makemigrations
+```
+
+```cmd
+python manage.py migrate automation zero
+```
+
+```cmd
+python manage.py migrate
+```
+
 ### 🚀 Runserver
 
 ```cmd

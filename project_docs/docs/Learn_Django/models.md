@@ -299,7 +299,7 @@ price = models.FloatField(default=0.0)
 ### DecimalField
 
 <div class="" dir="rtl">
-  حقل تخزين الاعداد العشرية دقة عسالية
+  حقل تخزين الاعداد العشرية دقة عالية
 </div>
 
 ```python

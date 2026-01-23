@@ -24,6 +24,12 @@
 
 [Animate Css ](animate_css.md)
 
+[Drag Drop ](Drag_And_Drop.md)
+
 ## 🚀 Run Vue Project
 
 [Run Vue Project ](runserver.md)
+
+## 📋 Vue Django
+
+[ Data ](VueDjangoSndData.md)

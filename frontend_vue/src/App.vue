@@ -164,8 +164,11 @@ onMounted(() => {
                             >
                               Vendors</RouterLink
                             >
-                            <RouterLink to="/about" class="rounded-md px-3 py-2 text-md"
+                            <RouterLink to="/About" class="rounded-md px-3 py-2 text-md"
                               >About
+                            </RouterLink>
+                            <RouterLink to="/explains" class="rounded-md px-3 py-2 text-md"
+                              >Explain
                             </RouterLink>
                             <RouterLink to="/products" class="rounded-md px-3 py-2 text-md"
                               >Products
@@ -346,6 +349,8 @@ onMounted(() => {
       </div>
     </div>
     <prime_toast />
+    <prime_confirm_dialog />
+
 
     <RouterView />
   </div>

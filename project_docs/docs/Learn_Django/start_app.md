@@ -38,6 +38,14 @@ python manage.py startapp api
 python manage.py startapp sheets
 ```
 
+```cmd
+python manage.py startapp automation
+```
+
+```cmd
+python manage.py startapp explain
+```
+
 ### 👥 Start App users_accounts
 
 ```python

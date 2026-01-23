@@ -1,0 +1,217 @@
+// services/AutomationService.js
+import api from './api'
+
+export default {
+  /* ==================================================
+   * 1️⃣ PROGRAMS (التعامل مع البرامج)
+   * ================================================== */
+
+  listPrograms() {
+    return api.get('automation/programs/')
+  },
+  getProgram(id) {
+    return api.get(`automation/programs/${id}/`)
+  },
+  createProgram(formData) {
+    return api.post('automation/programs/', formData, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    })
+  },
+  updateProgram(id, data) {
+    return api.patch(`automation/programs/${id}/`, data, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    })
+  },
+  deleteProgram(id) {
+    return api.delete(`automation/programs/${id}/`)
+  },
+  openProgram(id) {
+    return api.post(`automation/programs/${id}/open/`)
+  },
+  closeProgram(id) {
+    return api.post(`automation/programs/${id}/close/`)
+  },
+  getProgramStatus(id) {
+    return api.get(`automation/programs/${id}/status/`)
+  },
+
+  /* ==================================================
+   * 2️⃣ PROGRAM ELEMENTS (أزرار – عناصر – coords)
+   * ================================================== */
+
+  listProgramElements(programId = null) {
+    const q = programId ? `?program=${programId}` : ''
+    return api.get(`automation/program-elements/${q}`)
+  },
+  getProgramElement(id) {
+    return api.get(`automation/program-elements/${id}/`)
+  },
+  createProgramElement(data) {
+    return api.post('automation/program-elements/', data)
+  },
+  updateProgramElement(id, data) {
+    return api.patch(`automation/program-elements/${id}/`, data)
+  },
+  deleteProgramElement(id) {
+    return api.delete(`automation/program-elements/${id}/`)
+  },
+
+  /* ==================================================
+   * 3️⃣ WORKFLOWS (العقل)
+   * ================================================== */
+
+  listWorkflows() {
+    return api.get('automation/workflows/')
+  },
+  getWorkflow(id) {
+    return api.get(`automation/workflows/${id}/`)
+  },
+  createWorkflow(data) {
+    return api.post('automation/workflows/', data, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    })
+  },
+  updateWorkflow(id, data) {
+    return api.patch(`automation/workflows/${id}/`, data, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    })
+  },
+  deleteWorkflow(id) {
+    return api.delete(`automation/workflows/${id}/`)
+  },
+  runWorkflow(id) {
+    return api.post(`automation/workflows/${id}/run/`)
+  },
+
+  /* ==================================================
+   * 4️⃣ WORKFLOW NODES (Vue Flow Nodes)
+   * ================================================== */
+
+  listWorkflowNodes(workflowId = null) {
+    const q = workflowId ? `?workflow=${workflowId}` : ''
+    return api.get(`automation/workflow-nodes/${q}`)
+  },
+
+  createWorkflowNode(data) {
+    return api.post('automation/workflow-nodes/', data)
+  },
+
+  updateWorkflowNode(id, data) {
+    return api.patch(`automation/workflow-nodes/${id}/`, data)
+  },
+
+  deleteWorkflowNode(id) {
+    return api.delete(`automation/workflow-nodes/${id}/`)
+  },
+
+  /* ==================================================
+   * 5️⃣ WORKFLOW EDGES (الربط)
+   * ================================================== */
+
+  listWorkflowEdges(workflowId = null) {
+    const q = workflowId ? `?workflow=${workflowId}` : ''
+    return api.get(`automation/workflow-edges/${q}`)
+  },
+
+  createWorkflowEdge(data) {
+    return api.post('automation/workflow-edges/', data)
+  },
+
+  updateWorkflowEdge(id, data) {
+    return api.patch(`automation/workflow-edges/${id}/`, data)
+  },
+
+  deleteWorkflowEdge(id) {
+    return api.delete(`automation/workflow-edges/${id}/`)
+  },
+
+  /* ==================================================
+   * 6️⃣ ACTIONS (Mouse / Keyboard / OS)
+   * ================================================== */
+
+  listActions(nodeId = null) {
+    const q = nodeId ? `?node=${nodeId}` : ''
+    return api.get(`automation/actions/${q}`)
+  },
+
+  getAction(id) {
+    return api.get(`automation/actions/${id}/`)
+  },
+
+  createAction(data) {
+    return api.post('automation/actions/', data)
+  },
+
+  updateAction(id, data) {
+    return api.patch(`automation/actions/${id}/`, data)
+  },
+
+  deleteAction(id) {
+    return api.delete(`automation/actions/${id}/`)
+  },
+
+  executeAction(id) {
+    return api.post(`automation/actions/${id}/execute/`)
+  },
+
+  /* ==================================================
+   * 7️⃣ TASKS (سيناريو جاهز)
+   * ================================================== */
+
+  listTasks() {
+    return api.get('automation/tasks/')
+  },
+
+  getTask(id) {
+    return api.get(`automation/tasks/${id}/`)
+  },
+
+  createTask(data) {
+    return api.post('automation/tasks/', data)
+  },
+
+  updateTask(id, data) {
+    return api.patch(`automation/tasks/${id}/`, data)
+  },
+
+  deleteTask(id) {
+    return api.delete(`automation/tasks/${id}/`)
+  },
+
+  /* ==================================================
+   * 8️⃣ TASK RUNS (التنفيذ + اللوج)
+   * ================================================== */
+
+  listTaskRuns() {
+    return api.get('automation/task-runs/')
+  },
+
+  getTaskRun(id) {
+    return api.get(`automation/task-runs/${id}/`)
+  },
+
+  /* ==================================================
+   * 9️⃣ SCREEN STATE (مراقبة الشاشة)
+   * ================================================== */
+
+  listScreenStates(taskRunId = null) {
+    const q = taskRunId ? `?task_run=${taskRunId}` : ''
+    return api.get(`automation/screen-states/${q}`)
+  },
+
+  createScreenState(data) {
+    return api.post('automation/screen-states/', data)
+  },
+
+  bulkCreateScreenStates(dataArray) {
+    return api.post('automation/screen-states/bulk_create/', dataArray)
+  },
+
+  /* ==================================================
+   * 🔟 DELAYS (انتظار)
+   * ================================================== */
+
+  listDelays() {
+    return api.get('automation/delays/')
+  },
+}

@@ -1,5 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import AboutView from '../views/AboutView.vue'
+
+// Explain
+import ExplainsView from '../views/Explain/ExplainView.vue'
+import ExplainDetails from '../views/Explain/ExplainDetails.vue'
+import ExplainCreate from '../views/Explain/ExplainCreate.vue'
+import ExplainEdit from '../views/Explain/ExplainEdit.vue'
+
 import LoginView from '../views/Authentication/LoginView.vue'
 import ProfileView from '../views/Account/ProfileView.vue'
 import AuthCallback from '../views/Authentication/AuthCallback.vue'
@@ -11,11 +19,12 @@ import EditVendor from '../views/Marketplace/EditVendorView.vue'
 import Products from '../views/Marketplace/ProductsView.vue'
 import Categories from '../views/Marketplace/Categories/CategoriesView.vue'
 import AddCategory from '../views/Marketplace/Categories/AddCategoryView.vue'
-
+// Automation
 import Automation from '../views/Automation/AutomationView.vue'
 import Dashboard from '../views/Automation/DashboardView.vue'
 import ProgramList from '../views/Automation/ProgramList.vue'
 import ProgramCreate from '../views/Automation/ProgramCreate.vue'
+import ProgramEdit from '../views/Automation/ProgramEdit.vue'
 import TaskCreate from '../views/Automation/TaskCreate.vue'
 import TaskEditor from '../views/Automation/TaskEditor.vue'
 const router = createRouter({
@@ -25,6 +34,28 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView,
+    },
+    // Explain
+    {
+      path: '/explains',
+      name: 'explains',
+      component: ExplainsView,
+    },
+    {
+      path: '/explains/:id',
+      name: 'explain-details',
+      component: ExplainDetails,
+      props: true,
+    },
+    {
+      path: '/explains/explain_create',
+      name: 'explain_create',
+      component: ExplainCreate,
+    },
+    {
+      path: '/explains/:id',
+      name: 'explain_edit',
+      component: ExplainEdit,
     },
     // Automation
     {
@@ -46,6 +77,11 @@ const router = createRouter({
       path: '/automation_programs_create',
       name: 'automation_programs_create',
       component: ProgramCreate,
+    },
+    {
+      path: '/automation/:id',
+      name: 'automation_programs_edit',
+      component: ProgramEdit,
     },
     {
       path: '/automation_TaskCreate',
@@ -73,13 +109,11 @@ const router = createRouter({
         requireLogin: true,
       },
     },
-
     {
       path: '/auth-callback',
       name: 'AuthCallback',
       component: AuthCallback,
     },
-
     {
       path: '/about',
       name: 'about',
@@ -126,6 +160,11 @@ const router = createRouter({
       // path: '/Categories/:id',
       // name: 'Category',
       // component: Category,
+    },
+    {
+      path: '/About',
+      name: 'About',
+      component: AboutView,
     },
   ],
 })

@@ -1,10 +1,9 @@
 // edgeFactory.js
 
-export function createEdge(source, target) {
-  return {
-    id: `edge-${source}-${target}`,
-    source,
-    target,
-    type: 'custom',
-  }
-}
+export const createEdge = ({ source, target }) => ({
+  id: `temp-${Date.now()}`,
+  source,
+  target,
+  type: 'custom',
+  data: {},
+})

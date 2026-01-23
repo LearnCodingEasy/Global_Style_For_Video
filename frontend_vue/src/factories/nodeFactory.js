@@ -1,40 +1,49 @@
-// nodeFactory.js
+// factories/nodeFactory.js
 
-export function createProgramNode(program, position) {
-  return {
-    id: `program-${program.id}`,
-    type: 'custom',
-    position,
-    data: {
-      label: program.name,
-      type: 'program',
-      programId: program.id,
-    },
-  }
-}
+import api from '@/services/AutomationService'
 
-export function createTaskNode(task, position) {
-  return {
-    id: `task-${task.id}`,
-    type: 'custom',
-    position,
-    data: {
-      label: task.name,
-      type: 'task',
-      taskId: task.id,
+export const createProgramNode = (programId, position) => ({
+  id: `${programId}`,
+  type: 'custom',
+  position,
+  data: {
+    label: 'Program Node',
+    programId,
+    runTask: async () => {
+      try {
+        await api.openProgram(programId)
+        alert('Program Opened!')
+      } catch (err) {
+        console.error('Failed to open program:', err)
+      }
     },
-  }
-}
+  },
+})
 
-export function createWorkflowNode(workflow, position) {
-  return {
-    id: `workflow-${workflow.id}`,
-    type: 'custom',
-    position,
-    data: {
-      label: workflow.name,
-      type: 'workflow',
-      workflowId: workflow.id,
+export const createTaskNode = (taskTemplate, position) => ({
+  id: `temp-${Date.now()}`,
+  type: 'custom',
+  position,
+  data: {
+    label: taskTemplate.name,
+    task: taskTemplate,
+    runTask: async () => {
+      try {
+        await api.createAction({
+          action_type: taskTemplate.action_type,
+          payload: taskTemplate.payload || {},
+        })
+        alert(`Task ${taskTemplate.name} executed!`)
+      } catch (err) {
+        console.error('Failed to execute task:', err)
+      }
     },
-  }
-}
+  },
+})
+
+export const createWorkflowNode = (type, position) => ({
+  id: `temp-${Date.now()}`,
+  type: 'custom',
+  position,
+  data: { label: type },
+})

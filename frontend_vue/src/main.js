@@ -30,6 +30,7 @@ import PrimeVue from 'primevue/config'
 // Import services for confirmation and dialog popups
 // خدمات النوافذ المنبثقة لتأكيد العمليات وفتح الحوارات
 import ConfirmationService from 'primevue/confirmationservice'
+import ConfirmPopup from 'primevue/confirmpopup'
 import DialogService from 'primevue/dialogservice'
 
 // Buttons
@@ -42,6 +43,7 @@ import ToggleButton from 'primevue/togglebutton'
 // عناصر النماذج
 import Fluid from 'primevue/fluid'
 import InputText from 'primevue/inputtext'
+import InputNumber from 'primevue/inputnumber';
 import Textarea from 'primevue/textarea'
 import Password from 'primevue/password'
 import FloatLabel from 'primevue/floatlabel'
@@ -132,12 +134,13 @@ import Skeleton from 'primevue/skeleton'
 import Badge from 'primevue/badge'
 import OverlayBadge from 'primevue/overlaybadge'
 
-
 // --------------- Paginator Components ---------------
 // استيراد مكون Paginator للتنقل بين الصفحات
 import Paginator from 'primevue/paginator'
 
+//
 
+import Tag from 'primevue/tag'
 
 //
 
@@ -195,6 +198,7 @@ app.component('ThemeSwitcher', ThemeSwitcher)
 // Form Components
 app.component('prime_fluid', Fluid)
 app.component('prime_input_text', InputText)
+app.component('prime_input_number', InputNumber)
 app.component('prime_textarea', Textarea)
 app.component('prime_input_password', Password)
 app.component('prime_float_label', FloatLabel)
@@ -236,8 +240,10 @@ app.component('prime_steppanel', StepPanel)
 
 // Notification Components
 app.component('prime_toast', Toast)
+
 app.component('prime_message', Message)
 
+app.component('prime_confirm_dialog', ConfirmPopup)
 // Icon Components
 app.component('prime_icon_field', IconField)
 app.component('prime_input_icon', InputIcon)
@@ -260,6 +266,9 @@ app.component('prime_overlay_badge', OverlayBadge)
 
 // مكون Paginator
 app.component('prime_paginator', Paginator)
+
+//
+app.component('prime_tag', Tag)
 
 //
 app.component('prime_progress_bar', ProgressBar)

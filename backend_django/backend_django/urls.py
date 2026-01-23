@@ -43,6 +43,9 @@ urlpatterns = [
     path('api/products/', include('product.urls')),
     # Automation
     path('api/automation/', include('automation.urls')),
+    # Explain
+    path('api/explain/', include('explain.urls')),
+
     # Admin
     path('admin/', admin.site.urls),
     # 0️⃣1️⃣ Document
