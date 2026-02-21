@@ -1,0 +1,56 @@
+{
+    "task_run_id": "728441d7-0cbb-40ad-b218-703bfc54e6a1",
+    "workflow": {
+        "id": "1ff4c82a-e68a-4495-9a3c-c96a9a221adb",
+        "name": "Open Vscode"
+    },
+    "started_at": 1771552854.1075165,
+    "status": "success",
+    "nodes": [
+        {
+            "node_id": "6f34a0d6-0f5e-4783-8bc1-8982cf20f4e2",
+            "label": "Delay 3s",
+            "node_type": "delay",
+            "program": null,
+            "started_at": 1771552854.1113722,
+            "status": "success",
+            "actions": [
+                {
+                    "action_id": "18867a9e-17b0-4ca7-8677-e14f6fe9838b",
+                    "type": "wait",
+                    "payload": "{\"id\":\"6f34a0d6-0f5e-4783-8bc1-8982cf20f4e2\",\"slug\":\"delay-3s\",\"created_at\":\"2026-02-19T19:13:10.571028Z\",\"updated_at\":\"2026-02-19T19:13:10.571042Z\",\"node_type\":\"delay\",\"label\":\"Delay 3s\",\"position_x\":488,\"position_y\":541,\"config\":{},\"created_by\":\"a35fe66e-bcb9-42a5-8906-4e8def6346f9\",\"workflow\":\"1ff4c82a-e68a-4495-9a3c-c96a9a221adb\",\"program\":null,\"element\":null}",
+                    "started_at": 1771552854.114028,
+                    "finished_at": 1771552856.1419158,
+                    "status": "ok",
+                    "error": null
+                }
+            ],
+            "finished_at": 1771552856.1419208
+        },
+        {
+            "node_id": "1dbce633-83c2-4d99-8778-99f320224329",
+            "label": "Vscode",
+            "node_type": "program",
+            "program": {
+                "id": "a121e833-4703-4deb-98f0-4db44422c71b",
+                "name": "Vscode",
+                "executable_path": "C:\\Users\\AFAQE\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
+            },
+            "started_at": 1771552856.1419291,
+            "status": "success",
+            "actions": [
+                {
+                    "action_id": "fa6f5b98-721c-4f5f-9d15-b116b4673272",
+                    "type": "open_program",
+                    "payload": "{\"id\":\"1dbce633-83c2-4d99-8778-99f320224329\",\"program_name\":\"Vscode\",\"slug\":\"vscode\",\"created_at\":\"2026-02-19T19:13:19.372387Z\",\"updated_at\":\"2026-02-19T19:13:19.372400Z\",\"node_type\":\"program\",\"label\":\"Vscode\",\"position_x\":424,\"position_y\":526,\"config\":{},\"created_by\":\"a35fe66e-bcb9-42a5-8906-4e8def6346f9\",\"workflow\":\"1ff4c82a-e68a-4495-9a3c-c96a9a221adb\",\"program\":\"a121e833-4703-4deb-98f0-4db44422c71b\",\"element\":null}",
+                    "started_at": 1771552856.1468062,
+                    "finished_at": 1771552858.1934326,
+                    "status": "ok",
+                    "error": null
+                }
+            ],
+            "finished_at": 1771552858.1934352
+        }
+    ],
+    "finished_at": 1771552858.1934364
+}

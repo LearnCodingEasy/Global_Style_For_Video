@@ -1,0 +1,100 @@
+{
+    "task_run_id": "262b484a-c0e9-4ad8-bb3a-d392ec415d73",
+    "workflow": {
+        "id": "62796b76-315f-477b-822a-3ac44c1f9308",
+        "name": "Dolore debitis expli"
+    },
+    "started_at": 1771684631.1886494,
+    "status": "success",
+    "nodes": [
+        {
+            "node_id": "3571ce2d-6c69-41f9-9ac3-f6927514ad6b",
+            "label": "Delay 3s",
+            "node_type": "delay",
+            "program": null,
+            "started_at": 1771684631.1952589,
+            "status": "success",
+            "actions": [
+                {
+                    "action_id": "5e217dbf-ea75-4893-bdc7-4d96b9221188",
+                    "type": "wait",
+                    "payload": "{\"id\":\"3571ce2d-6c69-41f9-9ac3-f6927514ad6b\",\"slug\":\"delay-3s-2\",\"created_at\":\"2026-02-21T14:36:02.142206Z\",\"updated_at\":\"2026-02-21T14:36:02.142217Z\",\"node_type\":\"delay\",\"label\":\"Delay 3s\",\"position_x\":519,\"position_y\":635,\"config\":{},\"created_by\":\"a35fe66e-bcb9-42a5-8906-4e8def6346f9\",\"workflow\":\"62796b76-315f-477b-822a-3ac44c1f9308\",\"program\":null,\"element\":null}",
+                    "started_at": 1771684631.1994162,
+                    "finished_at": 1771684633.2082875,
+                    "status": "ok",
+                    "error": null
+                }
+            ],
+            "finished_at": 1771684633.2082903
+        },
+        {
+            "node_id": "f2ca73ce-89eb-483f-a534-cde0c5c73343",
+            "label": "Vscode",
+            "node_type": "program",
+            "program": {
+                "id": "a121e833-4703-4deb-98f0-4db44422c71b",
+                "name": "Vscode",
+                "executable_path": "C:\\Users\\AFAQE\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
+            },
+            "started_at": 1771684633.2082944,
+            "status": "success",
+            "actions": [
+                {
+                    "action_id": "db322c36-c263-4b35-8960-d8c30b32e733",
+                    "type": "open_program",
+                    "payload": "{\"id\":\"f2ca73ce-89eb-483f-a534-cde0c5c73343\",\"program_name\":\"Vscode\",\"slug\":\"vscode-2\",\"created_at\":\"2026-02-21T14:36:09.354939Z\",\"updated_at\":\"2026-02-21T14:36:09.354951Z\",\"node_type\":\"program\",\"label\":\"Vscode\",\"position_x\":516,\"position_y\":305,\"config\":{},\"created_by\":\"a35fe66e-bcb9-42a5-8906-4e8def6346f9\",\"workflow\":\"62796b76-315f-477b-822a-3ac44c1f9308\",\"program\":\"a121e833-4703-4deb-98f0-4db44422c71b\",\"element\":null}",
+                    "started_at": 1771684633.2130148,
+                    "finished_at": 1771684635.2410529,
+                    "status": "ok",
+                    "error": null
+                }
+            ],
+            "finished_at": 1771684635.2410557
+        },
+        {
+            "node_id": "dff221fd-e0af-44bf-a733-1c304c50f194",
+            "label": "Delay 3s",
+            "node_type": "delay",
+            "program": null,
+            "started_at": 1771684635.24106,
+            "status": "success",
+            "actions": [
+                {
+                    "action_id": "954230c8-620d-42ed-8eb1-9f45592546ca",
+                    "type": "wait",
+                    "payload": "{\"id\":\"dff221fd-e0af-44bf-a733-1c304c50f194\",\"slug\":\"delay-3s-3\",\"created_at\":\"2026-02-21T14:36:28.773436Z\",\"updated_at\":\"2026-02-21T14:36:28.773450Z\",\"node_type\":\"delay\",\"label\":\"Delay 3s\",\"position_x\":492.1010276980635,\"position_y\":1077.2895832424115,\"config\":{},\"created_by\":\"a35fe66e-bcb9-42a5-8906-4e8def6346f9\",\"workflow\":\"62796b76-315f-477b-822a-3ac44c1f9308\",\"program\":null,\"element\":null}",
+                    "started_at": 1771684635.2423737,
+                    "finished_at": 1771684637.2536232,
+                    "status": "ok",
+                    "error": null
+                }
+            ],
+            "finished_at": 1771684637.2536268
+        },
+        {
+            "node_id": "f7c339a7-442b-4ef9-abc3-5f26d708a82f",
+            "label": "Vscode",
+            "node_type": "program",
+            "program": {
+                "id": "a121e833-4703-4deb-98f0-4db44422c71b",
+                "name": "Vscode",
+                "executable_path": "C:\\Users\\AFAQE\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
+            },
+            "started_at": 1771684637.2536328,
+            "status": "success",
+            "actions": [
+                {
+                    "action_id": "4283a94e-f5ed-4128-8e7d-b52b39a44ff3",
+                    "type": "open_program",
+                    "payload": "{\"id\":\"f7c339a7-442b-4ef9-abc3-5f26d708a82f\",\"program_name\":\"Vscode\",\"slug\":\"vscode-3\",\"created_at\":\"2026-02-21T14:36:41.155234Z\",\"updated_at\":\"2026-02-21T14:36:41.155246Z\",\"node_type\":\"program\",\"label\":\"Vscode\",\"position_x\":330.1786229249844,\"position_y\":986.7523246596145,\"config\":{},\"created_by\":\"a35fe66e-bcb9-42a5-8906-4e8def6346f9\",\"workflow\":\"62796b76-315f-477b-822a-3ac44c1f9308\",\"program\":\"a121e833-4703-4deb-98f0-4db44422c71b\",\"element\":null}",
+                    "started_at": 1771684637.2565513,
+                    "finished_at": 1771684639.279425,
+                    "status": "ok",
+                    "error": null
+                }
+            ],
+            "finished_at": 1771684639.2794287
+        }
+    ],
+    "finished_at": 1771684639.2794304
+}

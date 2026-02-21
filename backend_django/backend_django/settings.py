@@ -64,6 +64,12 @@ REST_FRAMEWORK = {
     ),
     "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    #
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ],
+
     # # Pagination
     # "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     # "PAGE_SIZE": 10,
@@ -174,6 +180,13 @@ DEBUG_TOOLBAR_CONFIG = {
 #
 REST_USE_JWT = True
 
+# 8️⃣
+ASGI_APPLICATION = "backend_django.asgi.application"
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    }
+}
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -220,7 +233,8 @@ INSTALLED_APPS = [
     'debug_toolbar',
     # 7️⃣
     'drf_spectacular',
-
+    # 8️⃣
+    "channels",
 
 ]
 

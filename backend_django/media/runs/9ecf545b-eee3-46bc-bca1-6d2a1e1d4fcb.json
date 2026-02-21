@@ -1,0 +1,140 @@
+{
+    "task_run_id": "9ecf545b-eee3-46bc-bca1-6d2a1e1d4fcb",
+    "workflow": {
+        "id": "ffefd76a-2327-49ff-9f95-97673574acc0",
+        "name": "A"
+    },
+    "started_at": 1771286275.01386,
+    "status": "success",
+    "nodes": [
+        {
+            "node_id": "4b4858b7-fe06-4471-b272-6bf018aa3f0c",
+            "label": "Delay 2s",
+            "node_type": "delay",
+            "program": null,
+            "started_at": 1771286275.0187652,
+            "status": "success",
+            "actions": [
+                {
+                    "action_id": "a721bbb4-5628-4e39-99f0-d1fae01e6669",
+                    "type": "wait",
+                    "payload": "{\"id\":\"4b4858b7-fe06-4471-b272-6bf018aa3f0c\",\"slug\":\"delay-2s\",\"created_at\":\"2026-02-16T21:57:47.999530Z\",\"updated_at\":\"2026-02-16T21:57:47.999543Z\",\"node_type\":\"delay\",\"label\":\"Delay 2s\",\"position_x\":638,\"position_y\":722,\"config\":{},\"created_by\":\"a35fe66e-bcb9-42a5-8906-4e8def6346f9\",\"workflow\":\"ffefd76a-2327-49ff-9f95-97673574acc0\",\"program\":null,\"element\":null}",
+                    "started_at": 1771286275.0223377,
+                    "finished_at": 1771286277.0717633,
+                    "status": "ok",
+                    "error": null
+                }
+            ],
+            "finished_at": 1771286277.071771
+        },
+        {
+            "node_id": "0f07076f-3b90-4252-84f4-4df69cdf0175",
+            "label": "Vscode",
+            "node_type": "program",
+            "program": {
+                "id": "a121e833-4703-4deb-98f0-4db44422c71b",
+                "name": "Vscode",
+                "executable_path": "C:\\Users\\AFAQE\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
+            },
+            "started_at": 1771286277.0717793,
+            "status": "success",
+            "actions": [
+                {
+                    "action_id": "ceb93a7c-6c31-4278-90be-04dcbe57cf8d",
+                    "type": "open_program",
+                    "payload": "{\"id\":\"0f07076f-3b90-4252-84f4-4df69cdf0175\",\"program_name\":\"Vscode\",\"slug\":\"vscode\",\"created_at\":\"2026-02-16T21:57:49.313419Z\",\"updated_at\":\"2026-02-16T21:57:49.313430Z\",\"node_type\":\"program\",\"label\":\"Vscode\",\"position_x\":886,\"position_y\":391,\"config\":{},\"created_by\":\"a35fe66e-bcb9-42a5-8906-4e8def6346f9\",\"workflow\":\"ffefd76a-2327-49ff-9f95-97673574acc0\",\"program\":\"a121e833-4703-4deb-98f0-4db44422c71b\",\"element\":null}",
+                    "started_at": 1771286277.0771918,
+                    "finished_at": 1771286279.1833305,
+                    "status": "ok",
+                    "error": null
+                }
+            ],
+            "finished_at": 1771286279.1833372
+        },
+        {
+            "node_id": "7646c654-647a-44d3-a457-cb61625c322c",
+            "label": "Delay 3s",
+            "node_type": "delay",
+            "program": null,
+            "started_at": 1771286279.183343,
+            "status": "success",
+            "actions": [
+                {
+                    "action_id": "080c8e0d-f54a-455a-a8dd-6e11740baf28",
+                    "type": "wait",
+                    "payload": "{\"id\":\"7646c654-647a-44d3-a457-cb61625c322c\",\"slug\":\"delay-3s\",\"created_at\":\"2026-02-16T21:58:13.797464Z\",\"updated_at\":\"2026-02-16T21:58:13.797477Z\",\"node_type\":\"delay\",\"label\":\"Delay 3s\",\"position_x\":653,\"position_y\":613,\"config\":{},\"created_by\":\"a35fe66e-bcb9-42a5-8906-4e8def6346f9\",\"workflow\":\"ffefd76a-2327-49ff-9f95-97673574acc0\",\"program\":null,\"element\":null}",
+                    "started_at": 1771286279.1848528,
+                    "finished_at": 1771286281.2029886,
+                    "status": "ok",
+                    "error": null
+                }
+            ],
+            "finished_at": 1771286281.2029958
+        },
+        {
+            "node_id": "b1cb0da9-b058-4596-be49-4acb4836c91b",
+            "label": "Search",
+            "node_type": "program-element",
+            "program": null,
+            "started_at": 1771286281.2030032,
+            "status": "success",
+            "actions": [
+                {
+                    "action_id": "a6470657-8feb-4458-be32-5ec68b648ef7",
+                    "type": "press",
+                    "payload": "{\"id\":\"b1cb0da9-b058-4596-be49-4acb4836c91b\",\"element_name\":\"Search\",\"slug\":\"search\",\"created_at\":\"2026-02-16T21:58:28.636018Z\",\"updated_at\":\"2026-02-16T21:58:28.636029Z\",\"node_type\":\"program-element\",\"label\":\"Search\",\"position_x\":622.22265625,\"position_y\":543.173828125,\"config\":{},\"created_by\":\"a35fe66e-bcb9-42a5-8906-4e8def6346f9\",\"workflow\":\"ffefd76a-2327-49ff-9f95-97673574acc0\",\"program\":null,\"element\":\"69954103-f11f-4f61-8b79-a9505b41eac8\"}",
+                    "started_at": 1771286281.2050822,
+                    "finished_at": 1771286281.2218237,
+                    "status": "ok",
+                    "error": null
+                }
+            ],
+            "finished_at": 1771286281.221827
+        },
+        {
+            "node_id": "a21150c3-733f-4bb5-8de5-d07bbdfaabf4",
+            "label": "Delay 3s",
+            "node_type": "delay",
+            "program": null,
+            "started_at": 1771286281.2218337,
+            "status": "success",
+            "actions": [
+                {
+                    "action_id": "61970a4f-8224-45a9-b2fe-61e17b10180a",
+                    "type": "wait",
+                    "payload": "{\"id\":\"a21150c3-733f-4bb5-8de5-d07bbdfaabf4\",\"slug\":\"delay-3s-1\",\"created_at\":\"2026-02-16T21:58:53.392630Z\",\"updated_at\":\"2026-02-16T21:58:53.392640Z\",\"node_type\":\"delay\",\"label\":\"Delay 3s\",\"position_x\":965.8165261982177,\"position_y\":785.962044452159,\"config\":{},\"created_by\":\"a35fe66e-bcb9-42a5-8906-4e8def6346f9\",\"workflow\":\"ffefd76a-2327-49ff-9f95-97673574acc0\",\"program\":null,\"element\":null}",
+                    "started_at": 1771286281.2231755,
+                    "finished_at": 1771286283.236655,
+                    "status": "ok",
+                    "error": null
+                }
+            ],
+            "finished_at": 1771286283.2366676
+        },
+        {
+            "node_id": "bd0a9733-8a91-4337-b35e-e13775e34c94",
+            "label": "OBS",
+            "node_type": "program",
+            "program": {
+                "id": "0c940648-6833-4d1c-98dc-f6d68eb3f42d",
+                "name": "OBS",
+                "executable_path": "C:\\Program Files\\obs-studio\\bin\\64bit\\obs64.exe"
+            },
+            "started_at": 1771286283.2366707,
+            "status": "success",
+            "actions": [
+                {
+                    "action_id": "86e1d32a-ef26-4a1b-8c40-f21d940ba1cf",
+                    "type": "open_program",
+                    "payload": "{\"id\":\"bd0a9733-8a91-4337-b35e-e13775e34c94\",\"program_name\":\"OBS\",\"slug\":\"obs\",\"created_at\":\"2026-02-16T23:57:50.099835Z\",\"updated_at\":\"2026-02-16T23:57:50.099846Z\",\"node_type\":\"program\",\"label\":\"OBS\",\"position_x\":540,\"position_y\":458,\"config\":{},\"created_by\":\"a35fe66e-bcb9-42a5-8906-4e8def6346f9\",\"workflow\":\"ffefd76a-2327-49ff-9f95-97673574acc0\",\"program\":\"0c940648-6833-4d1c-98dc-f6d68eb3f42d\",\"element\":null}",
+                    "started_at": 1771286283.238178,
+                    "finished_at": 1771286285.4605062,
+                    "status": "ok",
+                    "error": null
+                }
+            ],
+            "finished_at": 1771286285.4605093
+        }
+    ],
+    "finished_at": 1771286285.4605114
+}

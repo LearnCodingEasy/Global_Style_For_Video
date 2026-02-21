@@ -1,0 +1,100 @@
+{
+    "task_run_id": "783cc9b8-38a6-45c9-ba26-5d88c9368f8e",
+    "workflow": {
+        "id": "ef926d79-c07a-4502-a46e-31fe9829ad74",
+        "name": "Sint et possimus so"
+    },
+    "started_at": 1771636046.911882,
+    "status": "success",
+    "nodes": [
+        {
+            "node_id": "c6da0fec-94d8-4562-bd52-4b4b41228520",
+            "label": "Delay 3s",
+            "node_type": "delay",
+            "program": null,
+            "started_at": 1771636046.9168978,
+            "status": "success",
+            "actions": [
+                {
+                    "action_id": "d42b6623-f702-415e-b4d1-c06962fafb7d",
+                    "type": "wait",
+                    "payload": "{\"id\":\"c6da0fec-94d8-4562-bd52-4b4b41228520\",\"slug\":\"delay-3s-3\",\"created_at\":\"2026-02-21T01:06:21.185742Z\",\"updated_at\":\"2026-02-21T01:06:21.185753Z\",\"node_type\":\"delay\",\"label\":\"Delay 3s\",\"position_x\":658,\"position_y\":407,\"config\":{},\"created_by\":\"a35fe66e-bcb9-42a5-8906-4e8def6346f9\",\"workflow\":\"ef926d79-c07a-4502-a46e-31fe9829ad74\",\"program\":null,\"element\":null}",
+                    "started_at": 1771636046.920672,
+                    "finished_at": 1771636048.930298,
+                    "status": "ok",
+                    "error": null
+                }
+            ],
+            "finished_at": 1771636048.9303024
+        },
+        {
+            "node_id": "fb484dbe-fb2e-47b1-b18d-0c3e5f4411d6",
+            "label": "Vscode",
+            "node_type": "program",
+            "program": {
+                "id": "a121e833-4703-4deb-98f0-4db44422c71b",
+                "name": "Vscode",
+                "executable_path": "C:\\Users\\AFAQE\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
+            },
+            "started_at": 1771636048.930308,
+            "status": "success",
+            "actions": [
+                {
+                    "action_id": "ba6c0db2-2d78-47dd-a4ec-15b6c09d8b21",
+                    "type": "open_program",
+                    "payload": "{\"id\":\"fb484dbe-fb2e-47b1-b18d-0c3e5f4411d6\",\"program_name\":\"Vscode\",\"slug\":\"vscode-1\",\"created_at\":\"2026-02-21T01:06:27.999157Z\",\"updated_at\":\"2026-02-21T01:06:27.999168Z\",\"node_type\":\"program\",\"label\":\"Vscode\",\"position_x\":755,\"position_y\":485,\"config\":{},\"created_by\":\"a35fe66e-bcb9-42a5-8906-4e8def6346f9\",\"workflow\":\"ef926d79-c07a-4502-a46e-31fe9829ad74\",\"program\":\"a121e833-4703-4deb-98f0-4db44422c71b\",\"element\":null}",
+                    "started_at": 1771636048.937203,
+                    "finished_at": 1771636050.9671602,
+                    "status": "ok",
+                    "error": null
+                }
+            ],
+            "finished_at": 1771636050.9671698
+        },
+        {
+            "node_id": "05cd23fa-1ef2-43e0-801e-c2a8022429a4",
+            "label": "Delay 3s",
+            "node_type": "delay",
+            "program": null,
+            "started_at": 1771636050.9671857,
+            "status": "success",
+            "actions": [
+                {
+                    "action_id": "4ed68832-7ae8-4ae6-8e75-9dba1c9f81e9",
+                    "type": "wait",
+                    "payload": "{\"id\":\"05cd23fa-1ef2-43e0-801e-c2a8022429a4\",\"slug\":\"delay-3s-4\",\"created_at\":\"2026-02-21T01:06:44.810346Z\",\"updated_at\":\"2026-02-21T01:06:44.810358Z\",\"node_type\":\"delay\",\"label\":\"Delay 3s\",\"position_x\":502,\"position_y\":853,\"config\":{},\"created_by\":\"a35fe66e-bcb9-42a5-8906-4e8def6346f9\",\"workflow\":\"ef926d79-c07a-4502-a46e-31fe9829ad74\",\"program\":null,\"element\":null}",
+                    "started_at": 1771636050.9708488,
+                    "finished_at": 1771636052.9856548,
+                    "status": "ok",
+                    "error": null
+                }
+            ],
+            "finished_at": 1771636052.9856582
+        },
+        {
+            "node_id": "ca4ae21d-cab1-44eb-bcd9-e5b01f4d396a",
+            "label": "Vscode",
+            "node_type": "program",
+            "program": {
+                "id": "a121e833-4703-4deb-98f0-4db44422c71b",
+                "name": "Vscode",
+                "executable_path": "C:\\Users\\AFAQE\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
+            },
+            "started_at": 1771636052.9856627,
+            "status": "success",
+            "actions": [
+                {
+                    "action_id": "791b9df4-aeb9-4319-8628-431283e2dc7f",
+                    "type": "open_program",
+                    "payload": "{\"id\":\"ca4ae21d-cab1-44eb-bcd9-e5b01f4d396a\",\"program_name\":\"Vscode\",\"slug\":\"vscode-2\",\"created_at\":\"2026-02-21T01:07:00.286995Z\",\"updated_at\":\"2026-02-21T01:07:00.287005Z\",\"node_type\":\"program\",\"label\":\"Vscode\",\"position_x\":431,\"position_y\":428.625,\"config\":{},\"created_by\":\"a35fe66e-bcb9-42a5-8906-4e8def6346f9\",\"workflow\":\"ef926d79-c07a-4502-a46e-31fe9829ad74\",\"program\":\"a121e833-4703-4deb-98f0-4db44422c71b\",\"element\":null}",
+                    "started_at": 1771636052.9873526,
+                    "finished_at": 1771636055.0164511,
+                    "status": "ok",
+                    "error": null
+                }
+            ],
+            "finished_at": 1771636055.0164602
+        }
+    ],
+    "finished_at": 1771636055.0164666
+}

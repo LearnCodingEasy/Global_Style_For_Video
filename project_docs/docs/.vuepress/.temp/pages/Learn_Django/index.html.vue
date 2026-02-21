@@ -41,6 +41,12 @@
 <div class="language-cmd line-numbers-mode" data-highlighter="prismjs" data-ext="cmd"><pre v-pre><code><span class="line">pip install pyautogui</span>
 <span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p><RouteLink to="/Learn_Django/pyautogui.html">pyautogui</RouteLink></p>
+<div class="language-cmd line-numbers-mode" data-highlighter="prismjs" data-ext="cmd"><pre v-pre><code><span class="line">pip install pywinauto</span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p><RouteLink to="/Learn_Django/Pywinauto.html">pywinauto</RouteLink></p>
+<div class="language-cmd line-numbers-mode" data-highlighter="prismjs" data-ext="cmd"><pre v-pre><code><span class="line">pip install opencv-python</span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p><RouteLink to="/Learn_Django/OpenCV.html">OpenCV</RouteLink></p>
 <p><RouteLink to="/Learn_Django/freeze.html">freeze</RouteLink></p>
 <h2 id="💡-start-project" tabindex="-1"><a class="header-anchor" href="#💡-start-project"><span>💡 Start Project</span></a></h2>
 <div dir="rtl" style="font-size:2vw">إنشاء المشروع الرئيسى</div>

@@ -84,6 +84,18 @@ pip install pyautogui
 
 [pyautogui](pyautogui.md)
 
+```cmd
+pip install pywinauto
+```
+
+[pywinauto](Pywinauto.md)
+
+```cmd
+pip install opencv-python
+```
+
+[OpenCV](OpenCV.md)
+
 [freeze](freeze.md)
 
 ## 💡 Start Project

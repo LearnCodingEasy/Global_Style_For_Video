@@ -16,7 +16,7 @@ api.interceptors.request.use(
   (config) => {
     // Add auth token if available
     const token = localStorage.getItem('user.access')
-    console.log('🔥 Token being sent: ', token)
+    // console.log('🔥 Token being sent: ', token)
 
     if (token) {
       config.headers.Authorization = `Bearer ${token}`

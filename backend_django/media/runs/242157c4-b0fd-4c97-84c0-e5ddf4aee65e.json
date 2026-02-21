@@ -1,0 +1,56 @@
+{
+    "task_run_id": "242157c4-b0fd-4c97-84c0-e5ddf4aee65e",
+    "workflow": {
+        "id": "44bce89e-484d-4d5e-b861-59155e519f5c",
+        "name": "Open OBS"
+    },
+    "started_at": 1771521049.562208,
+    "status": "success",
+    "nodes": [
+        {
+            "node_id": "8bfd6350-ac3f-484c-8129-ac567e4d15fc",
+            "label": "Delay 3s",
+            "node_type": "delay",
+            "program": null,
+            "started_at": 1771521049.5697637,
+            "status": "success",
+            "actions": [
+                {
+                    "action_id": "a14af0a2-f686-42d2-98da-430474ab3905",
+                    "type": "wait",
+                    "payload": "{\"id\":\"8bfd6350-ac3f-484c-8129-ac567e4d15fc\",\"slug\":\"delay-3s\",\"created_at\":\"2026-02-19T17:10:32.236908Z\",\"updated_at\":\"2026-02-19T17:10:32.236919Z\",\"node_type\":\"delay\",\"label\":\"Delay 3s\",\"position_x\":484,\"position_y\":331,\"config\":{},\"created_by\":\"a35fe66e-bcb9-42a5-8906-4e8def6346f9\",\"workflow\":\"44bce89e-484d-4d5e-b861-59155e519f5c\",\"program\":null,\"element\":null}",
+                    "started_at": 1771521049.5737216,
+                    "finished_at": 1771521051.6101382,
+                    "status": "ok",
+                    "error": null
+                }
+            ],
+            "finished_at": 1771521051.6101472
+        },
+        {
+            "node_id": "de505df1-7da0-44fc-8e3a-e40a313dd81f",
+            "label": "OBS",
+            "node_type": "program",
+            "program": {
+                "id": "0c940648-6833-4d1c-98dc-f6d68eb3f42d",
+                "name": "OBS",
+                "executable_path": "C:\\Program Files\\obs-studio\\bin\\64bit\\obs64.exe"
+            },
+            "started_at": 1771521051.6101584,
+            "status": "success",
+            "actions": [
+                {
+                    "action_id": "3bae2386-76f9-43e9-ab13-cc904451311a",
+                    "type": "open_program",
+                    "payload": "{\"id\":\"de505df1-7da0-44fc-8e3a-e40a313dd81f\",\"program_name\":\"OBS\",\"slug\":\"obs\",\"created_at\":\"2026-02-19T17:10:37.161831Z\",\"updated_at\":\"2026-02-19T17:10:37.161842Z\",\"node_type\":\"program\",\"label\":\"OBS\",\"position_x\":793,\"position_y\":0,\"config\":{},\"created_by\":\"a35fe66e-bcb9-42a5-8906-4e8def6346f9\",\"workflow\":\"44bce89e-484d-4d5e-b861-59155e519f5c\",\"program\":\"0c940648-6833-4d1c-98dc-f6d68eb3f42d\",\"element\":null}",
+                    "started_at": 1771521051.6180427,
+                    "finished_at": 1771521054.1089597,
+                    "status": "ok",
+                    "error": null
+                }
+            ],
+            "finished_at": 1771521054.108963
+        }
+    ],
+    "finished_at": 1771521054.108965
+}

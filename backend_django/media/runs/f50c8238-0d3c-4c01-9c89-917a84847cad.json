@@ -1,0 +1,36 @@
+{
+    "task_run_id": "f50c8238-0d3c-4c01-9c89-917a84847cad",
+    "workflow": {
+        "id": "95d204bc-57c4-45ac-a5d6-480b21ca0ae5",
+        "name": "Eaque temporibus err"
+    },
+    "started_at": 1771641015.4934556,
+    "status": "success",
+    "nodes": [
+        {
+            "node_id": "70f2c0c2-243a-4970-b9f0-de298131eeaf",
+            "label": "Vscode",
+            "node_type": "program",
+            "program": {
+                "id": "a121e833-4703-4deb-98f0-4db44422c71b",
+                "name": "Vscode",
+                "executable_path": "C:\\Users\\AFAQE\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
+            },
+            "started_at": 1771641015.4983995,
+            "status": "success",
+            "actions": [
+                {
+                    "action_id": "b7c71c1f-fc23-4f26-83b5-5a63765cf8ec",
+                    "type": "open_program",
+                    "payload": "{\"id\":\"70f2c0c2-243a-4970-b9f0-de298131eeaf\",\"program_name\":\"Vscode\",\"slug\":\"vscode-4\",\"created_at\":\"2026-02-21T02:29:46.679201Z\",\"updated_at\":\"2026-02-21T02:29:46.679214Z\",\"node_type\":\"program\",\"label\":\"Vscode\",\"position_x\":543,\"position_y\":487,\"config\":{},\"created_by\":\"a35fe66e-bcb9-42a5-8906-4e8def6346f9\",\"workflow\":\"95d204bc-57c4-45ac-a5d6-480b21ca0ae5\",\"program\":\"a121e833-4703-4deb-98f0-4db44422c71b\",\"element\":null}",
+                    "started_at": 1771641015.504374,
+                    "finished_at": 1771641017.5618052,
+                    "status": "ok",
+                    "error": null
+                }
+            ],
+            "finished_at": 1771641017.56181
+        }
+    ],
+    "finished_at": 1771641017.561812
+}

@@ -1,0 +1,36 @@
+{
+    "task_run_id": "f3dbcd7e-2ebe-43d2-a7b2-65e57d63dbc4",
+    "workflow": {
+        "id": "62febe4e-06a5-4775-b461-74d998be0bd4",
+        "name": "Aut aut atque volupt"
+    },
+    "started_at": 1771683987.9485626,
+    "status": "success",
+    "nodes": [
+        {
+            "node_id": "f7258d15-9d74-49b3-96b3-c49df98a20b6",
+            "label": "Vscode",
+            "node_type": "program",
+            "program": {
+                "id": "a121e833-4703-4deb-98f0-4db44422c71b",
+                "name": "Vscode",
+                "executable_path": "C:\\Users\\AFAQE\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
+            },
+            "started_at": 1771683987.95615,
+            "status": "success",
+            "actions": [
+                {
+                    "action_id": "0494e54b-82ea-424b-8341-6849ecb746b8",
+                    "type": "open_program",
+                    "payload": "{\"id\":\"f7258d15-9d74-49b3-96b3-c49df98a20b6\",\"program_name\":\"Vscode\",\"slug\":\"vscode-5\",\"created_at\":\"2026-02-21T14:26:13.931302Z\",\"updated_at\":\"2026-02-21T14:26:13.931312Z\",\"node_type\":\"program\",\"label\":\"Vscode\",\"position_x\":488,\"position_y\":404,\"config\":{},\"created_by\":\"a35fe66e-bcb9-42a5-8906-4e8def6346f9\",\"workflow\":\"62febe4e-06a5-4775-b461-74d998be0bd4\",\"program\":\"a121e833-4703-4deb-98f0-4db44422c71b\",\"element\":null}",
+                    "started_at": 1771683987.9616344,
+                    "finished_at": 1771683989.979993,
+                    "status": "ok",
+                    "error": null
+                }
+            ],
+            "finished_at": 1771683989.9799967
+        }
+    ],
+    "finished_at": 1771683989.979999
+}
