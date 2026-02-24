@@ -1,0 +1,52 @@
+{
+    "task_run_id": "92162682-3633-4bc5-abfc-194b8472bf2e",
+    "workflow": {
+        "id": "f6c69748-c45d-4c55-82cc-b00fe50ee97c",
+        "name": "Cumque aute iure qui"
+    },
+    "started_at": 1771895123.5405412,
+    "status": "success",
+    "nodes": [
+        {
+            "node_id": "ee0848a9-626b-4f6c-8255-39bfd1d8b123",
+            "label": "Delay 3s",
+            "node_type": "delay",
+            "program": null,
+            "started_at": 1771895123.5446563,
+            "status": "success",
+            "actions": [
+                {
+                    "action_id": "c8865b33-957f-4dbe-9235-e8ee458fd0d1",
+                    "type": "wait",
+                    "payload": "{\"id\":\"ee0848a9-626b-4f6c-8255-39bfd1d8b123\",\"slug\":\"delay-3s\",\"created_at\":\"2026-02-24T00:48:05.097045Z\",\"updated_at\":\"2026-02-24T00:48:05.097057Z\",\"node_type\":\"delay\",\"label\":\"Delay 3s\",\"position_x\":496,\"position_y\":1002.6666784404244,\"config\":{\"action\":\"wait\",\"text\":\"\",\"delay\":0,\"ui\":{\"background\":\"#0f172a\",\"border_color\":\"#334155\",\"shadow_color\":\"#334155\",\"rounded\":true,\"width\":260,\"height\":240}},\"created_by\":\"a35fe66e-bcb9-42a5-8906-4e8def6346f9\",\"workflow\":\"f6c69748-c45d-4c55-82cc-b00fe50ee97c\",\"program\":null,\"element\":null}",
+                    "started_at": 1771895123.5482504,
+                    "finished_at": 1771895125.5796258,
+                    "status": "ok",
+                    "error": null
+                }
+            ],
+            "finished_at": 1771895125.5796313
+        },
+        {
+            "node_id": "a59c1ae2-3d87-4100-8b2c-aca7885b0656",
+            "label": "Delay 3s",
+            "node_type": "delay",
+            "program": null,
+            "started_at": 1771895125.5796387,
+            "status": "success",
+            "actions": [
+                {
+                    "action_id": "97395ae9-b43e-4b9e-99b4-96310f6bcc09",
+                    "type": "wait",
+                    "payload": "{\"id\":\"a59c1ae2-3d87-4100-8b2c-aca7885b0656\",\"slug\":\"delay-3s-1\",\"created_at\":\"2026-02-24T01:05:11.073668Z\",\"updated_at\":\"2026-02-24T01:05:11.073681Z\",\"node_type\":\"delay\",\"label\":\"Delay 3s\",\"position_x\":582,\"position_y\":284,\"config\":{\"action\":\"wait\",\"text\":\"\",\"delay\":0,\"ui\":{\"background\":\"#0f172a\",\"border_color\":\"#334155\",\"shadow_color\":\"#334155\",\"rounded\":true,\"width\":260,\"height\":240}},\"created_by\":\"a35fe66e-bcb9-42a5-8906-4e8def6346f9\",\"workflow\":\"f6c69748-c45d-4c55-82cc-b00fe50ee97c\",\"program\":null,\"element\":null}",
+                    "started_at": 1771895125.5812452,
+                    "finished_at": 1771895127.5987453,
+                    "status": "ok",
+                    "error": null
+                }
+            ],
+            "finished_at": 1771895127.5987573
+        }
+    ],
+    "finished_at": 1771895127.5987654
+}

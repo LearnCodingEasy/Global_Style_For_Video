@@ -155,6 +155,10 @@ import Slider from 'primevue/slider'
 //
 
 import Tree from 'primevue/tree'
+//
+
+// import Select from 'primevue/select';
+
 // --------------- Styles ---------------
 // Import necessary styles for PrimeVue and Tailwind CSS
 import 'primeicons/primeicons.css'
@@ -287,5 +291,6 @@ app.component('prime_step_panel', StepPanel)
 app.component('prime_tree', Tree)
 
 app.directive('tooltip', Tooltip)
+// app.directive('prime_select', Select)
 
 app.mount('#app')

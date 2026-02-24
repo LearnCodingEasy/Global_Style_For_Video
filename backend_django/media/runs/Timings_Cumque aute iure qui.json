@@ -1,0 +1,51 @@
+{
+    "meta": {
+        "workflow_name": "Cumque aute iure qui",
+        "task_run_id": "92162682-3633-4bc5-abfc-194b8472bf2e",
+        "generated_at": 1771895127.6676853,
+        "fps": 30,
+        "resolution": "1920x1080"
+    },
+    "timeline": [
+        {
+            "type": "node",
+            "id": "ee0848a9-626b-4f6c-8255-39bfd1d8b123",
+            "label": "Delay 3s",
+            "start": 0.004,
+            "end": 2.039,
+            "duration": 2.035,
+            "status": "success"
+        },
+        {
+            "type": "action",
+            "node_id": "ee0848a9-626b-4f6c-8255-39bfd1d8b123",
+            "action_id": "c8865b33-957f-4dbe-9235-e8ee458fd0d1",
+            "action_type": "wait",
+            "start": 0.008,
+            "end": 2.039,
+            "duration": 2.031,
+            "status": "ok",
+            "error": null
+        },
+        {
+            "type": "node",
+            "id": "a59c1ae2-3d87-4100-8b2c-aca7885b0656",
+            "label": "Delay 3s",
+            "start": 2.039,
+            "end": 4.058,
+            "duration": 2.019,
+            "status": "success"
+        },
+        {
+            "type": "action",
+            "node_id": "a59c1ae2-3d87-4100-8b2c-aca7885b0656",
+            "action_id": "97395ae9-b43e-4b9e-99b4-96310f6bcc09",
+            "action_type": "wait",
+            "start": 2.041,
+            "end": 4.058,
+            "duration": 2.018,
+            "status": "ok",
+            "error": null
+        }
+    ]
+}
