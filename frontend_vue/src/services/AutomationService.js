@@ -85,6 +85,11 @@ export default {
       headers: { 'Content-Type': 'multipart/form-data' },
     })
   },
+  saveWorkflowAll(id, payload) {
+    return api.post(`automation/workflows/${id}/save-all/`, payload, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    })
+  },
   updateWorkflow(id, data) {
     return api.patch(`automation/workflows/${id}/`, data, {
       headers: { 'Content-Type': 'multipart/form-data' },
@@ -108,6 +113,9 @@ export default {
     const q = workflowId ? `?workflow=${workflowId}` : ''
     return api.get(`automation/workflow-nodes/${q}`)
   },
+  getWorkflowNode(id) {
+    return api.get(`automation/workflow-nodes/${id}/`)
+  },
   createWorkflowNode(data) {
     return api.post('automation/workflow-nodes/', data, {
       headers: {
@@ -125,9 +133,6 @@ export default {
           'Content-Type': 'application/json',
         },
       },
-      // {
-      //   headers: { 'Content-Type': 'multipart/form-data' },
-      // },
     )
   },
   deleteWorkflowNode(id) {

@@ -2,13 +2,13 @@
 
 ## Create Project
 
-<div dir="rtl" style="font-size:2vw">إنشاء المشروع </div>
+<div dir="rtl" style="font-size:25px">إنشاء المشروع </div>
 
 [Create Vue Project](Create_Vue_Project.md)
 
 ### Vue Libraries
 
-<div dir="rtl" style="font-size:2vw">تثبيت المكتبات </div>
+<div dir="rtl" style="font-size:25px">تثبيت المكتبات </div>
 
 [Tailwind ](tailwind.md)
 

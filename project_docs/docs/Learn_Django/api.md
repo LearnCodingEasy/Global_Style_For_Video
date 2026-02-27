@@ -170,6 +170,8 @@ class categoryView(viewsets.ModelViewSet):
 
     # ✨ Permissions
     permission_classes = [permissions.IsAuthenticated]
+    # ده للتجربة بس، مش Production.
+    # permission_classes = [permissions.AllowAny]
 
 ```
 

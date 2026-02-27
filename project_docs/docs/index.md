@@ -2,25 +2,25 @@
 
 ## Github
 
-[Github](Learn_Github/index.md)
+- [Github](./Learn_Github/index.md)
 
 ---
 
 ## LICENSE
 
-[LICENSE](Learn_License/index.md)
+- [LICENSE](Learn_License/index.md)
 
 ---
 
 ## Vite Press
 
-[Vite Press](Learn_Vite_Press/index.md)
+- [Vite Press](Learn_Vite_Press/index.md)
 
 ---
 
 ## Django
 
-[Django](Learn_Django/index.md)
+- [Django](Learn_Django/index.md)
 
 ### 🔧 Django
 

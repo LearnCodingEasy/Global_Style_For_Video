@@ -18,6 +18,21 @@ axios.interceptors.request.use((config) => {
   return config
 })
 
+// Font Awesome
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { far } from '@fortawesome/free-regular-svg-icons'
+// Add Free Icons Styles To SVG Core
+library.add(fas, far, fab)
+
+// VueFlow styles
+/* import the necessary styles for Vue Flow to work */
+import '@vue-flow/core/dist/style.css'
+/* import the default theme, this is optional but generally recommended */
+import '@vue-flow/core/dist/theme-default.css'
+
 import App from './App.vue'
 import router from './router'
 
@@ -157,7 +172,7 @@ import Slider from 'primevue/slider'
 import Tree from 'primevue/tree'
 //
 
-// import Select from 'primevue/select';
+import Select from 'primevue/select'
 
 // --------------- Styles ---------------
 // Import necessary styles for PrimeVue and Tailwind CSS
@@ -165,7 +180,12 @@ import 'primeicons/primeicons.css'
 
 const app = createApp(App)
 
+// Pinia
 app.use(createPinia())
+
+// Font Awesome
+// eslint-disable-next-line vue/multi-word-component-names
+app.component('fa', FontAwesomeIcon)
 
 // Axios تفعيل التوجيه و
 // app.use(router)
@@ -236,11 +256,11 @@ app.component('prime_drawer', Drawer)
 // Panel Components
 app.component('prime_fieldset', Fieldset)
 app.component('prime_stepper', Stepper)
-app.component('prime_steplist', StepList)
-app.component('prime_steppanels', StepPanels)
 app.component('prime_stepitem', StepItem)
+app.component('prime_step_list ', StepList)
+app.component('prime_step_panels', StepPanels)
 app.component('prime_step', Step)
-app.component('prime_steppanel', StepPanel)
+app.component('prime_step_panel', StepPanel)
 
 // Notification Components
 app.component('prime_toast', Toast)
@@ -281,16 +301,11 @@ app.component('prime_progress_bar', ProgressBar)
 app.component('prime_slider', Slider)
 
 //
-app.component('prime_stepper', Stepper)
-app.component('prime_step_list ', StepList)
-app.component('prime_step_panels', StepPanels)
-app.component('prime_step_item ', StepItem)
-app.component('prime_step', Step)
-app.component('prime_step_panel', StepPanel)
+
 //
 app.component('prime_tree', Tree)
 
 app.directive('tooltip', Tooltip)
-// app.directive('prime_select', Select)
+app.directive('prime_select', Select)
 
 app.mount('#app')

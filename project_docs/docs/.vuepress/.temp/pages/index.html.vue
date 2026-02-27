@@ -1,15 +1,23 @@
 <template><div><h1 id="project-name" tabindex="-1"><a class="header-anchor" href="#project-name"><span>Project Name</span></a></h1>
 <h2 id="github" tabindex="-1"><a class="header-anchor" href="#github"><span>Github</span></a></h2>
-<p><RouteLink to="/Learn_Github/">Github</RouteLink></p>
+<ul>
+<li><RouteLink to="/Learn_Github/">Github</RouteLink></li>
+</ul>
 <hr>
 <h2 id="license" tabindex="-1"><a class="header-anchor" href="#license"><span>LICENSE</span></a></h2>
-<p><RouteLink to="/Learn_License/">LICENSE</RouteLink></p>
+<ul>
+<li><RouteLink to="/Learn_License/">LICENSE</RouteLink></li>
+</ul>
 <hr>
 <h2 id="vite-press" tabindex="-1"><a class="header-anchor" href="#vite-press"><span>Vite Press</span></a></h2>
-<p><RouteLink to="/Learn_Vite_Press/">Vite Press</RouteLink></p>
+<ul>
+<li><RouteLink to="/Learn_Vite_Press/">Vite Press</RouteLink></li>
+</ul>
 <hr>
 <h2 id="django" tabindex="-1"><a class="header-anchor" href="#django"><span>Django</span></a></h2>
-<p><RouteLink to="/Learn_Django/">Django</RouteLink></p>
+<ul>
+<li><RouteLink to="/Learn_Django/">Django</RouteLink></li>
+</ul>
 <h3 id="🔧-django" tabindex="-1"><a class="header-anchor" href="#🔧-django"><span>🔧 Django</span></a></h3>
 <div class="language-cmd line-numbers-mode" data-highlighter="prismjs" data-ext="cmd"><pre v-pre><code><span class="line">pip install python-decouple</span>
 <span class="line"></span></code></pre>

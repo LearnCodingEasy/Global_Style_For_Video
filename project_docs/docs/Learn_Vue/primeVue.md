@@ -9,6 +9,10 @@ npm install primevue primeicons
 ```
 
 ```cmd
+npm install @primevue/forms
+```
+
+```cmd
 npm install @primevue/themes
 ```
 
