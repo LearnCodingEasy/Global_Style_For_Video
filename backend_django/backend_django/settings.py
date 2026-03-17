@@ -205,8 +205,8 @@ INSTALLED_APPS = [
     "client",
 
     # "marketplace.vendor",
-    "automation",
     "mcp_server.apps.McpServerConfig",
+    "automation",
     "explain",
 
 
