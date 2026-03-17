@@ -30,15 +30,15 @@ from .log_views import MCPLogsView
 urlpatterns = [
 
     # MCP protocol endpoint
-    path("mcp/", MCPView.as_view()),
+    path("/", MCPView.as_view()),
 
     # Token management
-    path("mcp/token/", MCPTokenView.as_view()),
+    path("token/", MCPTokenView.as_view()),
 
     # Dashboard endpoints
-    path("mcp/sessions/", MCPSessionsView.as_view()),
-    path("mcp/tools/", MCPToolsView.as_view()),
-    path("mcp/tools/<str:tool_name>/", MCPToolsView.as_view()),
-    path("mcp/logs/", MCPLogsView.as_view()),
+    path("sessions/", MCPSessionsView.as_view()),
+    path("tools/", MCPToolsView.as_view()),
+    path("tools/<str:tool_name>/", MCPToolsView.as_view()),
+    path("logs/", MCPLogsView.as_view()),
 
 ]
