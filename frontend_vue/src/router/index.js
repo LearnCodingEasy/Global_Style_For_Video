@@ -27,6 +27,7 @@ import ProgramCreate from '../views/Automation/ProgramCreate.vue'
 import ProgramEdit from '../views/Automation/ProgramEdit.vue'
 import TaskCreate from '../views/Automation/TaskCreate.vue'
 import TaskEditor from '../views/Automation/TaskEditor.vue'
+import MCPDashboard from '../views/MCP/MCPDashboard.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -92,6 +93,12 @@ const router = createRouter({
       path: '/automation_TaskEditor',
       name: 'automation_TaskEditor',
       component: TaskEditor,
+    },
+    // Automation
+    {
+      path: '/mcp',
+      name: 'MCPDashboard',
+      component: MCPDashboard,
     },
 
     // Authentication [ Login ]

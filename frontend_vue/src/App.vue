@@ -157,6 +157,10 @@ onMounted(() => {
                             <RouterLink to="/automation" class="rounded-md px-3 py-2 text-md"
                               >automation
                             </RouterLink>
+                            <RouterLink to="/mcp" class="rounded-md px-3 py-2 text-md">
+                              <span><i class="pi pi-server"></i> MCP Server</span>
+                            </RouterLink>
+
                             <RouterLink
                               to="/Vendors"
                               class="rounded-md px-3 py-2 text-md"
@@ -179,9 +183,6 @@ onMounted(() => {
                       <div
                         class="header_wrapper_profile_search absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"
                       >
-                        <div class="header_input_search">
-                          <prime_input_text></prime_input_text>
-                        </div>
                         <button
                           type="button"
                           class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
@@ -350,7 +351,6 @@ onMounted(() => {
     </div>
     <prime_toast />
     <prime_confirm_dialog />
-
 
     <RouterView />
   </div>

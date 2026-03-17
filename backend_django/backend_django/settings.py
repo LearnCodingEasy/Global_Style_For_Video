@@ -206,6 +206,7 @@ INSTALLED_APPS = [
 
     # "marketplace.vendor",
     "automation",
+    "mcp_server.apps.McpServerConfig",
     "explain",
 
 
@@ -343,3 +344,25 @@ MEDIA_ROOT = BASE_DIR / "media"
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# MCP Configuration (اختياري — الـ defaults كويسة)
+# requests per session per minute
+MCP_RATE_LIMIT_PER_MINUTE = 60
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+CELERY_BROKER_URL = "redis://127.0.0.1:6379/0"
+CELERY_RESULT_BACKEND = "redis://127.0.0.1:6379/0"
+"""
+
+pip install django-redis
+pip install pydantic
+pip install uvicorn
+pip install openai
+"""

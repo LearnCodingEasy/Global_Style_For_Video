@@ -46,6 +46,10 @@ python manage.py startapp automation
 python manage.py startapp explain
 ```
 
+```cmd
+python manage.py startapp mcp_server
+```
+
 ### 👥 Start App users_accounts
 
 ```python

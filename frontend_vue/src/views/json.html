@@ -1,0 +1,1906 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue ↔ Django API — نظام المرجع</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Cairo:wght@400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0a0c10;
+        --surface: #111318;
+        --border: #1e2330;
+        --border-bright: #2d3348;
+        --text: #c8d0e8;
+        --muted: #5a6180;
+        --vue: #41b883;
+        --django: #0c4b33;
+        --django-bright: #44b78b;
+        --http-get: #38bdf8;
+        --http-post: #a78bfa;
+        --http-put: #fb923c;
+        --http-delete: #f87171;
+        --http-patch: #facc15;
+        --success: #4ade80;
+        --error: #f87171;
+        --warning: #fbbf24;
+        --info: #38bdf8;
+        --accent: #6366f1;
+        --glow: rgba(99, 102, 241, 0.15);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: 'Cairo', sans-serif;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      /* Grid bg */
+      body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+        background-size: 40px 40px;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* HEADER */
+      header {
+        padding: 48px 0 32px;
+        text-align: center;
+        border-bottom: 1px solid var(--border);
+      }
+      .header-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--surface);
+        border: 1px solid var(--border-bright);
+        border-radius: 100px;
+        padding: 6px 16px;
+        font-size: 12px;
+        font-family: 'JetBrains Mono', monospace;
+        color: var(--muted);
+        margin-bottom: 20px;
+      }
+      .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--success);
+        animation: pulse 2s infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.3;
+        }
+      }
+
+      h1 {
+        font-size: clamp(28px, 5vw, 52px);
+        font-weight: 900;
+        letter-spacing: -1px;
+        line-height: 1.1;
+        margin-bottom: 16px;
+      }
+      h1 span.vue {
+        color: var(--vue);
+      }
+      h1 span.dj {
+        color: var(--django-bright);
+      }
+      h1 span.acc {
+        color: var(--accent);
+      }
+
+      .subtitle {
+        color: var(--muted);
+        font-size: 16px;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      /* TABS */
+      .tabs {
+        display: flex;
+        gap: 4px;
+        padding: 24px 0 0;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+      .tabs::-webkit-scrollbar {
+        display: none;
+      }
+      .tab-btn {
+        background: none;
+        border: 1px solid transparent;
+        border-radius: 8px;
+        padding: 10px 20px;
+        color: var(--muted);
+        font-family: 'Cairo', sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: all 0.2s;
+      }
+      .tab-btn:hover {
+        color: var(--text);
+        border-color: var(--border-bright);
+      }
+      .tab-btn.active {
+        background: var(--glow);
+        border-color: var(--accent);
+        color: #fff;
+      }
+
+      /* SECTIONS */
+      .section {
+        display: none;
+        padding: 32px 0 60px;
+      }
+      .section.active {
+        display: block;
+      }
+
+      /* SECTION TITLE */
+      .sec-title {
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .sec-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        display: grid;
+        place-items: center;
+        font-size: 18px;
+        background: var(--surface);
+        border: 1px solid var(--border-bright);
+      }
+      .sec-desc {
+        color: var(--muted);
+        font-size: 14px;
+        margin-bottom: 28px;
+      }
+
+      /* GRID */
+      .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+      .grid-4 {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+      }
+      @media (max-width: 768px) {
+        .grid-2,
+        .grid-3,
+        .grid-4 {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* CARD */
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 20px;
+        transition:
+          border-color 0.2s,
+          transform 0.2s;
+      }
+      .card:hover {
+        border-color: var(--border-bright);
+        transform: translateY(-2px);
+      }
+      .card-title {
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .card-body {
+        font-size: 13px;
+        color: var(--muted);
+        line-height: 1.8;
+      }
+
+      /* BADGES */
+      .badge {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 11px;
+        font-weight: 700;
+      }
+      .badge-get {
+        background: rgba(56, 189, 248, 0.15);
+        color: var(--http-get);
+        border: 1px solid rgba(56, 189, 248, 0.3);
+      }
+      .badge-post {
+        background: rgba(167, 139, 250, 0.15);
+        color: var(--http-post);
+        border: 1px solid rgba(167, 139, 250, 0.3);
+      }
+      .badge-put {
+        background: rgba(251, 146, 60, 0.15);
+        color: var(--http-put);
+        border: 1px solid rgba(251, 146, 60, 0.3);
+      }
+      .badge-delete {
+        background: rgba(248, 113, 113, 0.15);
+        color: var(--http-delete);
+        border: 1px solid rgba(248, 113, 113, 0.3);
+      }
+      .badge-patch {
+        background: rgba(250, 204, 21, 0.15);
+        color: var(--http-patch);
+        border: 1px solid rgba(250, 204, 21, 0.3);
+      }
+      .badge-success {
+        background: rgba(74, 222, 128, 0.12);
+        color: var(--success);
+        border: 1px solid rgba(74, 222, 128, 0.3);
+      }
+      .badge-error {
+        background: rgba(248, 113, 113, 0.12);
+        color: var(--error);
+        border: 1px solid rgba(248, 113, 113, 0.3);
+      }
+      .badge-warning {
+        background: rgba(251, 191, 36, 0.12);
+        color: var(--warning);
+        border: 1px solid rgba(251, 191, 36, 0.3);
+      }
+      .badge-info {
+        background: rgba(56, 189, 248, 0.12);
+        color: var(--info);
+        border: 1px solid rgba(56, 189, 248, 0.3);
+      }
+
+      /* CODE BLOCK */
+      .code-block {
+        background: #080a0f;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 16px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 12px;
+        line-height: 1.8;
+        overflow-x: auto;
+        white-space: pre;
+        color: #abb2bf;
+        position: relative;
+        margin-top: 8px;
+      }
+      .code-block .kw {
+        color: #c678dd;
+      }
+      .code-block .fn {
+        color: #61afef;
+      }
+      .code-block .str {
+        color: #98c379;
+      }
+      .code-block .num {
+        color: #d19a66;
+      }
+      .code-block .cm {
+        color: #5c6370;
+        font-style: italic;
+      }
+      .code-block .key {
+        color: #e06c75;
+      }
+      .code-block .vue-c {
+        color: var(--vue);
+      }
+      .code-block .dj-c {
+        color: var(--django-bright);
+      }
+
+      /* FLOW DIAGRAM */
+      .flow {
+        display: flex;
+        align-items: stretch;
+        gap: 0;
+        margin: 24px 0;
+        overflow-x: auto;
+        padding-bottom: 8px;
+      }
+      .flow-node {
+        background: var(--surface);
+        border: 1px solid var(--border-bright);
+        border-radius: 10px;
+        padding: 14px 18px;
+        min-width: 150px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.2s;
+        flex-shrink: 0;
+      }
+      .flow-node:hover,
+      .flow-node.selected {
+        border-color: var(--accent);
+        background: var(--glow);
+        box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
+      }
+      .flow-node .node-icon {
+        font-size: 24px;
+        margin-bottom: 4px;
+      }
+      .flow-node .node-label {
+        font-size: 13px;
+        font-weight: 700;
+      }
+      .flow-node .node-sub {
+        font-size: 11px;
+        color: var(--muted);
+        margin-top: 2px;
+        font-family: 'JetBrains Mono', monospace;
+      }
+
+      .flow-arrow {
+        display: flex;
+        align-items: center;
+        padding: 0 4px;
+        color: var(--accent);
+        font-size: 20px;
+        flex-shrink: 0;
+      }
+
+      .flow-detail {
+        background: var(--surface);
+        border: 1px solid var(--accent);
+        border-radius: 12px;
+        padding: 20px 24px;
+        margin-top: 16px;
+        animation: fadeIn 0.3s ease;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      .flow-detail h3 {
+        font-size: 16px;
+        font-weight: 700;
+        margin-bottom: 12px;
+        color: #fff;
+      }
+      .flow-detail ul {
+        list-style: none;
+        padding: 0;
+      }
+      .flow-detail ul li {
+        font-size: 13px;
+        color: var(--text);
+        padding: 6px 0;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      .flow-detail ul li:last-child {
+        border-bottom: none;
+      }
+      .flow-detail ul li::before {
+        content: '→';
+        color: var(--accent);
+        flex-shrink: 0;
+      }
+
+      /* HTTP METHODS TABLE */
+      .methods-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+        margin-top: 8px;
+      }
+      .methods-table th {
+        background: #0d1017;
+        padding: 12px 16px;
+        text-align: right;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--muted);
+        border-bottom: 1px solid var(--border);
+      }
+      .methods-table td {
+        padding: 14px 16px;
+        border-bottom: 1px solid var(--border);
+        vertical-align: top;
+        line-height: 1.7;
+      }
+      .methods-table tr:last-child td {
+        border-bottom: none;
+      }
+      .methods-table tr:hover td {
+        background: rgba(255, 255, 255, 0.02);
+      }
+      .methods-table .check {
+        color: var(--success);
+      }
+      .methods-table .cross {
+        color: var(--error);
+      }
+
+      /* STATUS CODE TABLE */
+      .status-group {
+        margin-bottom: 24px;
+      }
+      .status-group-title {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--muted);
+        margin-bottom: 12px;
+        font-family: 'JetBrains Mono', monospace;
+        padding-bottom: 6px;
+        border-bottom: 1px solid var(--border);
+      }
+      .status-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        cursor: pointer;
+        transition: background 0.15s;
+        border-radius: 6px;
+        padding-inline: 8px;
+      }
+      .status-item:hover {
+        background: rgba(255, 255, 255, 0.03);
+      }
+      .status-code {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 14px;
+        font-weight: 700;
+        min-width: 48px;
+      }
+      .status-name {
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .status-desc {
+        font-size: 12px;
+        color: var(--muted);
+        margin-top: 2px;
+        line-height: 1.6;
+      }
+      .s2xx .status-code {
+        color: var(--success);
+      }
+      .s3xx .status-code {
+        color: var(--info);
+      }
+      .s4xx .status-code {
+        color: var(--warning);
+      }
+      .s5xx .status-code {
+        color: var(--error);
+      }
+
+      /* DATA SHAPE */
+      .shape-demo {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-top: 12px;
+      }
+      @media (max-width: 768px) {
+        .shape-demo {
+          grid-template-columns: 1fr;
+        }
+      }
+      .shape-label {
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--muted);
+        font-family: 'JetBrains Mono', monospace;
+        margin-bottom: 6px;
+      }
+
+      /* ERROR DEBUGGER */
+      .error-item {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        margin-bottom: 12px;
+        overflow: hidden;
+      }
+      .error-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 14px 18px;
+        cursor: pointer;
+        user-select: none;
+      }
+      .error-header:hover {
+        background: rgba(255, 255, 255, 0.02);
+      }
+      .error-title {
+        font-size: 13px;
+        font-weight: 700;
+        flex: 1;
+      }
+      .error-body {
+        display: none;
+        padding: 0 18px 16px;
+        border-top: 1px solid var(--border);
+        padding-top: 14px;
+      }
+      .error-body.open {
+        display: block;
+      }
+      .error-clue {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        padding: 6px 0;
+        font-size: 12px;
+        color: var(--text);
+        line-height: 1.7;
+      }
+      .error-clue::before {
+        content: '⚡';
+        flex-shrink: 0;
+      }
+
+      /* AXIOS vs FETCH comparison */
+      .compare-tabs {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+      .compare-tab {
+        background: none;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 6px 14px;
+        color: var(--muted);
+        font-family: 'Cairo', sans-serif;
+        font-size: 13px;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .compare-tab.active {
+        background: var(--glow);
+        border-color: var(--accent);
+        color: #fff;
+      }
+
+      /* Timeline */
+      .timeline {
+        position: relative;
+        padding-right: 32px;
+        margin: 16px 0;
+      }
+      .timeline::before {
+        content: '';
+        position: absolute;
+        right: 11px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: var(--border-bright);
+      }
+      .tl-item {
+        position: relative;
+        margin-bottom: 20px;
+      }
+      .tl-item::before {
+        content: '';
+        position: absolute;
+        right: -26px;
+        top: 5px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent);
+        border: 2px solid var(--bg);
+      }
+      .tl-item.vue-side::before {
+        background: var(--vue);
+      }
+      .tl-item.dj-side::before {
+        background: var(--django-bright);
+      }
+      .tl-item.net-side::before {
+        background: var(--info);
+      }
+
+      .tl-layer {
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-family: 'JetBrains Mono', monospace;
+        margin-bottom: 4px;
+      }
+      .tl-item.vue-side .tl-layer {
+        color: var(--vue);
+      }
+      .tl-item.dj-side .tl-layer {
+        color: var(--django-bright);
+      }
+      .tl-item.net-side .tl-layer {
+        color: var(--info);
+      }
+
+      .tl-title {
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 4px;
+      }
+      .tl-desc {
+        font-size: 12px;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      /* Divider */
+      .divider {
+        border: none;
+        border-top: 1px solid var(--border);
+        margin: 24px 0;
+      }
+
+      /* full-width card */
+      .card-full {
+        grid-column: 1 / -1;
+      }
+
+      .tag-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 10px;
+      }
+
+      .tip-box {
+        background: rgba(99, 102, 241, 0.08);
+        border: 1px solid rgba(99, 102, 241, 0.25);
+        border-radius: 8px;
+        padding: 12px 16px;
+        font-size: 13px;
+        line-height: 1.8;
+        margin-top: 12px;
+      }
+      .tip-box strong {
+        color: var(--accent);
+      }
+
+      .arrow-right {
+        display: inline-block;
+        transform: scaleX(-1);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- HEADER -->
+      <header>
+        <div class="header-badge">
+          <div class="dot"></div>
+          Vue 3 + Django REST Framework — API Reference System
+        </div>
+        <h1>
+          <span class="vue">Vue</span>
+          <span class="acc"> ↔ </span>
+          <span class="dj">Django</span><br />
+          نظام المرجع الشامل للـ API
+        </h1>
+        <p class="subtitle">افهم كل مرحلة، كل بيانة، وكل خطأ — من أول كليك لآخر response</p>
+      </header>
+
+      <!-- TABS -->
+      <nav class="tabs">
+        <button class="tab-btn active" onclick="switchTab('flow')">🔄 مسار الـ Request</button>
+        <button class="tab-btn" onclick="switchTab('methods')">📡 HTTP Methods</button>
+        <button class="tab-btn" onclick="switchTab('status')">🚦 Status Codes</button>
+        <button class="tab-btn" onclick="switchTab('data')">📦 شكل البيانات</button>
+        <button class="tab-btn" onclick="switchTab('code')">💻 كود عملي</button>
+        <button class="tab-btn" onclick="switchTab('debug')">🐛 Debug دليل</button>
+      </nav>
+
+      <!-- ══════════════════ SECTION: FLOW ══════════════════ -->
+      <section id="tab-flow" class="section active">
+        <div class="sec-title">
+          <div class="sec-icon">🔄</div>
+          مسار الـ Request كامل — خطوة بخطوة
+        </div>
+        <p class="sec-desc">اضغط على أي مرحلة عشان تشوف تفاصيلها</p>
+
+        <div class="flow" id="mainFlow">
+          <div class="flow-node selected" data-idx="0" onclick="selectNode(this,0)">
+            <div class="node-icon">🖥️</div>
+            <div class="node-label">Vue Component</div>
+            <div class="node-sub">Frontend</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node" data-idx="1" onclick="selectNode(this,1)">
+            <div class="node-icon">⚙️</div>
+            <div class="node-label">axios / fetch</div>
+            <div class="node-sub">HTTP Client</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node" data-idx="2" onclick="selectNode(this,2)">
+            <div class="node-icon">🌐</div>
+            <div class="node-label">Network</div>
+            <div class="node-sub">TCP/HTTP</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node" data-idx="3" onclick="selectNode(this,3)">
+            <div class="node-icon">🛡️</div>
+            <div class="node-label">Django Middleware</div>
+            <div class="node-sub">CORS / Auth / CSRF</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node" data-idx="4" onclick="selectNode(this,4)">
+            <div class="node-icon">🗺️</div>
+            <div class="node-label">URL Router</div>
+            <div class="node-sub">urls.py</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node" data-idx="5" onclick="selectNode(this,5)">
+            <div class="node-icon">👁️</div>
+            <div class="node-label">View / Viewset</div>
+            <div class="node-sub">DRF Logic</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node" data-idx="6" onclick="selectNode(this,6)">
+            <div class="node-icon">🔧</div>
+            <div class="node-label">Serializer</div>
+            <div class="node-sub">Validate + Shape</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node" data-idx="7" onclick="selectNode(this,7)">
+            <div class="node-icon">🗃️</div>
+            <div class="node-label">Database</div>
+            <div class="node-sub">ORM Query</div>
+          </div>
+          <div class="flow-arrow">←</div>
+          <div class="flow-node" data-idx="8" onclick="selectNode(this,8)">
+            <div class="node-icon">📤</div>
+            <div class="node-label">Response</div>
+            <div class="node-sub">JSON + Status</div>
+          </div>
+        </div>
+
+        <div class="flow-detail" id="flowDetail">
+          <h3 id="flowDetailTitle">🖥️ Vue Component — نقطة البداية</h3>
+          <ul id="flowDetailList"></ul>
+        </div>
+
+        <hr class="divider" />
+
+        <!-- Timeline view -->
+        <div class="sec-title" style="margin-top: 8px">
+          <div class="sec-icon">⏱️</div>
+          Timeline الكامل
+        </div>
+        <p class="sec-desc">الترتيب الزمني لكل حدث من لحظة إرسال الـ Request</p>
+
+        <div class="timeline">
+          <div class="tl-item vue-side">
+            <div class="tl-layer">Vue Layer</div>
+            <div class="tl-title">1. Event يحصل (click, submit, mounted…)</div>
+            <div class="tl-desc">
+              الـ Component بيشغّل method أو composable — بيبدأ فيها الـ loading state
+            </div>
+          </div>
+          <div class="tl-item vue-side">
+            <div class="tl-layer">Vue Layer</div>
+            <div class="tl-title">2. بناء الـ Request Object</div>
+            <div class="tl-desc">
+              URL، Method، Headers (Content-Type، Authorization)، Body (لو POST/PUT)
+            </div>
+          </div>
+          <div class="tl-item net-side">
+            <div class="tl-layer">Network Layer</div>
+            <div class="tl-title">3. إرسال الـ HTTP Request</div>
+            <div class="tl-desc">
+              axios/fetch بتبعت الـ request — بتضيف الـ headers التلقائية، بتعمل serialize للـ body
+              لـ JSON
+            </div>
+          </div>
+          <div class="tl-item dj-side">
+            <div class="tl-layer">Django Layer</div>
+            <div class="tl-title">4. WSGI/ASGI يستقبل الـ Request</div>
+            <div class="tl-desc">Django بيعمل parse للـ raw HTTP لـ HttpRequest object</div>
+          </div>
+          <div class="tl-item dj-side">
+            <div class="tl-layer">Django Middleware</div>
+            <div class="tl-title">5. Middleware Stack</div>
+            <div class="tl-desc">
+              بيعدي على: SecurityMiddleware ← SessionMiddleware ← CORS ← CsrfViewMiddleware ←
+              AuthMiddleware
+            </div>
+          </div>
+          <div class="tl-item dj-side">
+            <div class="tl-layer">DRF Layer</div>
+            <div class="tl-title">6. URL Routing</div>
+            <div class="tl-desc">urlpatterns بيطابق الـ URL pattern — بيحدد الـ View المسؤول</div>
+          </div>
+          <div class="tl-item dj-side">
+            <div class="tl-layer">DRF Layer</div>
+            <div class="tl-title">7. Authentication & Permissions</div>
+            <div class="tl-desc">
+              بيتحقق من الـ token/session — بيشيك permission_classes (IsAuthenticated, IsAdminUser…)
+            </div>
+          </div>
+          <div class="tl-item dj-side">
+            <div class="tl-layer">DRF Serializer</div>
+            <div class="tl-title">8. Serialization / Deserialization</div>
+            <div class="tl-desc">
+              Request data → Python dict → Validate → Model instance. أو Model → Python dict → JSON
+            </div>
+          </div>
+          <div class="tl-item dj-side">
+            <div class="tl-layer">Database</div>
+            <div class="tl-title">9. ORM Query</div>
+            <div class="tl-desc">Django ORM بيحوّل الكود لـ SQL — SELECT/INSERT/UPDATE/DELETE</div>
+          </div>
+          <div class="tl-item net-side">
+            <div class="tl-layer">Response</div>
+            <div class="tl-title">10. بناء وإرسال الـ Response</div>
+            <div class="tl-desc">
+              Status Code + JSON Body + Headers (Content-Type, CORS headers…)
+            </div>
+          </div>
+          <div class="tl-item vue-side">
+            <div class="tl-layer">Vue Layer</div>
+            <div class="tl-title">11. معالجة الـ Response</div>
+            <div class="tl-desc">
+              .then() / await → تحديث الـ reactive state → إيقاف الـ loading → عرض البيانات أو الخطأ
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════ SECTION: METHODS ══════════════════ -->
+      <section id="tab-methods" class="section">
+        <div class="sec-title">
+          <div class="sec-icon">📡</div>
+          HTTP Methods
+        </div>
+        <p class="sec-desc">كل method وامتى تستخدمها وإيه اللي بتعمله على الـ API</p>
+
+        <div
+          style="
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 24px;
+          "
+        >
+          <table class="methods-table">
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>الغرض</th>
+                <th>Body في الـ Request؟</th>
+                <th>Safe؟</th>
+                <th>Idempotent؟</th>
+                <th>DRF Action</th>
+                <th>Status الناجح</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="badge badge-get">GET</span></td>
+                <td>جلب بيانات</td>
+                <td><span class="cross">✗</span></td>
+                <td><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+                <td><code>list() / retrieve()</code></td>
+                <td><span class="badge badge-success">200</span></td>
+              </tr>
+              <tr>
+                <td><span class="badge badge-post">POST</span></td>
+                <td>إنشاء جديد</td>
+                <td><span class="check">✓</span></td>
+                <td><span class="cross">✗</span></td>
+                <td><span class="cross">✗</span></td>
+                <td><code>create()</code></td>
+                <td><span class="badge badge-success">201</span></td>
+              </tr>
+              <tr>
+                <td><span class="badge badge-put">PUT</span></td>
+                <td>تحديث كامل</td>
+                <td><span class="check">✓</span></td>
+                <td><span class="cross">✗</span></td>
+                <td><span class="check">✓</span></td>
+                <td><code>update()</code></td>
+                <td><span class="badge badge-success">200</span></td>
+              </tr>
+              <tr>
+                <td><span class="badge badge-patch">PATCH</span></td>
+                <td>تحديث جزئي</td>
+                <td><span class="check">✓</span></td>
+                <td><span class="cross">✗</span></td>
+                <td><span class="check">✓</span></td>
+                <td><code>partial_update()</code></td>
+                <td><span class="badge badge-success">200</span></td>
+              </tr>
+              <tr>
+                <td><span class="badge badge-delete">DELETE</span></td>
+                <td>حذف</td>
+                <td><span class="cross">✗</span></td>
+                <td><span class="cross">✗</span></td>
+                <td><span class="check">✓</span></td>
+                <td><code>destroy()</code></td>
+                <td><span class="badge badge-info">204</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="tip-box">
+          <strong>⚠️ PUT vs PATCH:</strong> PUT لازم يبعت كل الفيلدز حتى اللي مش اتغيرت — لو بعت
+          بيانات ناقصة الـ Serializer هيرفض أو يمسح قيم. PATCH بيبعت بس اللي اتغير.
+        </div>
+
+        <hr class="divider" />
+
+        <div class="sec-title">
+          <div class="sec-icon">🔗</div>
+          URL Patterns في DRF
+        </div>
+        <p class="sec-desc">الـ Router بيولّد الـ URLs دي أوتوماتيك لو بتستخدم ViewSet</p>
+
+        <div class="grid-2" style="margin-top: 16px">
+          <div class="card">
+            <div class="card-title"><span class="badge badge-get">GET</span> /api/products/</div>
+            <div class="card-body">جيب كل الـ products (list)</div>
+            <div class="code-block">
+              <span class="vue-c">// Vue</span> axios.get(<span class="str">'/api/products/'</span>)
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title"><span class="badge badge-post">POST</span> /api/products/</div>
+            <div class="card-body">إنشاء product جديد</div>
+            <div class="code-block">
+              <span class="vue-c">// Vue</span> axios.post(<span class="str">'/api/products/'</span
+              >, data)
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">
+              <span class="badge badge-get">GET</span> /api/products/{id}/
+            </div>
+            <div class="card-body">جيب product واحد بالـ ID</div>
+            <div class="code-block">
+              <span class="vue-c">// Vue</span> axios.get(<span class="str"
+                >`/api/products/<span class="num">${id}</span>/`</span
+              >)
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">
+              <span class="badge badge-put">PUT</span> /api/products/{id}/
+            </div>
+            <div class="card-body">تحديث product كامل</div>
+            <div class="code-block">
+              <span class="vue-c">// Vue</span> axios.put(<span class="str"
+                >`/api/products/<span class="num">${id}</span>/`</span
+              >, data)
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">
+              <span class="badge badge-patch">PATCH</span> /api/products/{id}/
+            </div>
+            <div class="card-body">تحديث جزئي</div>
+            <div class="code-block">
+              <span class="vue-c">// Vue</span> axios.patch(<span class="str"
+                >`/api/products/<span class="num">${id}</span>/`</span
+              >, {<span class="key">price</span>: <span class="num">99</span>})
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">
+              <span class="badge badge-delete">DELETE</span> /api/products/{id}/
+            </div>
+            <div class="card-body">حذف product</div>
+            <div class="code-block">
+              <span class="vue-c">// Vue</span> axios.delete(<span class="str"
+                >`/api/products/<span class="num">${id}</span>/`</span
+              >)
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════ SECTION: STATUS CODES ══════════════════ -->
+      <section id="tab-status" class="section">
+        <div class="sec-title">
+          <div class="sec-icon">🚦</div>
+          HTTP Status Codes
+        </div>
+        <p class="sec-desc">كل كود وإيه معناه وإيه موقفك منه في Vue</p>
+
+        <div class="grid-2">
+          <div>
+            <div class="status-group s2xx">
+              <div class="status-group-title">2xx — نجاح ✅</div>
+              <div class="status-item">
+                <div class="status-code">200</div>
+                <div>
+                  <div class="status-name">OK</div>
+                  <div class="status-desc">الـ GET أو PUT أو PATCH نجح — في بيانات في الـ body</div>
+                </div>
+              </div>
+              <div class="status-item">
+                <div class="status-code">201</div>
+                <div>
+                  <div class="status-name">Created</div>
+                  <div class="status-desc">
+                    الـ POST نجح وأنشأ resource جديد — الـ body بيرجع الـ object الجديد
+                  </div>
+                </div>
+              </div>
+              <div class="status-item">
+                <div class="status-code">204</div>
+                <div>
+                  <div class="status-name">No Content</div>
+                  <div class="status-desc">
+                    الـ DELETE نجح — الـ body فاضي، ما فيش response.data
+                  </div>
+                </div>
+              </div>
+              <div class="status-item">
+                <div class="status-code">206</div>
+                <div>
+                  <div class="status-name">Partial Content</div>
+                  <div class="status-desc">بيانات جزئية — غالباً في pagination أو streaming</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="status-group s3xx">
+              <div class="status-group-title">3xx — Redirect 🔀</div>
+              <div class="status-item">
+                <div class="status-code">301</div>
+                <div>
+                  <div class="status-name">Moved Permanently</div>
+                  <div class="status-desc">الـ URL اتغير — axios بيـ follow تلقائياً</div>
+                </div>
+              </div>
+              <div class="status-item">
+                <div class="status-code">304</div>
+                <div>
+                  <div class="status-name">Not Modified</div>
+                  <div class="status-desc">الـ Cache لسه valid — ما فيش بيانات جديدة</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="status-group s4xx">
+              <div class="status-group-title">4xx — خطأ من جهتك (Client) ⚠️</div>
+              <div class="status-item">
+                <div class="status-code">400</div>
+                <div>
+                  <div class="status-name">Bad Request</div>
+                  <div class="status-desc">
+                    البيانات اللي بعتها غلط — validation error من الـ Serializer. شوف
+                    response.data.errors
+                  </div>
+                </div>
+              </div>
+              <div class="status-item">
+                <div class="status-code">401</div>
+                <div>
+                  <div class="status-name">Unauthorized</div>
+                  <div class="status-desc">
+                    ما فيش token أو الـ token منتهي — وجّه اليوزر لصفحة Login
+                  </div>
+                </div>
+              </div>
+              <div class="status-item">
+                <div class="status-code">403</div>
+                <div>
+                  <div class="status-name">Forbidden</div>
+                  <div class="status-desc">
+                    في token بس مش عنده permission — اليوزر موجود بس مش مصرحله
+                  </div>
+                </div>
+              </div>
+              <div class="status-item">
+                <div class="status-code">404</div>
+                <div>
+                  <div class="status-name">Not Found</div>
+                  <div class="status-desc">الـ resource مش موجود — غالباً الـ ID غلط أو اتحذف</div>
+                </div>
+              </div>
+              <div class="status-item">
+                <div class="status-code">405</div>
+                <div>
+                  <div class="status-name">Method Not Allowed</div>
+                  <div class="status-desc">
+                    الـ View مش بيقبل الـ method دي — راجع allowed_methods في DRF
+                  </div>
+                </div>
+              </div>
+              <div class="status-item">
+                <div class="status-code">409</div>
+                <div>
+                  <div class="status-name">Conflict</div>
+                  <div class="status-desc">
+                    تعارض — زي unique constraint مكرر (email موجود مثلاً)
+                  </div>
+                </div>
+              </div>
+              <div class="status-item">
+                <div class="status-code">422</div>
+                <div>
+                  <div class="status-name">Unprocessable Entity</div>
+                  <div class="status-desc">البيانات مفهومة بس فيها خطأ منطقي في الـ Validation</div>
+                </div>
+              </div>
+              <div class="status-item">
+                <div class="status-code">429</div>
+                <div>
+                  <div class="status-name">Too Many Requests</div>
+                  <div class="status-desc">
+                    تجاوزت الـ Rate Limit — انتظر أو اعرض رسالة للمستخدم
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="status-group s5xx">
+              <div class="status-group-title">5xx — خطأ من جهة السيرفر 🔥</div>
+              <div class="status-item">
+                <div class="status-code">500</div>
+                <div>
+                  <div class="status-name">Internal Server Error</div>
+                  <div class="status-desc">
+                    Django وقع في Exception — راجع الـ Django logs فوراً
+                  </div>
+                </div>
+              </div>
+              <div class="status-item">
+                <div class="status-code">502</div>
+                <div>
+                  <div class="status-name">Bad Gateway</div>
+                  <div class="status-desc">
+                    الـ Nginx/Proxy مش قادر يوصل Django — مشكلة في الـ deployment
+                  </div>
+                </div>
+              </div>
+              <div class="status-item">
+                <div class="status-code">503</div>
+                <div>
+                  <div class="status-name">Service Unavailable</div>
+                  <div class="status-desc">السيرفر مشغول أو down — اعرض رسالة "اتصل بعدين"</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════ SECTION: DATA SHAPES ══════════════════ -->
+      <section id="tab-data" class="section">
+        <div class="sec-title">
+          <div class="sec-icon">📦</div>
+          شكل البيانات
+        </div>
+        <p class="sec-desc">إيه بيتبعت وإيه بيرجع — Request Body وResponse Body</p>
+
+        <div class="grid-2" style="margin-bottom: 20px">
+          <div class="card">
+            <div class="card-title">📤 Request — إيه اللي بتبعت</div>
+            <div class="card-body">
+              الـ Content-Type في الـ Header بيحدد شكل الـ Body:
+              <div class="tag-row">
+                <span class="badge badge-info">application/json</span>
+                <span class="badge badge-warning">multipart/form-data</span>
+                <span class="badge badge-get">application/x-www-form-urlencoded</span>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">📥 Response — إيه اللي بيرجع</div>
+            <div class="card-body">
+              DRF دايماً بيرجع JSON (JSONRenderer). الـ body موجود في:
+              <div class="code-block">
+                <span class="fn">response</span>.data <span class="cm">// axios</span>
+                <span class="kw">await</span> res.<span class="fn">json</span>()
+                <span class="cm">// fetch</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Request shapes -->
+        <div class="card" style="margin-bottom: 16px">
+          <div class="card-title">📤 أشكال الـ Request Body</div>
+          <div class="shape-demo">
+            <div>
+              <div class="shape-label">JSON Body (POST/PUT/PATCH)</div>
+              <div class="code-block">
+                <span class="cm">// Vue - axios</span> <span class="kw">const</span>
+                <span class="fn">data</span> = { <span class="key">name</span>:
+                <span class="str">"Product A"</span>, <span class="key">price</span>:
+                <span class="num">99.99</span>, <span class="key">category</span>:
+                <span class="num">3</span> } axios.<span class="fn">post</span>(<span class="str"
+                  >'/api/products/'</span
+                >, data)
+                <span class="cm">// axios بيضيف Content-Type: application/json تلقائياً</span>
+              </div>
+            </div>
+            <div>
+              <div class="shape-label">FormData (لو فيه files)</div>
+              <div class="code-block">
+                <span class="cm">// Vue - لو فيه upload صورة</span>
+                <span class="kw">const</span> form = <span class="kw">new</span>
+                <span class="fn">FormData</span>() form.<span class="fn">append</span>(<span
+                  class="str"
+                  >'name'</span
+                >, <span class="str">'Product A'</span>) form.<span class="fn">append</span>(<span
+                  class="str"
+                  >'image'</span
+                >, file) <span class="cm">// File object</span>
+
+                axios.<span class="fn">post</span>(<span class="str">'/api/products/'</span>, form,
+                { headers: { <span class="key">'Content-Type'</span>:
+                <span class="str">'multipart/form-data'</span> } })
+              </div>
+            </div>
+            <div>
+              <div class="shape-label">Query Params (GET فلترة)</div>
+              <div class="code-block">
+                <span class="cm">// Vue - GET مع فلاتر</span> axios.<span class="fn">get</span
+                >(<span class="str">'/api/products/'</span>, { params: {
+                <span class="key">category</span>: <span class="num">3</span>,
+                <span class="key">page</span>: <span class="num">1</span>,
+                <span class="key">search</span>: <span class="str">'laptop'</span>
+                } })
+                <span class="cm">// بيبقى: /api/products/?category=3&page=1&search=laptop</span>
+              </div>
+            </div>
+            <div>
+              <div class="shape-label">Auth Header</div>
+              <div class="code-block">
+                <span class="cm">// في كل request محتاج auth</span> axios.<span class="fn">get</span
+                >(<span class="str">'/api/profile/'</span>, { headers: {
+                <span class="key">Authorization</span>:
+                <span class="str">`Token <span class="num">${token}</span>`</span>
+                <span class="cm">// أو: Bearer ${token} لو JWT</span>
+                } })
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Response shapes -->
+        <div class="card" style="margin-bottom: 16px">
+          <div class="card-title">📥 أشكال الـ Response Body من DRF</div>
+          <div class="shape-demo">
+            <div>
+              <div class="shape-label">List Response (GET /api/products/)</div>
+              <div class="code-block">
+                <span class="cm">// بدون pagination</span> [ { <span class="key">"id"</span>:
+                <span class="num">1</span>, <span class="key">"name"</span>:
+                <span class="str">"Laptop"</span>, <span class="key">"price"</span>:
+                <span class="num">999</span> }, { <span class="key">"id"</span>:
+                <span class="num">2</span>, <span class="key">"name"</span>:
+                <span class="str">"Phone"</span>, <span class="key">"price"</span>:
+                <span class="num">599</span> } ]
+
+                <span class="cm">// مع PageNumberPagination</span>
+                {
+                <span class="key">"count"</span>: <span class="num">47</span>,
+                <span class="key">"next"</span>:
+                <span class="str">"http://.../api/products/?page=2"</span>,
+                <span class="key">"previous"</span>: <span class="kw">null</span>,
+                <span class="key">"results"</span>: [ ... ] }
+              </div>
+            </div>
+            <div>
+              <div class="shape-label">Single Object (GET /api/products/1/)</div>
+              <div class="code-block">
+                { <span class="key">"id"</span>: <span class="num">1</span>,
+                <span class="key">"name"</span>: <span class="str">"Laptop Pro"</span>,
+                <span class="key">"price"</span>: <span class="str">"999.99"</span>,
+                <span class="key">"category"</span>: { <span class="cm">// nested object</span>
+                <span class="key">"id"</span>: <span class="num">2</span>,
+                <span class="key">"name"</span>: <span class="str">"Electronics"</span>
+                },
+                <span class="key">"tags"</span>: [<span class="str">"sale"</span>,
+                <span class="str">"new"</span>], <span class="cm">// array</span>
+                <span class="key">"created_at"</span>:
+                <span class="str">"2024-01-15T10:30:00Z"</span> }
+              </div>
+            </div>
+            <div>
+              <div class="shape-label">Validation Error (400)</div>
+              <div class="code-block">
+                { <span class="key">"name"</span>: [<span class="str"
+                  >"This field is required."</span
+                >], <span class="key">"price"</span>: [<span class="str"
+                  >"A valid number is required."</span
+                >], <span class="key">"email"</span>: [<span class="str"
+                  >"Enter a valid email address."</span
+                >] }
+
+                <span class="cm">// في Vue</span>
+                <span class="kw">const</span> errors = error.response.data
+                <span class="cm">// errors.name[0] → "This field is required."</span>
+              </div>
+            </div>
+            <div>
+              <div class="shape-label">Auth Error (401)</div>
+              <div class="code-block">
+                { <span class="key">"detail"</span>:
+                <span class="str">"Authentication credentials were not provided."</span>
+                }
+                <span class="cm">// أو</span>
+                {
+                <span class="key">"detail"</span>: <span class="str">"Invalid token."</span>
+                }
+
+                <span class="cm">// في Vue</span>
+                error.response.data.detail
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tip-box">
+          <strong>🧠 قاعدة مهمة:</strong> الـ Serializer في DRF هو اللي بيحدد شكل الـ Response. لو
+          عايز تضيف فيلد، غيّره في الـ Serializer مش في الـ Model مباشرة. وأي حقل في الـ Model مش في
+          الـ Serializer — مش هيظهر في الـ Response.
+        </div>
+      </section>
+
+      <!-- ══════════════════ SECTION: CODE ══════════════════ -->
+      <section id="tab-code" class="section">
+        <div class="sec-title">
+          <div class="sec-icon">💻</div>
+          كود عملي — Templates جاهزة
+        </div>
+        <p class="sec-desc">نسخ واستخدم في مشاريعك</p>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-title"><span class="vue-c">Vue 3</span> — Composable للـ API</div>
+            <div class="code-block">
+              <span class="cm">// composables/useApi.js</span> <span class="kw">import</span> { ref
+              } <span class="kw">from</span> <span class="str">'vue'</span>
+              <span class="kw">import</span> axios <span class="kw">from</span>
+              <span class="str">'axios'</span>
+
+              <span class="kw">export function</span> <span class="fn">useApi</span>() {
+              <span class="kw">const</span> data = <span class="fn">ref</span>(<span class="kw"
+                >null</span
+              >) <span class="kw">const</span> loading = <span class="fn">ref</span>(<span
+                class="kw"
+                >false</span
+              >) <span class="kw">const</span> error = <span class="fn">ref</span>(<span class="kw"
+                >null</span
+              >)
+
+              <span class="kw">const</span> <span class="fn">execute</span> =
+              <span class="kw">async</span> (config) => { loading.value =
+              <span class="kw">true</span> error.value = <span class="kw">null</span>
+              <span class="kw">try</span> { <span class="kw">const</span> res =
+              <span class="kw">await</span> axios(config) data.value = res.data
+              <span class="kw">return</span> res.data } <span class="kw">catch</span> (e) {
+              error.value = e.response?.data || e.message <span class="kw">throw</span> e }
+              <span class="kw">finally</span> { loading.value = <span class="kw">false</span>
+              } }
+              <span class="kw">return</span> { data, loading, error, execute } }
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-title"><span class="vue-c">Vue 3</span> — axios instance جاهزة</div>
+            <div class="code-block">
+              <span class="cm">// services/api.js</span> <span class="kw">import</span> axios
+              <span class="kw">from</span> <span class="str">'axios'</span>
+
+              <span class="kw">const</span> api = axios.<span class="fn">create</span>({ baseURL:
+              <span class="kw">import</span>.meta.env.VITE_API_URL, headers: {
+              <span class="key">'Content-Type'</span>: <span class="str">'application/json'</span> }
+              })
+
+              <span class="cm">// Interceptor: ضيف token تلقائياً</span>
+              api.interceptors.request.<span class="fn">use</span>(config => {
+              <span class="kw">const</span> token = localStorage.<span class="fn">getItem</span
+              >(<span class="str">'token'</span>) <span class="kw">if</span> (token)
+              config.headers.Authorization =
+              <span class="str">`Token <span class="num">${token}</span>`</span>
+              <span class="kw">return</span> config })
+
+              <span class="cm">// Interceptor: handle 401 globally</span>
+              api.interceptors.response.<span class="fn">use</span>( res => res, err => {
+              <span class="kw">if</span> (err.response?.status === <span class="num">401</span>)
+              router.<span class="fn">push</span>(<span class="str">'/login'</span>)
+              <span class="kw">return</span> Promise.<span class="fn">reject</span>(err) } )
+              <span class="kw">export default</span> api
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-title"><span class="dj-c">Django DRF</span> — ViewSet كامل</div>
+            <div class="code-block">
+              <span class="cm"># views.py</span> <span class="kw">from</span> rest_framework
+              <span class="kw">import</span> viewsets, permissions
+              <span class="kw">from</span> rest_framework.decorators
+              <span class="kw">import</span> action
+              <span class="kw">from</span> rest_framework.response
+              <span class="kw">import</span> Response <span class="kw">from</span> .models
+              <span class="kw">import</span> Product <span class="kw">from</span> .serializers
+              <span class="kw">import</span> ProductSerializer
+
+              <span class="kw">class</span>
+              <span class="fn">ProductViewSet</span>(viewsets.ModelViewSet): queryset =
+              Product.objects.<span class="fn">all</span>() serializer_class = ProductSerializer
+              permission_classes = [permissions.IsAuthenticated]
+
+              <span class="kw">def</span> <span class="fn">get_queryset</span>(self):
+              <span class="cm">"""فلترة حسب اليوزر الحالي"""</span>
+              <span class="kw">return</span> super().<span class="fn">get_queryset</span>().<span
+                class="fn"
+                >filter</span
+              >( owner=self.request.user )
+
+              <span class="cm"># Custom action: POST /api/products/{id}/publish/</span>
+              @action(detail=True, methods=[<span class="str">'post'</span>])
+              <span class="kw">def</span> <span class="fn">publish</span>(self, request, pk=None):
+              product = self.<span class="fn">get_object</span>() product.is_published = True
+              product.<span class="fn">save</span>() <span class="kw">return</span>
+              <span class="fn">Response</span>({<span class="str">'status'</span>:
+              <span class="str">'published'</span>})
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-title">
+              <span class="dj-c">Django DRF</span> — Serializer مع Validation
+            </div>
+            <div class="code-block">
+              <span class="cm"># serializers.py</span> <span class="kw">from</span> rest_framework
+              <span class="kw">import</span> serializers <span class="kw">from</span> .models
+              <span class="kw">import</span> Product
+
+              <span class="kw">class</span>
+              <span class="fn">ProductSerializer</span>(serializers.ModelSerializer):
+              <span class="cm"># فيلد computed (read only)</span>
+              discount_price = serializers.<span class="fn">SerializerMethodField</span>()
+
+              <span class="kw">class</span> Meta: model = Product fields = [<span class="str"
+                >'id'</span
+              >,<span class="str">'name'</span>,<span class="str">'price'</span>,<span class="str"
+                >'discount_price'</span
+              >] read_only_fields = [<span class="str">'id'</span>]
+
+              <span class="kw">def</span> <span class="fn">get_discount_price</span>(self, obj):
+              <span class="kw">return</span> obj.price * <span class="num">0.9</span>
+
+              <span class="kw">def</span> <span class="fn">validate_price</span>(self, value):
+              <span class="cm">"""Field-level validation"""</span>
+              <span class="kw">if</span> value < <span class="num">0</span>:
+              <span class="kw">raise</span> serializers.<span class="fn">ValidationError</span>(
+              <span class="str">"السعر لازم يكون موجب"</span>
+              )
+              <span class="kw">return</span> value
+
+              <span class="kw">def</span> <span class="fn">validate</span>(self, data):
+              <span class="cm">"""Object-level validation"""</span>
+              <span class="kw">if</span> data[<span class="str">'end_date'</span>] < data[<span
+                class="str"
+                >'start_date'</span
+              >]: <span class="kw">raise</span> serializers.<span class="fn">ValidationError</span>(
+              <span class="str">"التاريخ غلط"</span>
+              )
+              <span class="kw">return</span> data
+            </div>
+          </div>
+
+          <div class="card card-full">
+            <div class="card-title">🔄 الـ Error Handling الكامل في Vue</div>
+            <div class="code-block">
+              <span class="kw">async function</span> <span class="fn">submitForm</span>() {
+              loading.value = <span class="kw">true</span> fieldErrors.value = {}
+              <span class="cm">// reset validation errors</span>
+
+              <span class="kw">try</span> { <span class="kw">const</span> res =
+              <span class="kw">await</span> api.<span class="fn">post</span>(<span class="str"
+                >'/api/products/'</span
+              >, formData.value)
+              <span class="cm">// ✅ نجح — 201</span>
+              products.value.<span class="fn">push</span>(res.data)
+              <span class="fn">showToast</span>(<span class="str">'تم الإضافة بنجاح'</span>,
+              <span class="str">'success'</span>) } <span class="kw">catch</span> (err) {
+              <span class="kw">const</span> status = err.response?.status
+              <span class="kw">const</span> body = err.response?.data
+
+              <span class="kw">if</span> (status === <span class="num">400</span>) {
+              <span class="cm">// Validation errors من الـ Serializer</span>
+              fieldErrors.value = body <span class="cm">// { name: ['...'], price: ['...'] }</span>
+
+              } <span class="kw">else if</span> (status === <span class="num">401</span>) {
+              <span class="fn">logout</span>() router.<span class="fn">push</span>(<span class="str"
+                >'/login'</span
+              >) } <span class="kw">else if</span> (status === <span class="num">403</span>) {
+              <span class="fn">showToast</span>(<span class="str">'مش عندك صلاحية'</span>,
+              <span class="str">'error'</span>) } <span class="kw">else if</span> (status ===
+              <span class="num">404</span>) { <span class="fn">showToast</span>(<span class="str"
+                >'العنصر مش موجود'</span
+              >, <span class="str">'error'</span>) } <span class="kw">else if</span> (status >=
+              <span class="num">500</span>) { <span class="fn">showToast</span>(<span class="str"
+                >'خطأ في السيرفر، حاول تاني'</span
+              >, <span class="str">'error'</span>) } <span class="kw">else if</span> (!err.response)
+              {
+              <span class="cm">// Network error — ما وصلناش للسيرفر أصلاً</span>
+              <span class="fn">showToast</span>(<span class="str">'تحقق من الاتصال بالإنترنت'</span
+              >, <span class="str">'warning'</span>) } } <span class="kw">finally</span> {
+              loading.value = <span class="kw">false</span> } }
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════ SECTION: DEBUG ══════════════════ -->
+      <section id="tab-debug" class="section">
+        <div class="sec-title">
+          <div class="sec-icon">🐛</div>
+          دليل الـ Debug — فين المشكلة؟
+        </div>
+        <p class="sec-desc">اضغط على كل مشكلة عشان تشوف كيفية تشخيصها وحلها</p>
+
+        <div id="errorList"></div>
+
+        <hr class="divider" />
+
+        <div class="sec-title">
+          <div class="sec-icon">🔍</div>
+          خريطة تشخيص سريعة
+        </div>
+        <div class="grid-3" style="margin-top: 16px">
+          <div class="card">
+            <div class="card-title" style="color: var(--error)">🔴 CORS Error</div>
+            <div class="card-body">
+              المشكلة دايماً في Django.<br />
+              تأكد من: <code>django-cors-headers</code> مثبت،
+              <code>CORS_ALLOWED_ORIGINS</code> يحتوي على URL الـ Vue، و<code
+                >corsheaders.middleware</code
+              >
+              أول حاجة في MIDDLEWARE.
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title" style="color: var(--warning)">
+              🟡 Network Error (no response)
+            </div>
+            <div class="card-body">
+              Django مش شغال أصلاً أو الـ URL غلط.<br />
+              تأكد: الـ server شغال، الـ baseURL صح، مفيش typo في الـ endpoint.
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title" style="color: var(--info)">🔵 البيانات وصلت بس فاضية</div>
+            <div class="card-body">
+              راجع الـ Serializer fields، تأكد الـ queryset مش empty، وشوف لو الـ filter بيفلتر غلط.
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title" style="color: var(--http-post)">🟣 400 بدون رسالة واضحة</div>
+            <div class="card-body">
+              افتح Browser DevTools → Network → شوف الـ Response body. فيه الـ validation errors
+              بالتفصيل.
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title" style="color: var(--error)">🔴 500 Internal Server Error</div>
+            <div class="card-body">
+              افتح Django terminal — هتلاقي الـ Traceback الكامل هناك. أو فعّل
+              <code>DEBUG=True</code> مؤقتاً.
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title" style="color: var(--success)">🟢 أدوات لازم تعرفها</div>
+            <div class="card-body">
+              Browser DevTools (Network tab)، DRF Browsable API (<code>/api/products/</code>)،
+              <code>print(request.data)</code> في Django، Vue DevTools.
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      // ── Tab switching ──────────────────────────────────────
+      function switchTab(id) {
+        document.querySelectorAll('.tab-btn').forEach((b, i) => {
+          b.classList.toggle('active', b.getAttribute('onclick').includes(`'${id}'`))
+        })
+        document.querySelectorAll('.section').forEach((s) => {
+          s.classList.toggle('active', s.id === 'tab-' + id)
+        })
+      }
+
+      // ── Flow node data ─────────────────────────────────────
+      const flowData = [
+        {
+          title: '🖥️ Vue Component — نقطة البداية',
+          items: [
+            'بيبدأ الـ request من event: click، submit، mounted، watch',
+            'لازم تعمل loading = true وتصفي أي errors قديمة',
+            'جهّز الـ data اللي هتبعتها: form values، IDs، params',
+            'استدعي الـ service/composable — ما تكتبش axios جوه الـ component مباشرة',
+          ],
+        },
+        {
+          title: '⚙️ axios / fetch — الـ HTTP Client',
+          items: [
+            'axios بيـ serialize الـ JS object لـ JSON تلقائياً',
+            'بيضيف Content-Type: application/json تلقائياً',
+            'الـ interceptors بتضيف الـ token وبتتعامل مع الـ 401 globally',
+            'الـ response بييجي في .data — مش الـ response object نفسه',
+            'أي status >= 400 بيتعامل معاه كـ error (بيدخل catch)',
+          ],
+        },
+        {
+          title: '🌐 Network — رحلة الـ HTTP',
+          items: [
+            'الـ request بيتبعت كـ TCP packets عبر الإنترنت',
+            'DNS resolution: اسم الـ domain → IP address',
+            'TLS Handshake لو HTTPS: تشفير الاتصال',
+            'الـ browser بيضيف headers تلقائية: Origin، User-Agent، Accept',
+            'CORS preflight request (OPTIONS) بيتبعت أول مرة للـ cross-origin requests',
+          ],
+        },
+        {
+          title: '🛡️ Django Middleware — حارس البوابة',
+          items: [
+            'CorsMiddleware: بيتحقق من الـ Origin وبيضيف CORS headers',
+            'SecurityMiddleware: HTTPS redirect، security headers',
+            'SessionMiddleware: بيحمّل الـ session لو موجودة',
+            'AuthenticationMiddleware: بيحدد request.user',
+            'لو أي middleware رجع response — الـ request مايكملش لـ View',
+          ],
+        },
+        {
+          title: '🗺️ URL Router — اتجاه الـ Request',
+          items: [
+            'Django بيمشي على urlpatterns واحدة واحدة لحد ما يطابق',
+            'الـ Router في DRF بيولّد URLs الـ CRUD تلقائياً',
+            'لو مفيش URL مطابق → 404 Not Found',
+            'الـ URL parameters (pk, id) بتتحول لـ kwargs وتوصل للـ View',
+          ],
+        },
+        {
+          title: '👁️ View / ViewSet — المعالج',
+          items: [
+            'بيحدد الـ method المسموحة (GET, POST, ...)',
+            'بيتحقق من الـ Authentication والـ Permissions',
+            'بيستدعي الـ Serializer للـ validation والـ deserialization',
+            'بيعمل business logic: فلترة، حسابات، notifications',
+            'بيبني الـ Response ويحدد الـ status code',
+          ],
+        },
+        {
+          title: '🔧 Serializer — المترجم',
+          items: [
+            'Deserialization: JSON → Python dict → validates → Model instance',
+            'Serialization: Model instance → Python dict → JSON',
+            'بيتحقق من: required fields، field types، custom validators',
+            'Field-level validation: validate_<fieldname>(self, value)',
+            'Object-level validation: validate(self, data)',
+            'لو validation فشل → ValidationError → Response 400 تلقائياً',
+          ],
+        },
+        {
+          title: '🗃️ Database — التخزين',
+          items: [
+            'Django ORM بيحوّل الكود Python لـ SQL queries',
+            'SELECT بييجي مع GET، INSERT مع POST، UPDATE مع PUT/PATCH، DELETE مع DELETE',
+            'الـ queries بتتعمل بـ lazy evaluation — مش بتتنفذ لحد ما تعمل evaluate',
+            'مشكلة N+1 queries: لو عندك nested objects استخدم select_related() أو prefetch_related()',
+            'Transactions: لو فيه عمليات متعددة استخدم transaction.atomic()',
+          ],
+        },
+        {
+          title: '📤 Response — الرجوع لـ Vue',
+          items: [
+            'Status Code: بيعبّر عن نتيجة العملية (200/201/204/400/...)',
+            'Headers: Content-Type: application/json، CORS headers',
+            'Body: الـ JSON data — في response.data في Vue',
+            '204 No Content: body فاضي — ما تحاولش تعمل response.data',
+            'DRF بيضيف pagination metadata تلقائياً لو عندك Pagination class',
+          ],
+        },
+      ]
+
+      // initialize flow detail
+      showFlowDetail(0)
+
+      function selectNode(el, idx) {
+        document.querySelectorAll('.flow-node').forEach((n) => n.classList.remove('selected'))
+        el.classList.add('selected')
+        showFlowDetail(idx)
+      }
+
+      function showFlowDetail(idx) {
+        const d = flowData[idx]
+        document.getElementById('flowDetailTitle').textContent = d.title
+        document.getElementById('flowDetailList').innerHTML = d.items
+          .map((i) => `<li>${i}</li>`)
+          .join('')
+      }
+
+      // ── Error debug data ───────────────────────────────────
+      const errors = [
+        {
+          title: '🚫 CORS Policy Error — مش قادر يبعت requests',
+          badge: 'badge-error',
+          badgeText: 'Browser Error',
+          items: [
+            'المشكلة دايماً في Django مش في Vue',
+            'ثبّت: pip install django-cors-headers',
+            'ضيف "corsheaders" في INSTALLED_APPS',
+            'ضيف "corsheaders.middleware.CorsMiddleware" أول حاجة في MIDDLEWARE قبل CommonMiddleware',
+            'ضيف CORS_ALLOWED_ORIGINS = ["http://localhost:5173"] في settings.py',
+            'في production: ضيف domain الـ Vue الـ production URL',
+          ],
+        },
+        {
+          title: '🔐 401 Unauthorized — Token مش شغال',
+          badge: 'badge-warning',
+          badgeText: '401',
+          items: [
+            'في Browser DevTools → Network → شوف Request Headers',
+            'تأكد Authorization header موجود: Authorization: Token xxxx',
+            'تأكد الـ token صح في localStorage/Pinia',
+            'في Django: تأكد من DEFAULT_AUTHENTICATION_CLASSES في DRF settings',
+            'لو JWT: تأكد الـ token مش منتهي — decode الـ token وشوف exp',
+            'لو endpoint مفتوح للكل: ضيف permission_classes = [AllowAny] على الـ View',
+          ],
+        },
+        {
+          title: '📋 400 Bad Request — Validation فشل',
+          badge: 'badge-warning',
+          badgeText: '400',
+          items: [
+            'افتح Network Tab → الـ Response Body فيه تفاصيل كل field غلط',
+            'في Vue: error.response.data فيه object زي {name: ["required"], price: ["invalid"]}',
+            'اعرض الـ errors جنب كل field في الـ form',
+            'راجع الـ Serializer: هل الفيلد required=True؟ هل الـ type صح؟',
+            'تأكد إنك بتبعت الـ field names بالضبط زي ما في الـ Serializer',
+          ],
+        },
+        {
+          title: '💥 500 Internal Server Error — Django وقع',
+          badge: 'badge-error',
+          badgeText: '500',
+          items: [
+            'افتح Django terminal — هتلاقي الـ full Python traceback',
+            'ابحث في الـ traceback عن السطر الأخير في كودك أنت (مش في Django/DRF)',
+            'فعّل DEBUG=True مؤقتاً عشان تشوف الـ error في الـ response',
+            'استخدم print(request.data) في أول الـ view عشان تشوف الـ incoming data',
+            'شيك على الـ Database: ممكن migration ناقصة أو schema conflict',
+          ],
+        },
+        {
+          title: '🌐 Network Error — مش وصل للسيرفر',
+          badge: 'badge-error',
+          badgeText: 'Network',
+          items: [
+            'في axios: err.response بيبقى undefined — ده Network error مش HTTP error',
+            'تأكد Django server شغال: python manage.py runserver',
+            'تأكد الـ baseURL صح: مش "localhost:8000" لازم "http://localhost:8000"',
+            'في production: تأكد من الـ firewall والـ server config',
+            'اعرض للمستخدم رسالة "تحقق من الاتصال" مش رسالة technical',
+          ],
+        },
+        {
+          title: '📭 البيانات بييجي فاضية مع 200',
+          badge: 'badge-info',
+          badgeText: 'Empty Data',
+          items: [
+            'شوف الـ Serializer: هل الـ fields صح؟ هل في read_only_fields غلط؟',
+            'شوف الـ queryset في الـ View: ممكن filter بيرجع empty queryset',
+            'لو GET single object: ممكن الـ pk/id غلط',
+            'في Django shell: جرب الـ queryset مباشرة',
+            'تأكد من الـ related_name لو بتستخدم nested serializers',
+          ],
+        },
+        {
+          title: '📁 مشكلة في Upload الملفات',
+          badge: 'badge-warning',
+          badgeText: 'Upload',
+          items: [
+            'لازم تبعت FormData مش JSON object',
+            'ما تضيفش Content-Type يدوياً — خليه axios يحدده تلقائياً (multipart/form-data + boundary)',
+            'في Django Serializer: FileField or ImageField مش CharField',
+            'في Django settings: ضيف MEDIA_URL و MEDIA_ROOT',
+            'في urls.py: ضيف urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)',
+          ],
+        },
+      ]
+
+      const list = document.getElementById('errorList')
+      errors.forEach((e, i) => {
+        list.innerHTML += `
+    <div class="error-item">
+      <div class="error-header" onclick="toggleError(${i})">
+        <span class="badge ${e.badge}">${e.badgeText}</span>
+        <span class="error-title">${e.title}</span>
+        <span style="color:var(--muted); font-size:18px" id="arrow-${i}">▸</span>
+      </div>
+      <div class="error-body" id="error-body-${i}">
+        ${e.items.map((item) => `<div class="error-clue">${item}</div>`).join('')}
+      </div>
+    </div>`
+      })
+
+      function toggleError(i) {
+        const body = document.getElementById('error-body-' + i)
+        const arrow = document.getElementById('arrow-' + i)
+        const open = body.classList.toggle('open')
+        arrow.textContent = open ? '▾' : '▸'
+      }
+    </script>
+  </body>
+</html>

@@ -11,6 +11,8 @@ from rest_framework_simplejwt.views import (
 from django.conf import settings
 from django.conf.urls.static import static
 from users_accounts.views import MyTokenObtainPairView,  LogoutAPIView, GoogleLoginToJWTView, GoogleAuthInitView
+
+# from mcp_server.log_views import MCPLogsView
 from django.views.generic import RedirectView
 
 from debug_toolbar.toolbar import debug_toolbar_urls
@@ -43,6 +45,10 @@ urlpatterns = [
     path('api/products/', include('product.urls')),
     # Automation
     path('api/automation/', include('automation.urls')),
+    #
+    path('api/mcp/',      include('mcp_server.urls')),
+    # path('api/mcp/logs/', MCPLogsView.as_view(), name='mcp_logs'),
+
     # Explain
     path('api/explain/', include('explain.urls')),
 

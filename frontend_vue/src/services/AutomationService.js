@@ -86,8 +86,8 @@ export default {
     })
   },
   saveWorkflowAll(id, payload) {
-    return api.post(`automation/workflows/${id}/save-all/`, payload, {
-      headers: { 'Content-Type': 'multipart/form-data' },
+    return api.post(`automation/workflows/${id}/save_all/`, payload, {
+      headers: { 'Content-Type': 'application/json' },
     })
   },
   updateWorkflow(id, data) {
@@ -124,16 +124,11 @@ export default {
     })
   },
   updateWorkflowNode(id, data) {
-    return api.patch(
-      `automation/workflow-nodes/${id}/`,
-      data,
-
-      {
-        headers: {
-          'Content-Type': 'application/json',
-        },
+    return api.patch(`automation/workflow-nodes/${id}/`, data, {
+      headers: {
+        'Content-Type': 'application/json',
       },
-    )
+    })
   },
   deleteWorkflowNode(id) {
     return api.delete(`automation/workflow-nodes/${id}/`)

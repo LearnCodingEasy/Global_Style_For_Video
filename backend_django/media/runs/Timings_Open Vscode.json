@@ -1,0 +1,51 @@
+{
+    "meta": {
+        "workflow_name": "Open Vscode",
+        "task_run_id": "70899d79-5d45-4134-84e4-3d5167bda715",
+        "generated_at": 1773691524.375821,
+        "fps": 30,
+        "resolution": "1920x1080"
+    },
+    "timeline": [
+        {
+            "type": "node",
+            "id": "de2034b3-a12c-41f9-ac28-a67b305706f4",
+            "label": "Vscode",
+            "start": 0.005,
+            "end": 2.348,
+            "duration": 2.343,
+            "status": "success"
+        },
+        {
+            "type": "action",
+            "node_id": "de2034b3-a12c-41f9-ac28-a67b305706f4",
+            "action_id": "453fa67d-0312-47a8-8527-880939afb973",
+            "action_type": "wait",
+            "start": 0.01,
+            "end": 2.348,
+            "duration": 2.338,
+            "status": "ok",
+            "error": null
+        },
+        {
+            "type": "node",
+            "id": "13396ac7-8db6-42a6-93f3-1ddbf53ee7ec",
+            "label": "Vscode",
+            "start": 2.348,
+            "end": 4.383,
+            "duration": 2.035,
+            "status": "success"
+        },
+        {
+            "type": "action",
+            "node_id": "13396ac7-8db6-42a6-93f3-1ddbf53ee7ec",
+            "action_id": "fc08508d-1414-49ed-90fc-2cc8a890f84f",
+            "action_type": "open_program",
+            "start": 2.35,
+            "end": 4.383,
+            "duration": 2.033,
+            "status": "ok",
+            "error": null
+        }
+    ]
+}

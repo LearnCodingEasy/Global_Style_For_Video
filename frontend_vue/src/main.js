@@ -58,7 +58,7 @@ import ToggleButton from 'primevue/togglebutton'
 // عناصر النماذج
 import Fluid from 'primevue/fluid'
 import InputText from 'primevue/inputtext'
-// import InputNumber from 'primevue/inputnumber'
+import InputNumber from 'primevue/inputnumber'
 import Textarea from 'primevue/textarea'
 import Password from 'primevue/password'
 import FloatLabel from 'primevue/floatlabel'
@@ -152,27 +152,23 @@ import OverlayBadge from 'primevue/overlaybadge'
 // --------------- Paginator Components ---------------
 // استيراد مكون Paginator للتنقل بين الصفحات
 import Paginator from 'primevue/paginator'
-
 //
-
 import Tag from 'primevue/tag'
-
 //
-
 import ProgressBar from 'primevue/progressbar'
-
 //
 import Tooltip from 'primevue/tooltip'
-
 //
 import Slider from 'primevue/slider'
-
 //
-
 import Tree from 'primevue/tree'
 //
-
 import Select from 'primevue/select'
+//
+import Divider from 'primevue/divider';
+//
+import ConfirmDialog from 'primevue/confirmdialog';
+
 
 // --------------- Styles ---------------
 // Import necessary styles for PrimeVue and Tailwind CSS
@@ -222,7 +218,7 @@ app.component('ThemeSwitcher', ThemeSwitcher)
 // Form Components
 app.component('prime_fluid', Fluid)
 app.component('prime_input_text', InputText)
-// app.component('prime_input_number', InputNumber)
+app.component('prime_input_number', InputNumber)
 app.component('prime_textarea', Textarea)
 app.component('prime_input_password', Password)
 app.component('prime_float_label', FloatLabel)
@@ -307,5 +303,10 @@ app.component('prime_tree', Tree)
 
 app.directive('tooltip', Tooltip)
 app.directive('prime_select', Select)
+app.directive('prime_divider', Divider)
+
+//
+app.directive('prime_confirm_dialog', ConfirmDialog)
+
 
 app.mount('#app')
