@@ -19,6 +19,7 @@ export const useProgramStore = defineStore('program', () => {
   const programs = ref([])
   const currentProgram = ref(null)
   const isLoading = ref(false)
+  const isScanning = ref(false)
 
   const form = ref({
     name: '',
@@ -181,6 +182,28 @@ export const useProgramStore = defineStore('program', () => {
   async function statusProgram(id) {
     return (await automationService.statusProgram(id)).data
   }
+  const openWindows = ref([])
+
+  async function loadOpenWindows() {
+    try {
+      const res = await automationService.getOpenWindows()
+      openWindows.value = res.data.data
+      console.log('openWindows.value: ', openWindows.value)
+    } catch (err) {
+      console.error('WINDOWS ERROR:', err)
+    }
+  }
+  async function scanProgramElements(id, windowTitlePattern = null) {
+    isScanning.value = true
+    try {
+      const res = await automationService.scanProgramElements(id, windowTitlePattern)
+      return res.data
+    } catch (err) {
+      throw err.response?.data || err
+    } finally {
+      isScanning.value = false
+    }
+  }
 
   // ─────────────────────────────────────────
   // Return
@@ -192,10 +215,8 @@ export const useProgramStore = defineStore('program', () => {
     currentProgramId,
     isLoading,
     form,
-
     // getters
     programById,
-
     // helpers
     validateForm,
     validateImageSize,
@@ -203,7 +224,6 @@ export const useProgramStore = defineStore('program', () => {
     resetForm,
     fillFormFromData,
     onImageChange,
-
     // CRUD
     loadPrograms,
     loadProgram,
@@ -211,12 +231,15 @@ export const useProgramStore = defineStore('program', () => {
     createProgram,
     updateProgram,
     deleteProgram,
-
     // controls
     openProgram,
     closeProgram,
     focusProgram,
     maximizeProgram,
     statusProgram,
+    loadOpenWindows,
+    scanProgramElements,
+    isScanning,
+    openWindows,
   }
 })

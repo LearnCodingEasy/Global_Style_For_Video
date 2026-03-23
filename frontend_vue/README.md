@@ -495,3 +495,4 @@ onNodeDragStop(node) ← يحفظ الـ position بعد الـ drag (debounced)
   useProgramStore → API + data + validation
   usePrograms     → dialog state + toast + confirm
 ```
+

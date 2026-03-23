@@ -17,20 +17,20 @@ application = get_asgi_application()
 """
 
 
+import automation.routing
+from channels.auth import AuthMiddlewareStack
+from channels.routing import ProtocolTypeRouter, URLRouter
 import os
-
 from django.core.asgi import get_asgi_application
 
-import os
-from channels.routing import ProtocolTypeRouter, URLRouter
-
-from channels.auth import AuthMiddlewareStack
-import automation.routing
-
+# 1. تهيئة الإعدادات أولاً
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend_django.settings')
+django_asgi_app = get_asgi_application()
+
+# 2. الاستيراد بعد التهيئة لتجنب AppRegistryNotReady
 
 application = ProtocolTypeRouter({
-    "http": get_asgi_application(),
+    "http": django_asgi_app,
     "websocket": AuthMiddlewareStack(
         URLRouter(
             automation.routing.websocket_urlpatterns

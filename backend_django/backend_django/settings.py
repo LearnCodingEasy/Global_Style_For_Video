@@ -187,40 +187,63 @@ CHANNEL_LAYERS = {
         "BACKEND": "channels.layers.InMemoryChannelLayer"
     }
 }
+
+# 9️⃣ Celery
+# MCP Configuration (اختياري — الـ defaults كويسة)
+# requests per session per minute
+MCP_RATE_LIMIT_PER_MINUTE = 60
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+CELERY_BROKER_URL = "redis://127.0.0.1:6379/0"
+CELERY_RESULT_BACKEND = "redis://127.0.0.1:6379/0"
+CELERY_ACCEPT_CONTENT = ["json"]
+CELERY_TASK_SERIALIZER = "json"
+CELERY_RESULT_SERIALIZER = "json"
+CELERY_TIMEZONE = "UTC"
+
+
 INSTALLED_APPS = [
+    # 8️⃣
+    "daphne",
+    # Django
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # App
+    # 8️⃣
+    "channels",
+    # Apps
     'users_accounts',
     "notification",
-
-    # Marketplace
+    # Ecommerce [ Marketplace ]
     "vendor",
     "product",
     #
     "client",
-
     # "marketplace.vendor",
-    "mcp_server.apps.McpServerConfig",
     "automation",
     "explain",
-
-
+    "mcp_server.apps.McpServerConfig",
 
     # 📚 Libraries
-    # 1️⃣ djangorestframework
+    # 1️⃣ djangorestframework [DRF]
     'rest_framework',
     'rest_framework.authtoken',
-    # 2️⃣ djangorestframework-simplejwt
+    # 2️⃣ djangorestframework-simplejwt [Auth]
     "rest_framework_simplejwt",
     'rest_framework_simplejwt.token_blacklist',
     #
     # 'dj_rest_auth',
-    # 3️⃣ django-allauth
+    # 3️⃣ django-allauth [Allauth]
     'django.contrib.sites',
     'allauth',
     'allauth.account',
@@ -234,8 +257,10 @@ INSTALLED_APPS = [
     'debug_toolbar',
     # 7️⃣
     'drf_spectacular',
-    # 8️⃣
-    "channels",
+
+    # 9️⃣ Celery
+    "django_celery_results",
+    "django_celery_beat",
 
 ]
 
@@ -345,24 +370,20 @@ MEDIA_ROOT = BASE_DIR / "media"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# MCP Configuration (اختياري — الـ defaults كويسة)
-# requests per session per minute
-MCP_RATE_LIMIT_PER_MINUTE = 60
-CACHES = {
-    "default": {
-        "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379/1",
-        "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient",
-        }
-    }
-}
-CELERY_BROKER_URL = "redis://127.0.0.1:6379/0"
-CELERY_RESULT_BACKEND = "redis://127.0.0.1:6379/0"
-"""
 
+"""
+للـ cache
 pip install django-redis
+للـ AI schema
 pip install pydantic
+إذا تستخدم ASGI
 pip install uvicorn
+للـ AI agent
 pip install openai
+
+pip install celery
+pip install redis
+pip install django-celery-beat
+pip install django-celery-results
+
 """

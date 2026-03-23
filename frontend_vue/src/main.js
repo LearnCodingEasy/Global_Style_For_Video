@@ -1,23 +1,19 @@
+// main.js
 // Tailwind
 import './assets/Tailwind/tailwind.css'
 import 'tailwindcss/tailwind.css'
-
 // My Style
 import './assets/main.css'
 import './assets/scss/style.scss'
-
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-
 import axios from 'axios'
-
 axios.defaults.baseURL = 'http://127.0.0.1:8000'
 axios.interceptors.request.use((config) => {
   const token = localStorage.getItem('user.access')
   if (token) config.headers.Authorization = `Bearer ${token}`
   return config
 })
-
 // Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -26,33 +22,27 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 // Add Free Icons Styles To SVG Core
 library.add(fas, far, fab)
-
 // VueFlow styles
 /* import the necessary styles for Vue Flow to work */
 import '@vue-flow/core/dist/style.css'
 /* import the default theme, this is optional but generally recommended */
 import '@vue-flow/core/dist/theme-default.css'
-
 import App from './App.vue'
 import router from './router'
-
-// --------------- PrimeVue Core Configuration ---------------
+// ---------- PrimeVue Core Configuration ----------
 // Import PrimeVue library configuration
 // استيراد مكتبة PrimeVue وإعداداتها الأساسية
 import PrimeVue from 'primevue/config'
-
-// --------------- Popup Services (For Dialogs and Confirmations) ---------------
+// - Popup Services (For Dialogs and Confirmations) -
 // Import services for confirmation and dialog popups
 // خدمات النوافذ المنبثقة لتأكيد العمليات وفتح الحوارات
 import ConfirmationService from 'primevue/confirmationservice'
 import ConfirmPopup from 'primevue/confirmpopup'
 import DialogService from 'primevue/dialogservice'
 
-// Buttons
-// الأزرار وزر التبديل
+// Buttons الأزرار وزر التبديل
 import Button from 'primevue/button'
 import ToggleButton from 'primevue/togglebutton'
-
 // --------------- Form Components ---------------
 // Import components for creating forms
 // عناصر النماذج
@@ -69,32 +59,27 @@ import DatePicker from 'primevue/datepicker'
 import InputGroup from 'primevue/inputgroup'
 import InputGroupAddon from 'primevue/inputgroupaddon'
 import ColorPicker from 'primevue/colorpicker'
-
 // --------------- File Components ---------------
 // Import file upload
 // تحميل الملفات
 import FileUpload from 'primevue/fileupload'
-
 // --------------- Menu Components ---------------
 // Import components for building menus
 // عناصر القائمة
 import Menubar from 'primevue/menubar'
 import TieredMenu from 'primevue/tieredmenu'
-
 // --------------- Image Components ---------------
 // Import components for handling images and avatars
 // مكونات الصور والأفاتار
 import Image from 'primevue/image'
 import Avatar from 'primevue/avatar'
 import AvatarGroup from 'primevue/avatargroup'
-
 // --------------- Popup Components ---------------
 // Import popover, dialog, and drawer components for popups
 // مكونات النوافذ المنبثقة
 import Popover from 'primevue/popover'
 import Dialog from 'primevue/dialog'
 import Drawer from 'primevue/drawer'
-
 // --------------- Panel Components ---------------
 // Import panel-related components for layout and navigation
 // مكونات اللوحات لعرض المعلومات المنظمة
@@ -105,19 +90,16 @@ import StepPanels from 'primevue/steppanels'
 import StepItem from 'primevue/stepitem'
 import Step from 'primevue/step'
 import StepPanel from 'primevue/steppanel'
-
 // --------------- Card Components ---------------
 // Import card component for displaying content in card format
 // مكون البطاقات لعرض المحتوى بطريقة منسقة
 import Card from 'primevue/card'
-
 // --------------- Theme Components ---------------
 // Import theme presets and theme switcher component
 // مكونات اللوحات لعرض المعلومات المنظمة
 import Noir from './presets/Noir.js'
 import ThemeSwitcher from './components/Theme/ThemeSwitcher.vue'
-
-// --------------- Notification Components ---------------
+// ------------ Notification Components ------------
 // Import toast and message components for notifications
 import Toast from 'primevue/toast'
 import ToastService from 'primevue/toastservice'
@@ -140,16 +122,15 @@ import Column from 'primevue/column'
 import ColumnGroup from 'primevue/columngroup' // optional
 import Row from 'primevue/row' // optional
 
-// --------------- Placeholder Components ---------------
+// ------------ Placeholder Components ------------
 // Import skeleton component for loading placeholders
 import Skeleton from 'primevue/skeleton'
 
-// --------------- Placeholder Components ---------------
+// ------------ Placeholder Components ------------
 // Badge is a small status indicator for another element.
 import Badge from 'primevue/badge'
 import OverlayBadge from 'primevue/overlaybadge'
-
-// --------------- Paginator Components ---------------
+// ------------- Paginator Components -------------
 // استيراد مكون Paginator للتنقل بين الصفحات
 import Paginator from 'primevue/paginator'
 //
@@ -165,11 +146,9 @@ import Tree from 'primevue/tree'
 //
 import Select from 'primevue/select'
 //
-import Divider from 'primevue/divider';
+import Divider from 'primevue/divider'
 //
-import ConfirmDialog from 'primevue/confirmdialog';
-
-
+import ConfirmDialog from 'primevue/confirmdialog'
 // --------------- Styles ---------------
 // Import necessary styles for PrimeVue and Tailwind CSS
 import 'primeicons/primeicons.css'
@@ -276,37 +255,28 @@ app.component('prime_data_table', DataTable)
 app.component('prime_column', Column)
 app.component('prime_column_group', ColumnGroup)
 app.component('prime_row', Row)
-
 // Placeholder Components
 app.component('prime_skeleton', Skeleton)
-
 // Badge is a small status indicator for another element.
 app.component('prime_badge', Badge)
 app.component('prime_overlay_badge', OverlayBadge)
-
 // مكون Paginator
 app.component('prime_paginator', Paginator)
-
 //
 app.component('prime_tag', Tag)
-
 //
 app.component('prime_progress_bar', ProgressBar)
-
 //
 app.component('prime_slider', Slider)
-
-//
-
 //
 app.component('prime_tree', Tree)
+//
+app.component('prime_select', Select)
 
 app.directive('tooltip', Tooltip)
-app.directive('prime_select', Select)
 app.directive('prime_divider', Divider)
 
 //
 app.directive('prime_confirm_dialog', ConfirmDialog)
-
 
 app.mount('#app')

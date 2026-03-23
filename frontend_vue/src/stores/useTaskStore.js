@@ -1,12 +1,14 @@
-// ============================================================
-//  useTaskStore.js
-//  src/stores/useTaskStore.js
-//
-//  المسؤوليات:
-//   - CRUD الـ Tasks (Task Templates)
-//   - Task Run tracking
-// ============================================================
+/*
+===================================================
+useTaskStore.js
+src/stores/useTaskStore.js
 
+المسؤوليات:
+- CRUD الـ Tasks (Task Templates)
+- Task Run tracking
+===================================================
+
+*/
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import automationService from '@/services/AutomationService'
@@ -17,7 +19,8 @@ export const useTaskStore = defineStore('task', () => {
   // ─────────────────────────────────────────
   const tasks = ref([])
   const currentTask = ref(null)
-  const currentTaskRunId = ref(null) // بيتحدث لما يشتغل workflow
+  // بيتحدث لما يشتغل workflow
+  const currentTaskRunId = ref(null)
   const isLoading = ref(false)
 
   const form = ref({
@@ -154,6 +157,10 @@ export const useTaskStore = defineStore('task', () => {
     currentTaskRunId,
     isLoading,
     form,
+
+    // ✅ Aliases — عشان AutomationView يشتغل بدون تغيير
+    taskRunId: currentTaskRunId, // taskStore.taskRunId
+    loading: isLoading, // taskStore.loading
 
     // getters
     taskById,

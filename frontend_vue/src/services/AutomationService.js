@@ -40,7 +40,15 @@ export default {
   maximizeProgram(programId) {
     return api.post(`/automation/programs/${programId}/maximize/`)
   },
-
+  getOpenWindows() {
+    return api.get('/automation/get_open_windows/')
+  },
+  scanProgramElements(id, windowTitlePattern = null) {
+    return api.post(
+      `/automation/programs/${id}/scan_elements/`,
+      windowTitlePattern ? { window_title_pattern: windowTitlePattern } : {},
+    )
+  },
   /* ==================================================
    * 2️⃣ PROGRAM ELEMENTS (أزرار – عناصر – coords)
    * ================================================== */

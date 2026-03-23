@@ -13,9 +13,9 @@ Tools:
 """
 
 from __future__ import annotations
+
 import logging
 import base64
-import subprocess
 from typing import Any
 
 from .registry import tool_registry
@@ -33,12 +33,12 @@ logger = logging.getLogger(__name__)
     category="workflows",
     parameters=[
         {
-            "name":        "status",
-            "type":        "string",
+            "name": "status",
+            "type": "string",
             "description": "Filter by status: draft | active | paused | all",
-            "required":    False,
-            "enum":        ["draft", "active", "paused", "all"],
-            "default":     "all",
+            "required": False,
+            "enum": ["draft", "active", "paused", "all"],
+            "default": "all",
         }
     ],
 )
@@ -46,20 +46,26 @@ def list_workflows(params: dict, user) -> dict:
     from automation.models import Workflow
 
     status = params.get("status", "all")
-    qs = Workflow.objects.filter(user=user) if hasattr(
-        Workflow, 'user') else Workflow.objects.all()
+
+    qs = (
+        Workflow.objects.filter(user=user)
+        if hasattr(Workflow, "user")
+        else Workflow.objects.all()
+    )
 
     if status != "all":
         qs = qs.filter(status=status)
 
     workflows = [
         {
-            "id":          str(wf.id),
-            "name":        wf.name,
+            "id": str(wf.id),
+            "name": wf.name,
             "description": wf.description or "",
-            "status":      wf.status,
-            "node_count":  wf.nodes.count(),
-            "created_at":  wf.created_at.isoformat() if hasattr(wf, 'created_at') else None,
+            "status": wf.status,
+            "node_count": wf.nodes.count(),
+            "created_at": wf.created_at.isoformat()
+            if hasattr(wf, "created_at")
+            else None,
         }
         for wf in qs
     ]
@@ -69,27 +75,27 @@ def list_workflows(params: dict, user) -> dict:
 
 @tool_registry.register(
     name="run_workflow",
-    description="Execute a workflow asynchronously via Celery. Returns a task_run_id to track progress.",
+    description="Execute a workflow asynchronously via Celery.",
     category="workflows",
     parameters=[
         {
-            "name":        "workflow_id",
-            "type":        "string",
+            "name": "workflow_id",
+            "type": "string",
             "description": "UUID of the workflow to execute",
-            "required":    True,
+            "required": True,
         },
         {
-            "name":        "dry_run",
-            "type":        "boolean",
+            "name": "dry_run",
+            "type": "boolean",
             "description": "If true, validate without executing",
-            "required":    False,
-            "default":     False,
+            "required": False,
+            "default": False,
         },
     ],
 )
 def run_workflow(params: dict, user) -> dict:
     from automation.models import Workflow
-    from automation.tasks import execute_workflow_task  # Celery task
+    from automation.tasks import execute_workflow_task
 
     workflow_id = params["workflow_id"]
     dry_run = params.get("dry_run", False)
@@ -100,24 +106,22 @@ def run_workflow(params: dict, user) -> dict:
         return {"error": f"Workflow {workflow_id} not found", "success": False}
 
     if dry_run:
-        node_count = workflow.nodes.count()
         return {
-            "success":    True,
-            "dry_run":    True,
-            "workflow":   workflow.name,
-            "node_count": node_count,
-            "message":    "Validation passed — workflow can be executed",
+            "success": True,
+            "dry_run": True,
+            "workflow": workflow.name,
+            "node_count": workflow.nodes.count(),
+            "message": "Validation passed — workflow can be executed",
         }
 
-    # Execute via Celery
     task = execute_workflow_task.delay(str(workflow_id))
 
     return {
-        "success":      True,
-        "task_run_id":  task.id,
-        "workflow_id":  workflow_id,
+        "success": True,
+        "task_run_id": task.id,
+        "workflow_id": workflow_id,
         "workflow_name": workflow.name,
-        "message":      f"Workflow '{workflow.name}' started. Track with task_run_id.",
+        "message": f"Workflow '{workflow.name}' started.",
     }
 
 
@@ -127,10 +131,10 @@ def run_workflow(params: dict, user) -> dict:
     category="workflows",
     parameters=[
         {
-            "name":        "task_run_id",
-            "type":        "string",
-            "description": "Celery task ID returned from run_workflow",
-            "required":    True,
+            "name": "task_run_id",
+            "type": "string",
+            "description": "Celery task ID",
+            "required": True,
         }
     ],
 )
@@ -141,21 +145,21 @@ def get_workflow_status(params: dict, user) -> dict:
     result = AsyncResult(task_run_id)
 
     state_map = {
-        "PENDING":  "queued",
-        "STARTED":  "running",
-        "SUCCESS":  "success",
-        "FAILURE":  "failed",
-        "REVOKED":  "stopped",
-        "RETRY":    "retrying",
+        "PENDING": "queued",
+        "STARTED": "running",
+        "SUCCESS": "success",
+        "FAILURE": "failed",
+        "REVOKED": "stopped",
+        "RETRY": "retrying",
     }
 
     return {
         "task_run_id": task_run_id,
-        "status":      state_map.get(result.state, result.state.lower()),
-        "raw_state":   result.state,
-        "result":      result.result if result.successful() else None,
-        "error":       str(result.result) if result.failed() else None,
-        "ready":       result.ready(),
+        "status": state_map.get(result.state, result.state.lower()),
+        "raw_state": result.state,
+        "result": result.result if result.successful() else None,
+        "error": str(result.result) if result.failed() else None,
+        "ready": result.ready(),
     }
 
 
@@ -165,10 +169,9 @@ def get_workflow_status(params: dict, user) -> dict:
     category="workflows",
     parameters=[
         {
-            "name":        "task_run_id",
-            "type":        "string",
-            "description": "Celery task ID to stop",
-            "required":    True,
+            "name": "task_run_id",
+            "type": "string",
+            "required": True,
         }
     ],
 )
@@ -177,12 +180,13 @@ def stop_workflow(params: dict, user) -> dict:
 
     task_run_id = params["task_run_id"]
     result = AsyncResult(task_run_id)
+
     result.revoke(terminate=True, signal="SIGTERM")
 
     return {
-        "success":     True,
+        "success": True,
         "task_run_id": task_run_id,
-        "message":     "Workflow stop signal sent",
+        "message": "Workflow stop signal sent",
     }
 
 
@@ -200,16 +204,25 @@ def stop_workflow(params: dict, user) -> dict:
 def list_programs(params: dict, user) -> dict:
     from automation.models import Program
 
-    programs = [
-        {
-            "id":                   str(p.id),
-            "name":                 p.name,
-            "executable_path":      p.executable_path,
-            "window_title_pattern": p.window_title_pattern or "",
-            "image_url":            p.get_image if hasattr(p, 'get_image') else None,
-        }
-        for p in Program.objects.all()
-    ]
+    programs = []
+
+    for p in Program.objects.all():
+        image_url = None
+        if hasattr(p, "get_image"):
+            try:
+                image_url = p.get_image()
+            except Exception:
+                image_url = None
+
+        programs.append(
+            {
+                "id": str(p.id),
+                "name": p.name,
+                "executable_path": p.executable_path,
+                "window_title_pattern": p.window_title_pattern or "",
+                "image_url": image_url,
+            }
+        )
 
     return {"programs": programs, "total": len(programs)}
 
@@ -219,19 +232,8 @@ def list_programs(params: dict, user) -> dict:
     description="Open a desktop program by its registered ID.",
     category="programs",
     parameters=[
-        {
-            "name":        "program_id",
-            "type":        "string",
-            "description": "UUID of the program to open",
-            "required":    True,
-        },
-        {
-            "name":        "wait_seconds",
-            "type":        "number",
-            "description": "Seconds to wait after opening",
-            "required":    False,
-            "default":     2,
-        },
+        {"name": "program_id", "type": "string", "required": True},
+        {"name": "wait_seconds", "type": "number", "required": False, "default": 2},
     ],
 )
 def open_program(params: dict, user) -> dict:
@@ -248,157 +250,134 @@ def open_program(params: dict, user) -> dict:
 
     try:
         result = ProgramService.open(program, wait_seconds=wait_seconds)
+
         return {
             "success": True,
             "program": program.name,
-            "message": f"Program '{program.name}' opened successfully",
-            "pid":     result.get("pid"),
+            "pid": result.get("pid"),
         }
+
     except Exception as e:
-        return {"success": False, "error": str(e), "program": program.name}
-
-
-@tool_registry.register(
-    name="get_program_status",
-    description="Check if a program is currently running.",
-    category="programs",
-    parameters=[
-        {
-            "name":        "program_id",
-            "type":        "string",
-            "description": "UUID of the program",
-            "required":    True,
-        }
-    ],
-)
-def get_program_status(params: dict, user) -> dict:
-    from automation.models import Program
-    from automation.services.program_service import ProgramService
-
-    program_id = params["program_id"]
-
-    try:
-        program = Program.objects.get(id=program_id)
-        status = ProgramService.get_status(program)
-        return {
-            "program_id": program_id,
-            "name":       program.name,
-            "running":    status.get("running", False),
-            "pid":        status.get("pid"),
-        }
-    except Program.DoesNotExist:
-        return {"error": f"Program {program_id} not found"}
+        logger.exception("open_program failed")
+        return {"success": False, "error": str(e)}
 
 
 # ════════════════════════════════════════════════════
-# DESKTOP ACTION TOOLS
+# DESKTOP ACTIONS
 # ════════════════════════════════════════════════════
 
 @tool_registry.register(
     name="execute_desktop_action",
-    description=(
-        "Execute a single desktop action immediately. "
-        "Supports: click, type_text, press_key, hotkey, wait, screenshot."
-    ),
+    description="Execute a single desktop action immediately.",
     category="desktop",
     parameters=[
-        {
-            "name":        "action_type",
-            "type":        "string",
-            "description": "Type of action to perform",
-            "required":    True,
-            "enum":        ["click", "type_text", "press_key", "hotkey", "wait", "screenshot", "move_mouse"],
-        },
-        {
-            "name":        "payload",
-            "type":        "object",
-            "description": (
-                "Action-specific parameters. "
-                "click: {x, y} | type_text: {text} | press_key: {key} | "
-                "hotkey: {keys[]} | wait: {seconds} | screenshot: {} | move_mouse: {x, y}"
-            ),
-            "required":    True,
-        },
+        {"name": "action_type", "type": "string", "required": True},
+        {"name": "payload", "type": "object", "required": True},
     ],
 )
 def execute_desktop_action(params: dict, user) -> dict:
     import pyautogui
     import time
+    import io
 
     action_type = params["action_type"]
     payload = params.get("payload", {})
 
-    pyautogui.FAILSAFE = True  # Move mouse to corner to abort
+    pyautogui.FAILSAFE = True
 
     try:
         if action_type == "click":
-            x, y = int(payload["x"]), int(payload["y"])
+            x = int(payload.get("x", 0))
+            y = int(payload.get("y", 0))
             pyautogui.click(x, y)
+
             return {"success": True, "action": "click", "x": x, "y": y}
 
         elif action_type == "type_text":
-            text = payload["text"]
+            text = payload.get("text", "")
             interval = float(payload.get("interval", 0.05))
+
             pyautogui.typewrite(text, interval=interval)
-            return {"success": True, "action": "type_text", "chars_typed": len(text)}
+
+            return {
+                "success": True,
+                "action": "type_text",
+                "chars_typed": len(text),
+            }
 
         elif action_type == "press_key":
-            key = payload["key"]
+            key = payload.get("key")
             pyautogui.press(key)
+
             return {"success": True, "action": "press_key", "key": key}
 
         elif action_type == "hotkey":
-            keys = payload["keys"]  # e.g. ["ctrl", "shift", "p"]
+            keys = payload.get("keys", [])
             pyautogui.hotkey(*keys)
+
             return {"success": True, "action": "hotkey", "keys": keys}
 
         elif action_type == "wait":
             seconds = float(payload.get("seconds", 1))
             time.sleep(seconds)
+
             return {"success": True, "action": "wait", "seconds": seconds}
 
         elif action_type == "move_mouse":
-            x, y = int(payload["x"]), int(payload["y"])
+            x = int(payload.get("x", 0))
+            y = int(payload.get("y", 0))
             duration = float(payload.get("duration", 0.3))
+
             pyautogui.moveTo(x, y, duration=duration)
+
             return {"success": True, "action": "move_mouse", "x": x, "y": y}
 
         elif action_type == "screenshot":
-            import io
-            # (x, y, w, h) or None for full screen
             region = payload.get("region")
+
+            if region:
+                region = (
+                    region["x"],
+                    region["y"],
+                    region["width"],
+                    region["height"],
+                )
+
             screenshot = pyautogui.screenshot(region=region)
+
             buf = io.BytesIO()
             screenshot.save(buf, format="PNG")
+
             b64 = base64.b64encode(buf.getvalue()).decode()
-            size = screenshot.size
+
+            width, height = screenshot.size
+
             return {
-                "success":   True,
-                "action":    "screenshot",
-                "width":     size[0],
-                "height":    size[1],
+                "success": True,
+                "action": "screenshot",
+                "width": width,
+                "height": height,
                 "image_b64": b64,
-                "format":    "PNG",
+                "format": "PNG",
             }
 
         else:
             return {"success": False, "error": f"Unknown action_type: {action_type}"}
 
     except Exception as e:
-        logger.exception(f"Desktop action error: {action_type}")
-        return {"success": False, "error": str(e), "action": action_type}
+        logger.exception("Desktop action error")
+        return {"success": False, "error": str(e)}
 
 
 @tool_registry.register(
     name="take_screenshot",
-    description="Take a screenshot of the current screen or a region.",
+    description="Take a screenshot of the screen or a region.",
     category="desktop",
     parameters=[
         {
-            "name":        "region",
-            "type":        "object",
-            "description": "Optional region {x, y, width, height}. Omit for full screen.",
-            "required":    False,
+            "name": "region",
+            "type": "object",
+            "required": False,
         }
     ],
 )
@@ -430,51 +409,55 @@ def get_system_info(params: dict, user) -> dict:
     disk = psutil.disk_usage("/")
 
     return {
-        "platform":    platform.system(),
-        "python":      platform.python_version(),
+        "platform": platform.system(),
+        "python": platform.python_version(),
         "cpu_percent": cpu,
         "memory": {
-            "total_gb":    round(mem.total / 1e9, 2),
-            "used_gb":     round(mem.used / 1e9, 2),
-            "percent":     mem.percent,
+            "total_gb": round(mem.total / 1e9, 2),
+            "used_gb": round(mem.used / 1e9, 2),
+            "percent": mem.percent,
         },
         "disk": {
-            "total_gb":    round(disk.total / 1e9, 2),
-            "free_gb":     round(disk.free / 1e9, 2),
-            "percent":     disk.percent,
+            "total_gb": round(disk.total / 1e9, 2),
+            "free_gb": round(disk.free / 1e9, 2),
+            "percent": disk.percent,
         },
     }
 
 
 @tool_registry.register(
     name="list_running_processes",
-    description="List currently running desktop processes.",
+    description="List currently running processes.",
     category="system",
     parameters=[
         {
-            "name":        "filter_name",
-            "type":        "string",
-            "description": "Optional filter by process name (case-insensitive)",
-            "required":    False,
+            "name": "filter_name",
+            "type": "string",
+            "required": False,
         }
     ],
 )
 def list_running_processes(params: dict, user) -> dict:
     import psutil
 
-    filter_name = (params.get("filter_name") or "").lower()
+    filter_name = (params.get("filter_name") or "").lower().strip()
     processes = []
 
-    for proc in psutil.process_iter(["pid", "name", "status", "cpu_percent"]):
+    for proc in psutil.process_iter(["pid", "name", "status"]):
         try:
             info = proc.info
-            if not filter_name or filter_name in info["name"].lower():
-                processes.append({
-                    "pid":    info["pid"],
-                    "name":   info["name"],
-                    "status": info["status"],
-                })
+            name = (info.get("name") or "").lower()
+
+            if not filter_name or filter_name in name:
+                processes.append(
+                    {
+                        "pid": info.get("pid"),
+                        "name": info.get("name"),
+                        "status": info.get("status"),
+                    }
+                )
+
         except (psutil.NoSuchProcess, psutil.AccessDenied):
-            pass
+            continue
 
     return {"processes": processes[:100], "total": len(processes)}

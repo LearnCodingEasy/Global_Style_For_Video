@@ -35,8 +35,8 @@ class ToolRegistry:
     def __new__(cls):
         if cls._instance is None:
             cls._instance = super().__new__(cls)
-            cls._instance._tools: dict[str, MCPTool] = {}
-            cls._instance._usage_stats: dict[str, int] = {}
+            cls._instance._tools = {}
+            cls._instance._usage_stats = {}
         return cls._instance
 
     # ── Registration ──────────────────────────────────────

@@ -1,49 +1,51 @@
 {
     "meta": {
         "workflow_name": "Open Vscode",
-        "task_run_id": "82fa1933-2f68-42a3-838c-6efd6e6cc58e",
-        "generated_at": 1773715820.1488554,
+        "task_run_id": "fcee1b03-da9d-4f91-bc4a-a5bce27657a4",
+        "generated_at": 1774234931.8422754,
         "fps": 30,
         "resolution": "1920x1080"
     },
     "timeline": [
         {
             "type": "node",
-            "id": "de2034b3-a12c-41f9-ac28-a67b305706f4",
+            "id": "eb8f20fe-67e5-4f9e-add7-3db6a3f85afc",
             "label": "Vscode",
-            "start": 0.01,
-            "end": 2.554,
-            "duration": 2.544,
+            "start": 0.006,
+            "end": 2.367,
+            "duration": 2.361,
             "status": "success"
         },
         {
             "type": "action",
-            "node_id": "de2034b3-a12c-41f9-ac28-a67b305706f4",
-            "action_id": "453fa67d-0312-47a8-8527-880939afb973",
+            "node_id": "eb8f20fe-67e5-4f9e-add7-3db6a3f85afc",
+            "action_id": "cc93ae03-8c8b-4275-9d16-bcd60d270989",
             "action_type": "wait",
-            "start": 0.025,
-            "end": 2.554,
-            "duration": 2.529,
+            "program_element": null,
+            "start": 0.011,
+            "end": 2.367,
+            "duration": 2.356,
             "status": "ok",
             "error": null
         },
         {
             "type": "node",
-            "id": "13396ac7-8db6-42a6-93f3-1ddbf53ee7ec",
+            "id": "67a56370-1a1a-440d-bea9-3e45ef8bac95",
             "label": "Vscode",
-            "start": 2.554,
-            "end": 4.718,
-            "duration": 2.163,
+            "start": 2.367,
+            "end": 4.393,
+            "duration": 2.026,
             "status": "success"
         },
         {
             "type": "action",
-            "node_id": "13396ac7-8db6-42a6-93f3-1ddbf53ee7ec",
-            "action_id": "fc08508d-1414-49ed-90fc-2cc8a890f84f",
+            "node_id": "67a56370-1a1a-440d-bea9-3e45ef8bac95",
+            "action_id": "cfead5a5-848d-4b35-a277-a00e8fdff9a9",
             "action_type": "open_program",
-            "start": 2.556,
-            "end": 4.718,
-            "duration": 2.161,
+            "program_element": null,
+            "start": 2.369,
+            "end": 4.393,
+            "duration": 2.024,
             "status": "ok",
             "error": null
         }

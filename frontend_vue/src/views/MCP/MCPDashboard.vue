@@ -9,6 +9,7 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useToast } from 'primevue/usetoast'
 import mcpService from '@/services/mcpService'
+import AIPrompt from '@/components/AIPrompt.vue'
 
 const toast = useToast()
 
@@ -155,6 +156,9 @@ onUnmounted(() => clearInterval(refreshInterval))
         <div>
           <h1 class="mcp-title">MCP Server</h1>
           <p class="mcp-subtitle">Model Context Protocol — AI Agent Interface</p>
+        </div>
+        <div class="">
+          <AIPrompt />
         </div>
       </div>
 

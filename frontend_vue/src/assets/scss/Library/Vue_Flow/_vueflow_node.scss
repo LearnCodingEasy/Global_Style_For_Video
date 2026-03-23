@@ -3,10 +3,10 @@
 .vue-flow__nodes {
   // Parent Single Node
   .vue-flow__node {
-    background: #ffeaa7;
-    box-shadow: 0 0 0 1px #ffeaa7;
+    // background: #ffeaa7;
+    // box-shadow: 0 0 0 1px #ffeaa7;
+    // border: 1px solid #ffeaa7;
     padding: 4px;
-    border: 1px solid #ffeaa7;
     border-radius: 4px;
     outline: none;
 
@@ -127,14 +127,12 @@
         padding: 8px;
         font-size: 13px;
 
-
         .node-details {
           padding: 8px;
           border-radius: 8px;
           margin-bottom: 8px;
         }
-        .node-action{
-          
+        .node-action {
         }
         select {
           color: #020617;
