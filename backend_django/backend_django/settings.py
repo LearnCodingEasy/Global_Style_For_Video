@@ -29,7 +29,8 @@ ALLOWED_HOSTS = [
     "172.23.232.133",
     "localhost:5173",
     "localhost:5174",
-    'https://global-style-for-video.pages.dev/'
+    'https://global-style-for-video.pages.dev/',
+    "https://global-style-for-video.pages.dev/login"
 ]
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
