@@ -365,6 +365,442 @@
 <p>&quot;ChatGPT هو Generative AI&quot;</p>
 </blockquote>
 <p>فهذا أيضًا صحيح، لكنه أكثر دقة.</p>
+<h2 id="هل-نموذج-الذكاء-الاصطناعي-يفكر؟" tabindex="-1"><a class="header-anchor" href="#هل-نموذج-الذكاء-الاصطناعي-يفكر؟"><span>هل نموذج الذكاء الاصطناعي يفكر؟</span></a></h2>
+<p>الإجابة المختصرة:</p>
+<p>لا، ليس بالطريقة التي يفكر بها الإنسان.</p>
+<p>الإنسان عندما يُسأل سؤالًا، فإنه:</p>
+<p>يتذكر خبراته.
+يفهم المعنى.
+يربط الأفكار.
+يستخدم المنطق.
+قد يتخيل أو يشك أو يتراجع عن رأيه.</p>
+<p>أما نموذج الذكاء الاصطناعي، فلا يملك وعيًا أو مشاعر أو خبرة شخصية. ما يفعله هو التنبؤ.</p>
+<h2 id="ماذا-يعني-التنبؤ-؟" tabindex="-1"><a class="header-anchor" href="#ماذا-يعني-التنبؤ-؟"><span>ماذا يعني &quot;التنبؤ&quot;؟</span></a></h2>
+<p>تخيل أنك تكتب في هاتفك:</p>
+<p>&quot;السلام عليكم&quot;</p>
+<p>فيقترح الهاتف:</p>
+<p>&quot;ورحمة الله وبركاته&quot;</p>
+<p>هل الهاتف يفهم التحية؟</p>
+<p>لا.</p>
+<p>هو فقط رأى هذه الجملة ملايين المرات، فأصبح يتوقع أن الكلمة التالية غالبًا ستكون &quot;ورحمة&quot;.</p>
+<p>نماذج اللغة تعمل بالمبدأ نفسه، لكن على نطاق أضخم بكثير.</p>
+<h2 id="كيف-يتعلم-النموذج؟" tabindex="-1"><a class="header-anchor" href="#كيف-يتعلم-النموذج؟"><span>كيف يتعلم النموذج؟</span></a></h2>
+<p>أثناء التدريب، يتم إعطاؤه كمية هائلة من البيانات، مثل:</p>
+<p>كتب.
+مقالات.
+أكواد برمجية.
+مواقع ويب.
+حوارات.
+مستندات عامة.</p>
+<p>ومن خلال هذه البيانات يتعلم:</p>
+<p>إذا جاءت هذه الكلمات معًا، فما الكلمة التي تأتي بعدها غالبًا؟</p>
+<h2 id="هل-يحفظ-كل-شيء؟" tabindex="-1"><a class="header-anchor" href="#هل-يحفظ-كل-شيء؟"><span>هل يحفظ كل شيء؟</span></a></h2>
+<p>لا.</p>
+<p>وهذه نقطة مهمة جدًا.</p>
+<p>لو كان يحفظ فقط، لما استطاع الإجابة عن أسئلة جديدة لم يسبق أن رآها.</p>
+<p>بدلًا من الحفظ الحرفي، يتعلم الأنماط (Patterns) والعلاقات بين الكلمات والمفاهيم.</p>
+<h2 id="ما-هو-النمط-pattern-؟" tabindex="-1"><a class="header-anchor" href="#ما-هو-النمط-pattern-؟"><span>ما هو النمط (Pattern)؟</span></a></h2>
+<p>النمط هو علاقة تتكرر كثيرًا.</p>
+<p>مثال:</p>
+<p>كلما رأى:</p>
+<p>Python</p>
+<p>↓</p>
+<p>Django</p>
+<p>يتعلم أن Django إطار عمل مرتبط بلغة Python.</p>
+<p>وعندما يرى:</p>
+<p>Vue.js</p>
+<p>يتوقع كلمات مثل:</p>
+<p>Components
+Reactive
+Composition API</p>
+<p>لأنه رأى هذه العلاقات آلاف المرات أثناء التدريب.</p>
+<h2 id="كيف-يجيب-على-سؤال؟" tabindex="-1"><a class="header-anchor" href="#كيف-يجيب-على-سؤال؟"><span>كيف يجيب على سؤال؟</span></a></h2>
+<p>لنفترض أنك سألت:</p>
+<p>ما هي أفضل لغة لتطوير الويب؟</p>
+<p>ماذا يحدث؟</p>
+<p>يحول السؤال إلى Tokens (سنتعلمها في الجزء القادم).
+يحلل العلاقة بين الكلمات.
+يبحث داخل ما تعلمه أثناء التدريب.
+يحسب احتمالات الكلمات التالية.
+يختار كلمة.
+يعيد الحساب مرة أخرى للكلمة التالية.
+يستمر حتى تكتمل الإجابة.</p>
+<p>إذن هو لا يكتب الجملة كلها مرة واحدة، بل يبنيها كلمة (أو Token) بعد أخرى.</p>
+<h2 id="هل-يفهم-المعنى؟" tabindex="-1"><a class="header-anchor" href="#هل-يفهم-المعنى؟"><span>هل يفهم المعنى؟</span></a></h2>
+<p>السؤال يحتاج إلى دقة.</p>
+<p>إذا كان المقصود بـ&quot;الفهم&quot; هو:</p>
+<p>الإحساس.
+الوعي.
+امتلاك تجربة شخصية.</p>
+<p>فالإجابة: لا.</p>
+<p>أما إذا كان المقصود:</p>
+<p>استخراج العلاقات.
+فهم السياق اللغوي.
+ربط المفاهيم.</p>
+<p>فالإجابة: إلى حد كبير نعم، لكنه يفعل ذلك اعتمادًا على الأنماط الإحصائية التي تعلمها، وليس على وعي أو إدراك بشري.</p>
+<h2 id="لماذا-يخطئ-أحيانًا؟" tabindex="-1"><a class="header-anchor" href="#لماذا-يخطئ-أحيانًا؟"><span>لماذا يخطئ أحيانًا؟</span></a></h2>
+<p>لأن هدفه الأساسي ليس قول الحقيقة، بل توقع أكثر Token مناسبة للسياق.</p>
+<p>في أغلب الأحيان، تكون النتيجة صحيحة لأن الأنماط التي تعلمها قوية.</p>
+<p>لكن أحيانًا لا يجد معلومة مؤكدة، أو يخلط بين أنماط متشابهة، فينتج إجابة تبدو مقنعة لكنها خاطئة.</p>
+<p>وهذا ما يسمى:</p>
+<p>Hallucination (الهلوسة)</p>
+<p>أي أن النموذج &quot;يؤلف&quot; معلومة تبدو منطقية لكنها غير صحيحة.</p>
+<p>مثال على الهلوسة</p>
+<p>إذا طلبت:</p>
+<p>اذكر كتابًا ألّفه شخص معين.</p>
+<p>قد يخترع عنوان كتاب غير موجود، لأنه وجد أن نمط السؤال يشبه أسئلة كثيرة عن الكتب، فيركب إجابة تبدو معقولة.</p>
+<p>لهذا يجب التحقق من المعلومات المهمة، خاصة في المجالات الطبية أو القانونية أو الأخبار الحديثة.</p>
+<h2 id="لماذا-تبدو-إجاباته-ذكية؟" tabindex="-1"><a class="header-anchor" href="#لماذا-تبدو-إجاباته-ذكية؟"><span>لماذا تبدو إجاباته ذكية؟</span></a></h2>
+<p>لأنه:</p>
+<p>تدرب على كمية هائلة من البيانات.
+تعلم العلاقات بين المفاهيم.
+يستطيع ربط السياق الحالي بما تعلمه.
+يولد إجابة مناسبة خطوة بخطوة.</p>
+<p>وهذا يجعله يبدو وكأنه &quot;يفكر&quot;، بينما هو في الحقيقة ينفذ عملية تنبؤ معقدة جدًا.</p>
+<p>تشبيه بسيط</p>
+<p>تخيل طالبًا قرأ 10 ملايين كتاب.</p>
+<p>عندما تسأله سؤالًا، سيجيب بسرعة لأنه رأى موضوعات مشابهة من قبل.</p>
+<p>لكن الفرق أن هذا الطالب:</p>
+<p>لا ينام.
+لا ينسى أثناء المحادثة.
+يستطيع معالجة كميات ضخمة من النصوص في ثوانٍ.</p>
+<p>هذا التشبيه يوضح لماذا تبدو نماذج اللغة قوية، مع أنها لا تمتلك وعيًا بشريًا.</p>
+<h2 id="ما-هو-الـ-token؟" tabindex="-1"><a class="header-anchor" href="#ما-هو-الـ-token؟"><span>ما هو الـ Token؟</span></a></h2>
+<p>الـ Token هو:</p>
+<p>أصغر وحدة نصية يتعامل معها النموذج أثناء القراءة والكتابة.</p>
+<p>قد يكون:</p>
+<p>كلمة كاملة.
+جزءًا من كلمة.
+حرفًا.
+رقمًا.
+علامة ترقيم.
+مسافة في بعض الحالات.</p>
+<p>إذن الـ Token ليس مرادفًا لكلمة.</p>
+<p>مثال بسيط</p>
+<p>الجملة:</p>
+<p>I love programming</p>
+<p>قد تُقسم إلى:</p>
+<p>I</p>
+<p>love</p>
+<p>program</p>
+<p>ming</p>
+<p>لاحظ أن كلمة programming انقسمت إلى جزأين.</p>
+<p>مثال آخر</p>
+<p>الكلمة:</p>
+<p>unbelievable</p>
+<p>قد تصبح:</p>
+<p>un</p>
+<p>believ</p>
+<p>able</p>
+<p>النموذج لا يهتم بأنها كلمة واحدة بالنسبة لنا، بل يقسمها إلى أجزاء مألوفة بالنسبة له</p>
+<h2 id="لماذا-نهتم-بالـ-token؟" tabindex="-1"><a class="header-anchor" href="#لماذا-نهتم-بالـ-token؟"><span>لماذا نهتم بالـ Token؟</span></a></h2>
+<p>لأن كل شيء في نماذج اللغة يعتمد عليه.</p>
+<p>النموذج يحسب:</p>
+<p>تكلفة الاستخدام.
+سرعة الإجابة.
+حجم الذاكرة.
+طول المحادثة.</p>
+<p>كلها بالـ Tokens، وليس بعدد الكلمات.</p>
+<h2 id="ماذا-يحدث-عندما-ترسل-سؤالًا؟" tabindex="-1"><a class="header-anchor" href="#ماذا-يحدث-عندما-ترسل-سؤالًا؟"><span>ماذا يحدث عندما ترسل سؤالًا؟</span></a></h2>
+<p>أنت ترى:</p>
+<div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre v-pre><code><span class="line"></span>
+<span class="line">اشرح Django</span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div></div></div><p>لكن داخل النموذج يحدث الآتي:</p>
+<div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre v-pre><code><span class="line"></span>
+<span class="line">النص</span>
+<span class="line"></span>
+<span class="line">↓</span>
+<span class="line"></span>
+<span class="line">Tokenizer</span>
+<span class="line"></span>
+<span class="line">↓</span>
+<span class="line"></span>
+<span class="line">Tokens</span>
+<span class="line"></span>
+<span class="line">↓</span>
+<span class="line"></span>
+<span class="line">Model</span>
+<span class="line"></span>
+<span class="line">↓</span>
+<span class="line"></span>
+<span class="line">Tokens</span>
+<span class="line"></span>
+<span class="line">↓</span>
+<span class="line"></span>
+<span class="line">نص مفهوم للبشر</span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>إذن قبل أن يفهم النموذج أي شيء، يوجد جزء يسمى:</p>
+<p>Tokenizer</p>
+<p>وظيفته تقسيم النص إلى Tokens.</p>
+<h2 id="ما-هو-tokenizer؟" tabindex="-1"><a class="header-anchor" href="#ما-هو-tokenizer؟"><span>ما هو Tokenizer؟</span></a></h2>
+<p>هو برنامج صغير جدًا.</p>
+<p>مهمته:</p>
+<p>تحويل النص إلى Tokens.</p>
+<p>ثم يعطي كل Token رقمًا.</p>
+<p>مثال تخيلي:</p>
+<div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre v-pre><code><span class="line"></span>
+<span class="line">أنا</span>
+<span class="line"></span>
+<span class="line">↓</span>
+<span class="line"></span>
+<span class="line">2054</span>
+<span class="line">أحب</span>
+<span class="line"></span>
+<span class="line">↓</span>
+<span class="line"></span>
+<span class="line">847</span>
+<span class="line">البرمجة</span>
+<span class="line"></span>
+<span class="line">↓</span>
+<span class="line"></span>
+<span class="line">19384</span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>النموذج لا يرى الكلمات.</p>
+<p>هو يرى الأرقام فقط.</p>
+<p>لماذا يحول الكلمات إلى أرقام؟</p>
+<p>لأن الشبكات العصبية لا تفهم النصوص.</p>
+<p>هي تتعامل مع:</p>
+<p>أرقام.
+متجهات (Vectors).
+مصفوفات (Matrices).</p>
+<p>إذن أول خطوة هي تحويل النص إلى أرقام.</p>
+<p>ماذا يحدث بعد ذلك؟</p>
+<p>يمر التسلسل الرقمي داخل النموذج.</p>
+<p>ثم يخرج أرقامًا أخرى.</p>
+<p>ثم يعيد الـ Tokenizer تحويلها إلى كلمات يفهمها الإنسان.</p>
+<h2 id="هل-النموذج-يكتب-الجملة-مرة-واحدة؟" tabindex="-1"><a class="header-anchor" href="#هل-النموذج-يكتب-الجملة-مرة-واحدة؟"><span>هل النموذج يكتب الجملة مرة واحدة؟</span></a></h2>
+<p>لا.</p>
+<p>وهذه نقطة مهمة جدًا.</p>
+<p>لنفترض أنك طلبت:</p>
+<p>اكتب قصة.</p>
+<p>النموذج لا يكتب القصة كاملة.</p>
+<p>بل يفعل الآتي:</p>
+<p>يتنبأ بأول Token.
+يضيفه.
+يتنبأ بالـ Token التالي.
+يضيفه.
+يكرر العملية مئات أو آلاف المرات حتى تكتمل الإجابة.</p>
+<p>لذلك أحيانًا تشاهد الإجابة تظهر أمامك تدريجيًا.</p>
+<h2 id="لماذا-توجد-حدود-للمحادثة؟" tabindex="-1"><a class="header-anchor" href="#لماذا-توجد-حدود-للمحادثة؟"><span>لماذا توجد حدود للمحادثة؟</span></a></h2>
+<p>كل نموذج لديه Context Window.</p>
+<p>أي أقصى عدد من الـ Tokens يستطيع قراءته في مرة واحدة.</p>
+<p>إذا كان الحد مثلًا:</p>
+<p>100000 Token</p>
+<p>وكانت محادثتك:</p>
+<p>70000 Token</p>
+<p>وسؤالك الجديد:</p>
+<p>500 Token</p>
+<p>والإجابة:</p>
+<p>4000 Token</p>
+<p>فالإجمالي يصبح:</p>
+<p>74500 Token</p>
+<p>ما زلت داخل الحد.</p>
+<p>لكن إذا تجاوزت الحد، سيضطر النموذج إلى نسيان أو حذف جزء من المحادثة القديمة حتى يستطيع المتابعة.</p>
+<h2 id="لماذا-تختلف-تكلفة-الاستخدام؟" tabindex="-1"><a class="header-anchor" href="#لماذا-تختلف-تكلفة-الاستخدام؟"><span>لماذا تختلف تكلفة الاستخدام؟</span></a></h2>
+<p>إذا استخدمت API، فأنت لا تدفع مقابل عدد الرسائل.</p>
+<p>بل تدفع مقابل:</p>
+<p>Tokens التي أرسلتها (Input Tokens).
+Tokens التي استقبلتها (Output Tokens).</p>
+<p>مثال:</p>
+<p>أرسلت:
+1000 Token</p>
+<p>استلمت:
+2500 Token</p>
+<p>إذن يتم الحساب على:</p>
+<p>3500 Token.</p>
+<h2 id="هل-يمكن-تقليل-عدد-الـ-tokens؟" tabindex="-1"><a class="header-anchor" href="#هل-يمكن-تقليل-عدد-الـ-tokens؟"><span>هل يمكن تقليل عدد الـ Tokens؟</span></a></h2>
+<p>نعم، وهذا مهم جدًا للمطورين.</p>
+<p>بدلًا من كتابة سؤال طويل مليء بالتكرار، يمكنك كتابة سؤال منظم ومباشر.</p>
+<p>كلما قل عدد الـ Tokens بدون فقدان المعلومات، أصبحت:</p>
+<p>التكلفة أقل.
+السرعة أعلى.
+الاستفادة من نافذة السياق أفضل.</p>
+<h2 id="ما-هي-context-window؟" tabindex="-1"><a class="header-anchor" href="#ما-هي-context-window؟"><span>ما هي Context Window؟</span></a></h2>
+<p>التعريف:</p>
+<p>هي أقصى عدد من الـ Tokens يستطيع النموذج قراءتها ومعالجتها في طلب واحد.</p>
+<p>لاحظ كلمة قراءتها.</p>
+<p>وليس:</p>
+<p>حفظها.
+فهمها.
+تخزينها للأبد.
+مثال بسيط</p>
+<p>تخيل أن لديك مكتبًا صغيرًا.</p>
+<p>يمكنك وضع عليه:</p>
+<p>كتاب.
+لابتوب.
+ورقة.
+قلم.</p>
+<p>لكن لو أحضرت:</p>
+<p>100 كتاب.</p>
+<p>لن يتسع المكتب.</p>
+<p>ستضطر لإزالة بعض الكتب.</p>
+<p>النموذج يعمل بنفس الفكرة.</p>
+<p>تشبيه آخر</p>
+<p>تخيل شخصًا يقرأ رواية.</p>
+<p>إذا أعطيته:</p>
+<p>10 صفحات.</p>
+<p>سيستطيع تذكرها بسهولة.</p>
+<p>أما إذا أعطيته:</p>
+<p>5000 صفحة دفعة واحدة.</p>
+<p>لن يستطيع التركيز عليها كلها في نفس اللحظة.</p>
+<h2 id="ماذا-يوجد-داخل-context-window؟" tabindex="-1"><a class="header-anchor" href="#ماذا-يوجد-داخل-context-window؟"><span>ماذا يوجد داخل Context Window؟</span></a></h2>
+<p>كل شيء.</p>
+<p>ليس السؤال فقط.</p>
+<p>بل:</p>
+<div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre v-pre><code><span class="line"></span>
+<span class="line">System Prompt</span>
+<span class="line"></span>
+<span class="line">+</span>
+<span class="line"></span>
+<span class="line">تعليمات النظام</span>
+<span class="line"></span>
+<span class="line">+</span>
+<span class="line"></span>
+<span class="line">المحادثة السابقة</span>
+<span class="line"></span>
+<span class="line">+</span>
+<span class="line"></span>
+<span class="line">السؤال الجديد</span>
+<span class="line"></span>
+<span class="line">+</span>
+<span class="line"></span>
+<span class="line">المساحة المطلوبة للإجابة</span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>كل هذا يدخل داخل نافذة السياق.</p>
+<p>مثال عملي</p>
+<p>لنفترض أن النموذج يستطيع قراءة:</p>
+<p>10000 Token</p>
+<p>وأنت أرسلت:</p>
+<div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre v-pre><code><span class="line"></span>
+<span class="line">المحادثة السابقة</span>
+<span class="line"></span>
+<span class="line">7000 Token</span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>ثم أرسلت سؤالًا جديدًا:</p>
+<p>1000 Token</p>
+<p>ويريد النموذج أن يكتب:</p>
+<p>1500 Token</p>
+<p>إذن يصبح:</p>
+<div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre v-pre><code><span class="line"></span>
+<span class="line">7000</span>
+<span class="line"></span>
+<span class="line">+</span>
+<span class="line"></span>
+<span class="line">1000</span>
+<span class="line"></span>
+<span class="line">+</span>
+<span class="line"></span>
+<span class="line">1500</span>
+<span class="line"></span>
+<span class="line">=</span>
+<span class="line"></span>
+<span class="line">9500 Token</span>
+<span class="line"></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>كل شيء ما زال طبيعيًا.</p>
+<p>ماذا يحدث إذا تجاوزنا الحد؟</p>
+<p>لنفترض:</p>
+<div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre v-pre><code><span class="line"></span>
+<span class="line">9000</span>
+<span class="line"></span>
+<span class="line">+</span>
+<span class="line"></span>
+<span class="line">1500</span>
+<span class="line"></span>
+<span class="line">+</span>
+<span class="line"></span>
+<span class="line">1500</span>
+<span class="line"></span>
+<span class="line">=</span>
+<span class="line"></span>
+<span class="line">12000</span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>لكن الحد هو:</p>
+<p>10000</p>
+<p>إذن يوجد:</p>
+<p>2000 Token زيادة.</p>
+<p>ما الحل؟</p>
+<p>النموذج يبدأ بحذف أو تجاهل أقدم أجزاء من المحادثة حتى يعود داخل الحد.</p>
+<h2 id="ماذا-يحدث-إذا-تجاوزنا-الحد؟" tabindex="-1"><a class="header-anchor" href="#ماذا-يحدث-إذا-تجاوزنا-الحد؟"><span>ماذا يحدث إذا تجاوزنا الحد؟</span></a></h2>
+<p>لنفترض:</p>
+<div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre v-pre><code><span class="line"></span>
+<span class="line">9000</span>
+<span class="line"></span>
+<span class="line">+</span>
+<span class="line"></span>
+<span class="line">1500</span>
+<span class="line"></span>
+<span class="line">+</span>
+<span class="line"></span>
+<span class="line">1500</span>
+<span class="line"></span>
+<span class="line">=</span>
+<span class="line"></span>
+<span class="line">12000</span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>لكن الحد هو:</p>
+<p>10000</p>
+<p>إذن يوجد:</p>
+<p>2000 Token زيادة.</p>
+<p>ما الحل؟</p>
+<p>النموذج يبدأ بحذف أو تجاهل أقدم أجزاء من المحادثة حتى يعود داخل الحد.</p>
+<h2 id="هل-النموذج-يختار-ما-يحذفه-بذكاء؟" tabindex="-1"><a class="header-anchor" href="#هل-النموذج-يختار-ما-يحذفه-بذكاء؟"><span>هل النموذج يختار ما يحذفه بذكاء؟</span></a></h2>
+<p>يعتمد على النظام المستخدم.</p>
+<p>غالبًا يتم:</p>
+<p>حذف أقدم الرسائل.
+أو تلخيص أجزاء منها.
+أو استخدام تقنيات أخرى لإدارة السياق.</p>
+<p>لكن النتيجة واحدة:</p>
+<p>إذا خرجت المعلومات من نافذة السياق، فلن يراها النموذج أثناء الرد</p>
+<h2 id="لماذا-أحيانًا-يكرر-نفسه؟" tabindex="-1"><a class="header-anchor" href="#لماذا-أحيانًا-يكرر-نفسه؟"><span>لماذا أحيانًا يكرر نفسه؟</span></a></h2>
+<p>لأن الجزء الذي كان يشرح فيه فكرة معينة قد خرج من نافذة السياق.</p>
+<p>فيتصرف وكأنه لم يره.</p>
+<h2 id="هل-context-window-هي-الذاكرة؟" tabindex="-1"><a class="header-anchor" href="#هل-context-window-هي-الذاكرة؟"><span>هل Context Window هي الذاكرة؟</span></a></h2>
+<p>لا.</p>
+<p>وهذا خطأ شائع.</p>
+<p>الذاكرة (Memory) ونافذة السياق شيئان مختلفان.</p>
+<p>Context Window
+مؤقتة.
+تخص الطلب الحالي.
+تختفي عند انتهاء المعالجة.
+Memory
+معلومات يتم حفظها بين المحادثات (إذا كانت الميزة مفعلة).
+مثل تفضيلات المستخدم أو أسلوبه.</p>
+<p>إذن النموذج قد &quot;يتذكرك&quot; من خلال الذاكرة، لكنه ما زال مقيدًا بنافذة السياق أثناء كل طلب.</p>
+<h2 id="لماذا-تؤثر-المحادثات-الطويلة-على-الجودة؟" tabindex="-1"><a class="header-anchor" href="#لماذا-تؤثر-المحادثات-الطويلة-على-الجودة؟"><span>لماذا تؤثر المحادثات الطويلة على الجودة؟</span></a></h2>
+<p>لأن النموذج يقرأ كل ما بداخل النافذة.</p>
+<p>كلما زادت المعلومات:</p>
+<p>زاد وقت المعالجة.
+زادت احتمالية وجود معلومات غير مهمة.
+أصبح من الأصعب التركيز على أهم النقاط.</p>
+<p>لذلك أحيانًا تكون محادثة جديدة تعطي نتائج أفضل من محادثة طويلة جدًا.</p>
+<h2 id="كيف-تستفيد-من-context-window؟" tabindex="-1"><a class="header-anchor" href="#كيف-تستفيد-من-context-window؟"><span>كيف تستفيد من Context Window؟</span></a></h2>
+<ol>
+<li>لا تكرر المعلومات</li>
+</ol>
+<p>بدلًا من إعادة نفس الشرح في كل رسالة، اجعل رسائلك مركزة.</p>
+<ol start="2">
+<li>ضع المعلومات المهمة في النهاية إذا كانت مرتبطة بسؤالك</li>
+</ol>
+<p>لأنها ستكون أقرب إلى السؤال الحالي وغالبًا أكثر تأثيرًا.</p>
+<ol start="3">
+<li>إذا أصبحت المحادثة طويلة جدًا</li>
+</ol>
+<p>بدلًا من الاستمرار، اطلب:</p>
+<p>&quot;لخص ما وصلنا إليه.&quot;</p>
+<p>ثم افتح محادثة جديدة وضع هذا الملخص في البداية.</p>
+<ol start="4">
+<li>لا ترسل ملفات ضخمة إذا لم تكن تحتاجها</li>
+</ol>
+<p>إذا أرسلت:</p>
+<p>كتابًا كاملًا.</p>
+<p>وأنت تريد شرح صفحة واحدة فقط.</p>
+<p>فقد تستهلك جزءًا كبيرًا من نافذة السياق بلا داعٍ.</p>
+<h2 id="transformer" tabindex="-1"><a class="header-anchor" href="#transformer"><span>Transformer</span></a></h2>
+<h2 id="attention" tabindex="-1"><a class="header-anchor" href="#attention"><span>Attention</span></a></h2>
 <h2 id="" tabindex="-1"><a class="header-anchor" href="#"><span></span></a></h2>
 <h2 id="-1" tabindex="-1"><a class="header-anchor" href="#-1"><span></span></a></h2>
 <h2 id="-2" tabindex="-1"><a class="header-anchor" href="#-2"><span></span></a></h2>
@@ -395,33 +831,6 @@
 <h2 id="-27" tabindex="-1"><a class="header-anchor" href="#-27"><span></span></a></h2>
 <h2 id="-28" tabindex="-1"><a class="header-anchor" href="#-28"><span></span></a></h2>
 <h2 id="-29" tabindex="-1"><a class="header-anchor" href="#-29"><span></span></a></h2>
-<h2 id="-30" tabindex="-1"><a class="header-anchor" href="#-30"><span></span></a></h2>
-<h2 id="-31" tabindex="-1"><a class="header-anchor" href="#-31"><span></span></a></h2>
-<h2 id="-32" tabindex="-1"><a class="header-anchor" href="#-32"><span></span></a></h2>
-<h2 id="-33" tabindex="-1"><a class="header-anchor" href="#-33"><span></span></a></h2>
-<h2 id="-34" tabindex="-1"><a class="header-anchor" href="#-34"><span></span></a></h2>
-<h2 id="-35" tabindex="-1"><a class="header-anchor" href="#-35"><span></span></a></h2>
-<h2 id="-36" tabindex="-1"><a class="header-anchor" href="#-36"><span></span></a></h2>
-<h2 id="-37" tabindex="-1"><a class="header-anchor" href="#-37"><span></span></a></h2>
-<h2 id="-38" tabindex="-1"><a class="header-anchor" href="#-38"><span></span></a></h2>
-<h2 id="-39" tabindex="-1"><a class="header-anchor" href="#-39"><span></span></a></h2>
-<h2 id="-40" tabindex="-1"><a class="header-anchor" href="#-40"><span></span></a></h2>
-<h2 id="-41" tabindex="-1"><a class="header-anchor" href="#-41"><span></span></a></h2>
-<h2 id="-42" tabindex="-1"><a class="header-anchor" href="#-42"><span></span></a></h2>
-<h2 id="-43" tabindex="-1"><a class="header-anchor" href="#-43"><span></span></a></h2>
-<h2 id="-44" tabindex="-1"><a class="header-anchor" href="#-44"><span></span></a></h2>
-<h2 id="-45" tabindex="-1"><a class="header-anchor" href="#-45"><span></span></a></h2>
-<h2 id="-46" tabindex="-1"><a class="header-anchor" href="#-46"><span></span></a></h2>
-<h2 id="-47" tabindex="-1"><a class="header-anchor" href="#-47"><span></span></a></h2>
-<h2 id="-48" tabindex="-1"><a class="header-anchor" href="#-48"><span></span></a></h2>
-<h2 id="-49" tabindex="-1"><a class="header-anchor" href="#-49"><span></span></a></h2>
-<h2 id="-50" tabindex="-1"><a class="header-anchor" href="#-50"><span></span></a></h2>
-<h2 id="-51" tabindex="-1"><a class="header-anchor" href="#-51"><span></span></a></h2>
-<h2 id="-52" tabindex="-1"><a class="header-anchor" href="#-52"><span></span></a></h2>
-<h2 id="-53" tabindex="-1"><a class="header-anchor" href="#-53"><span></span></a></h2>
-<h2 id="-54" tabindex="-1"><a class="header-anchor" href="#-54"><span></span></a></h2>
-<h2 id="-55" tabindex="-1"><a class="header-anchor" href="#-55"><span></span></a></h2>
-<h2 id="-56" tabindex="-1"><a class="header-anchor" href="#-56"><span></span></a></h2>
 <h2 id="install-app" tabindex="-1"><a class="header-anchor" href="#install-app"><span>Install App</span></a></h2>
 <div class="language-cmd line-numbers-mode" data-highlighter="prismjs" data-ext="cmd"><pre v-pre><code><span class="line">python manage.py startapp ai_app</span>
 <span class="line"></span></code></pre>
@@ -467,7 +876,7 @@ settings.py:
 <span class="line"><span class="token punctuation">]</span></span>
 <span class="line"></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="-57" tabindex="-1"><a class="header-anchor" href="#-57"><span></span></a></h2>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="-30" tabindex="-1"><a class="header-anchor" href="#-30"><span></span></a></h2>
 <div dir="rtl" >
   هيكل المشروع
 </div>
@@ -485,17 +894,17 @@ settings.py:
 <span class="line">  ┣ 📜views<span class="token punctuation">.</span>py</span>
 <span class="line">  ┗ 📜__init__<span class="token punctuation">.</span>py</span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="-58" tabindex="-1"><a class="header-anchor" href="#-58"><span></span></a></h2>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="-31" tabindex="-1"><a class="header-anchor" href="#-31"><span></span></a></h2>
 <div dir="rtl" >
 </div>
 <div class="language-python line-numbers-mode" data-highlighter="prismjs" data-ext="py"><pre v-pre><code><span class="line"></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h2 id="-59" tabindex="-1"><a class="header-anchor" href="#-59"><span></span></a></h2>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h2 id="-32" tabindex="-1"><a class="header-anchor" href="#-32"><span></span></a></h2>
 <div dir="rtl" >
 </div>
 <div class="language-python line-numbers-mode" data-highlighter="prismjs" data-ext="py"><pre v-pre><code><span class="line"></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h2 id="-60" tabindex="-1"><a class="header-anchor" href="#-60"><span></span></a></h2>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h2 id="-33" tabindex="-1"><a class="header-anchor" href="#-33"><span></span></a></h2>
 <div dir="rtl" >
 </div>
 <div class="language-python line-numbers-mode" data-highlighter="prismjs" data-ext="py"><pre v-pre><code><span class="line"></span>
