@@ -1,0 +1,64 @@
+{
+    "task_run_id": "8a08fd93-aa38-4601-a90b-9d05af8c5a86",
+    "workflow": {
+        "id": "b3bfdf6d-1b13-45ec-a4a8-f0dbedd9670c",
+        "name": "Open OBS"
+    },
+    "started_at": 1782932225.64591,
+    "status": "failed",
+    "nodes": [
+        {
+            "node_id": "32170fc0-81f4-4952-8f86-abd70cb268ad",
+            "label": "OBS",
+            "node_type": "program",
+            "program": {
+                "id": "0c940648-6833-4d1c-98dc-f6d68eb3f42d",
+                "name": "OBS",
+                "executable_path": "C:\\Program Files\\obs-studio\\bin\\64bit\\obs64.exe"
+            },
+            "started_at": 1782932225.6510062,
+            "status": "success",
+            "actions": [
+                {
+                    "action_id": "f7351f70-d56b-4830-a377-657a35792454",
+                    "type": "wait",
+                    "payload": {
+                        "seconds": 2
+                    },
+                    "program_element": null,
+                    "started_at": 1782932225.6562548,
+                    "finished_at": 1782932228.009761,
+                    "status": "ok",
+                    "error": null
+                }
+            ],
+            "finished_at": 1782932228.009765
+        },
+        {
+            "node_id": "b82ad577-c97d-492a-ac59-524a0d9c7502",
+            "label": "OBS",
+            "node_type": "program",
+            "program": {
+                "id": "0c940648-6833-4d1c-98dc-f6d68eb3f42d",
+                "name": "OBS",
+                "executable_path": "C:\\Program Files\\obs-studio\\bin\\64bit\\obs64.exe"
+            },
+            "started_at": 1782932228.0097697,
+            "status": "success",
+            "actions": [
+                {
+                    "action_id": "b21419d1-d9be-458d-a2ae-98f1769d0377",
+                    "type": "open_program",
+                    "payload": {},
+                    "program_element": null,
+                    "started_at": 1782932228.0114422,
+                    "finished_at": 1782932230.2438884,
+                    "status": "ok",
+                    "error": null
+                }
+            ],
+            "finished_at": 1782932230.243891
+        }
+    ],
+    "finished_at": 1782932230.3878098
+}

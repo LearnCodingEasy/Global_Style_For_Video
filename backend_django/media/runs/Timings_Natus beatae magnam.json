@@ -1,0 +1,32 @@
+{
+    "meta": {
+        "workflow_name": "Natus beatae magnam",
+        "task_run_id": "2667d78a-c724-4709-aa5d-3fbaaece0b1d",
+        "generated_at": 1782932417.0262702,
+        "fps": 30,
+        "resolution": "1920x1080"
+    },
+    "timeline": [
+        {
+            "type": "node",
+            "id": "b7ad7fe4-631b-4439-ad44-a61e5dfbbfa8",
+            "label": "Premiere Pro",
+            "start": 0.006,
+            "end": 2.171,
+            "duration": 2.166,
+            "status": "success"
+        },
+        {
+            "type": "action",
+            "node_id": "b7ad7fe4-631b-4439-ad44-a61e5dfbbfa8",
+            "action_id": "4815345a-9231-4140-b30b-8ed7bb3ef4b4",
+            "action_type": "open_program",
+            "program_element": null,
+            "start": 0.012,
+            "end": 2.171,
+            "duration": 2.159,
+            "status": "ok",
+            "error": null
+        }
+    ]
+}

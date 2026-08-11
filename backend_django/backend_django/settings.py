@@ -233,6 +233,7 @@ INSTALLED_APPS = [
     "automation",
     "explain",
     "mcp_server.apps.McpServerConfig",
+    "ai_app",
 
     # 📚 Libraries
     # 1️⃣ djangorestframework [DRF]
@@ -313,15 +314,6 @@ DATABASES = {
     }
 }
 
-# Database
-# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -354,6 +346,15 @@ USE_I18N = True
 USE_TZ = True
 
 
+#
+# settings.py
+AI_CONFIG = {
+    "OLLAMA_URL": "http://localhost:11434",
+    "OLLAMA_MODEL": "gemma2:2b",  # موديل خفيف وسريع
+    "OPENROUTER_API_KEY": "YOUR_KEY_HERE",
+    "DEFAULT_PROVIDER": "ollama",  # القيمة الافتراضية
+}
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
@@ -371,6 +372,181 @@ MEDIA_ROOT = BASE_DIR / "media"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+# Database
+# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+
+"""
+
+تصرف كـ AI Architect + Senior Backend Engineer + Mentor تقني.
+
+هدفك:
+مساعدتي في بناء مشروع Django باسم ai_app باستخدام:
+- Ollama (Local LLMs)
+- MCP (Model Context Protocol)
+- OpenRouter (API routing for models)
+
+⏱️ القيود:
+أريد خلال 10 ساعات فقط:
+1. أفهم الفكرة العامة للمشروع
+2. أتعرف على هيكل الملفات (Architecture)
+3. أعرف وظيفة كل ملف بالتفصيل
+4. أفهم كيف الأكواد تخدم Logic المشروع
+5. أقدر أطور وأعدل بنفسي بعد ذلك
+
+---
+
+🧠 أسلوب الشرح المطلوب:
+
+اتبع هذا الأسلوب في كل جزء:
+1. ابدأ بتوضيح الفكرة ببساطة (ليه بنعمل كده؟)
+2. تشبيه بسيط من الواقع
+3. شرح الهيكل
+4. مثال عملي
+5. أخطاء شائعة
+6. ربط كل جزء بالمشروع ككل
+
+---
+
+📦 المطلوب تنفيذه:
+
+## 1. إنشاء المشروع
+ابدأ من:
+python manage.py startapp ai_app
+
+ثم:
+- إعداد Django project
+- ربط app
+- إعداد settings
+
+---
+
+## 2. Architecture (مهم جدًا)
+اعرض:
+- هيكل المشروع بالكامل (Tree Structure)
+- تقسيم Layers:
+  - views
+  - services
+  - ai layer
+  - integrations (ollama / openrouter / mcp)
+
+وشرح:
+- كل ملف بيعمل ايه
+- ليه موجود
+- ازاي بيخدم المشروع
+
+---
+
+## 3. AI Integration
+
+### Ollama:
+- تشغيل موديل (phi أو gemma)
+- إرسال prompt
+- استقبال response
+
+### OpenRouter:
+- استخدام API
+- مقارنة مع Ollama
+
+### MCP:
+- شرح الفكرة
+- ازاي نستخدمه في orchestration
+
+---
+
+## 4. Logic المشروع
+
+ابني مشروع عملي مثل:
+"AI Assistant for Automation"
+
+يعمل:
+- تنفيذ أوامر (فتح برامج / نسخ ملفات)
+- تحليل طلب المستخدم
+- اختيار الأداة المناسبة
+- تنفيذ Task
+
+اشرح:
+- flow من user → AI → execution
+- decision making
+
+---
+
+## 5. Code Implementation
+
+لكل جزء:
+- اكتب الكود
+- اشرح كل سطر مهم
+- اربط بين الملفات
+
+---
+
+## 6. Workflow (مهم جدًا)
+ارسم flow:
+User Input → AI → Tool Selection → Execution → Result
+
+---
+
+## 7. ai.md Documentation
+
+أنشئ ملف ai.md يحتوي على:
+- شرح كامل من البداية للنهاية
+- كيف تستخدم AI في المشاريع
+- أفضل الممارسات
+- أخطاء يجب تجنبها
+- طرق تطوير المشروع
+
+---
+
+## 8. Learning System (Meta Learning)
+
+ساعدني أفهم:
+- كيف أفكر عند استخدام AI
+- كيف أبني systems مش مجرد calls
+- كيف أطور المشروع لاحقًا
+
+---
+
+## 9. Output Format
+
+قسم الإجابة إلى مراحل:
+
+Stage 1: الفكرة  
+Stage 2: الهيكل  
+Stage 3: AI Integration  
+Stage 4: التنفيذ  
+Stage 5: التطوير  
+
+---
+
+🎯 الهدف النهائي:
+مش مجرد تنفيذ…  
+عايز أفهم:
+- Architecture
+- Thinking Process
+- AI System Design
+
+وخلال 10 ساعات أكون قادر:
+- أبني المشروع
+- أعدّل عليه
+- أطور أفكار مشابهة
+
+ابدأ خطوة خطوة بدون قفز
+
+التركيذ فى البداية الترتيب
+Ollama
+MCP
+OpenRouter
+
+"""
+
+
 """
 للـ cache
 pip install django-redis
@@ -380,10 +556,9 @@ pip install pydantic
 pip install uvicorn
 للـ AI agent
 pip install openai
-
 pip install celery
 pip install redis
 pip install django-celery-beat
 pip install django-celery-results
-
+pip install langchain langchain-openai langchain-community ollama
 """

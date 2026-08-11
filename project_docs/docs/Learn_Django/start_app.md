@@ -50,6 +50,11 @@ python manage.py startapp explain
 python manage.py startapp mcp_server
 ```
 
+```cmd
+python manage.py startapp ai_app
+```
+
+
 ### 👥 Start App users_accounts
 
 ```python

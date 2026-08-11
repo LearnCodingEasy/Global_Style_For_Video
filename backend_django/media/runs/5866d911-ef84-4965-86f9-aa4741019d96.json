@@ -1,0 +1,64 @@
+{
+    "task_run_id": "5866d911-ef84-4965-86f9-aa4741019d96",
+    "workflow": {
+        "id": "59d946e7-4e66-4a58-be11-c2d51ae4015e",
+        "name": "Open Vscode"
+    },
+    "started_at": 1774331379.3794103,
+    "status": "failed",
+    "nodes": [
+        {
+            "node_id": "eb8f20fe-67e5-4f9e-add7-3db6a3f85afc",
+            "label": "Vscode",
+            "node_type": "program",
+            "program": {
+                "id": "a121e833-4703-4deb-98f0-4db44422c71b",
+                "name": "Vscode",
+                "executable_path": "C:\\Users\\AFAQE\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
+            },
+            "started_at": 1774331379.3840563,
+            "status": "success",
+            "actions": [
+                {
+                    "action_id": "cc93ae03-8c8b-4275-9d16-bcd60d270989",
+                    "type": "wait",
+                    "payload": {
+                        "seconds": 2
+                    },
+                    "program_element": null,
+                    "started_at": 1774331379.3901536,
+                    "finished_at": 1774331381.7913368,
+                    "status": "ok",
+                    "error": null
+                }
+            ],
+            "finished_at": 1774331381.7913878
+        },
+        {
+            "node_id": "67a56370-1a1a-440d-bea9-3e45ef8bac95",
+            "label": "Vscode",
+            "node_type": "program",
+            "program": {
+                "id": "a121e833-4703-4deb-98f0-4db44422c71b",
+                "name": "Vscode",
+                "executable_path": "C:\\Users\\AFAQE\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
+            },
+            "started_at": 1774331381.7913952,
+            "status": "success",
+            "actions": [
+                {
+                    "action_id": "cfead5a5-848d-4b35-a277-a00e8fdff9a9",
+                    "type": "open_program",
+                    "payload": {},
+                    "program_element": null,
+                    "started_at": 1774331381.7933278,
+                    "finished_at": 1774331383.8540616,
+                    "status": "ok",
+                    "error": null
+                }
+            ],
+            "finished_at": 1774331383.854065
+        }
+    ],
+    "finished_at": 1774331384.0264523
+}

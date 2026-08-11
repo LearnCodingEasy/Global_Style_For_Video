@@ -1,0 +1,53 @@
+{
+    "meta": {
+        "workflow_name": "Open OBS",
+        "task_run_id": "8a08fd93-aa38-4601-a90b-9d05af8c5a86",
+        "generated_at": 1782932230.390613,
+        "fps": 30,
+        "resolution": "1920x1080"
+    },
+    "timeline": [
+        {
+            "type": "node",
+            "id": "32170fc0-81f4-4952-8f86-abd70cb268ad",
+            "label": "OBS",
+            "start": 0.005,
+            "end": 2.364,
+            "duration": 2.359,
+            "status": "success"
+        },
+        {
+            "type": "action",
+            "node_id": "32170fc0-81f4-4952-8f86-abd70cb268ad",
+            "action_id": "f7351f70-d56b-4830-a377-657a35792454",
+            "action_type": "wait",
+            "program_element": null,
+            "start": 0.01,
+            "end": 2.364,
+            "duration": 2.354,
+            "status": "ok",
+            "error": null
+        },
+        {
+            "type": "node",
+            "id": "b82ad577-c97d-492a-ac59-524a0d9c7502",
+            "label": "OBS",
+            "start": 2.364,
+            "end": 4.598,
+            "duration": 2.234,
+            "status": "success"
+        },
+        {
+            "type": "action",
+            "node_id": "b82ad577-c97d-492a-ac59-524a0d9c7502",
+            "action_id": "b21419d1-d9be-458d-a2ae-98f1769d0377",
+            "action_type": "open_program",
+            "program_element": null,
+            "start": 2.366,
+            "end": 4.598,
+            "duration": 2.232,
+            "status": "ok",
+            "error": null
+        }
+    ]
+}

@@ -1,0 +1,11 @@
+{
+    "task_run_id": "257022bd-d59f-4a36-abdc-b1bcb5307c09",
+    "workflow": {
+        "id": "59d946e7-4e66-4a58-be11-c2d51ae4015e",
+        "name": "Open Vscode"
+    },
+    "started_at": 1786126443.591999,
+    "status": "failed",
+    "nodes": [],
+    "finished_at": 1786126444.3402555
+}

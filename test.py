@@ -1,6 +1,25 @@
-import json
-import pyautogui
-import time
+
+
+import ollama
+
+response = ollama.generate(
+    model="phi",
+    prompt="Explain Django + Vue project step by step"
+)
+
+print(response['response'])
+
+"""
+from ollama import Ollama
+
+client = Ollama()
+response = client.run(
+    "phi", prompt="A step-by-step explanation of the Django + Vue project")
+print(response)
+"""
+# import json
+# import pyautogui
+# import time
 
 # # حركة الماوس للركن العلوي الأيسر توقف السكربت
 # pyautogui.FAILSAFE = True
@@ -36,6 +55,10 @@ import time
 # __________________________________
 # __________________________________
 
+"""
+import json
+import pyautogui
+import time
 
 positions = {}
 
@@ -57,3 +80,5 @@ with open("positions.json", "w") as f:
     json.dump(positions, f, indent=4)
 
 print("تم الحفظ.")
+
+"""

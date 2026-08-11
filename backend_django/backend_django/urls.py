@@ -42,6 +42,7 @@ urlpatterns = [
     # Explain
     path('api/explain/', include('explain.urls')),
     # AI
+    path("api/ai/", include("ai_app.urls")),
     path("api/ai/run/", ExecutePromptView.as_view()),
     # Admin
     path('admin/', admin.site.urls),

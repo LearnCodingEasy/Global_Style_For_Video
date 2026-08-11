@@ -200,6 +200,12 @@ pip install opencv-python
 
 [Automation ](automation.md)
 
+## 📦 AI
+
+<div dir="rtl" style="font-size:25px"> AI  </div>
+
+[AI ](ai.md)
+
 ## 🔍 Search
 
 [Search ](search.md)

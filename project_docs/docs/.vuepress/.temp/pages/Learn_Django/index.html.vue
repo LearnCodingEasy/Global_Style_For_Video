@@ -99,6 +99,9 @@
 <h2 id="📦-automation" tabindex="-1"><a class="header-anchor" href="#📦-automation"><span>📦 Automation</span></a></h2>
 <div dir="rtl" style="font-size:25px"> automation automation  </div>
 <p><RouteLink to="/Learn_Django/automation.html">Automation </RouteLink></p>
+<h2 id="📦-ai" tabindex="-1"><a class="header-anchor" href="#📦-ai"><span>📦 AI</span></a></h2>
+<div dir="rtl" style="font-size:25px"> AI  </div>
+<p><RouteLink to="/Learn_Django/ai.html">AI </RouteLink></p>
 <h2 id="🔍-search" tabindex="-1"><a class="header-anchor" href="#🔍-search"><span>🔍 Search</span></a></h2>
 <p><RouteLink to="/Learn_Django/search.html">Search </RouteLink></p>
 <h2 id="🌐-deploying" tabindex="-1"><a class="header-anchor" href="#🌐-deploying"><span>🌐 Deploying</span></a></h2>

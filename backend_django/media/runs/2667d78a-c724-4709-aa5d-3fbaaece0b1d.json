@@ -1,0 +1,37 @@
+{
+    "task_run_id": "2667d78a-c724-4709-aa5d-3fbaaece0b1d",
+    "workflow": {
+        "id": "6b2300fa-d1dd-42b7-a72e-af11da40228f",
+        "name": "Natus beatae magnam"
+    },
+    "started_at": 1782932414.7582598,
+    "status": "failed",
+    "nodes": [
+        {
+            "node_id": "b7ad7fe4-631b-4439-ad44-a61e5dfbbfa8",
+            "label": "Premiere Pro",
+            "node_type": "program",
+            "program": {
+                "id": "59092bc8-a02d-4e8f-b55b-136da2d709c7",
+                "name": "Premiere Pro",
+                "executable_path": "C:\\Program Files\\Adobe\\Adobe Premiere Pro 2023\\Adobe Premiere Pro.exe"
+            },
+            "started_at": 1782932414.7638316,
+            "status": "success",
+            "actions": [
+                {
+                    "action_id": "4815345a-9231-4140-b30b-8ed7bb3ef4b4",
+                    "type": "open_program",
+                    "payload": {},
+                    "program_element": null,
+                    "started_at": 1782932414.7702785,
+                    "finished_at": 1782932416.9293923,
+                    "status": "ok",
+                    "error": null
+                }
+            ],
+            "finished_at": 1782932416.9293952
+        }
+    ],
+    "finished_at": 1782932417.02279
+}

@@ -4,7 +4,7 @@ import axios from 'axios'
 // إعداد الاتصال بالسيرفر
 const api = axios.create({
   baseURL: 'http://localhost:8000/api/',
-  timeout: 30000,
+  timeout: 60000,
   // withCredentials: true,
   headers: {
     'Content-Type': 'application/json',

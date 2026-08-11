@@ -149,6 +149,12 @@ import Select from 'primevue/select'
 import Divider from 'primevue/divider'
 //
 import ConfirmDialog from 'primevue/confirmdialog'
+//
+import Chip from 'primevue/chip'
+import SelectButton from 'primevue/selectbutton'
+import ToggleSwitch from 'primevue/toggleswitch'
+import ProgressSpinner from 'primevue/progressspinner'
+
 // --------------- Styles ---------------
 // Import necessary styles for PrimeVue and Tailwind CSS
 import 'primeicons/primeicons.css'
@@ -273,8 +279,15 @@ app.component('prime_tree', Tree)
 //
 app.component('prime_select', Select)
 
+//
+app.component('prime_chip', Chip)
+app.component('prime_select_button', SelectButton)
+app.component('prime_toggle_switch', ToggleSwitch)
+app.component('prime_progress_spinner', ProgressSpinner)
+app.component('prime_divider', Divider)
+
 app.directive('tooltip', Tooltip)
-app.directive('prime_divider', Divider)
+// app.directive('prime_divider', Divider)
 
 //
 app.directive('prime_confirm_dialog', ConfirmDialog)
