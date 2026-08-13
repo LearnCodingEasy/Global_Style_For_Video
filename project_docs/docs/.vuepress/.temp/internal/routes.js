@@ -47,6 +47,7 @@ export const routes = Object.fromEntries([
   ["/Learn_Django/users_accounts.html", { loader: () => import(/* webpackChunkName: "Learn_Django_users_accounts.html" */"D:/Global_Style_For_Video/project_docs/docs/.vuepress/.temp/pages/Learn_Django/users_accounts.html.js"), meta: {"title":"👥 Users Accounts"} }],
   ["/Learn_Django/virtual_environment.html", { loader: () => import(/* webpackChunkName: "Learn_Django_virtual_environment.html" */"D:/Global_Style_For_Video/project_docs/docs/.vuepress/.temp/pages/Learn_Django/virtual_environment.html.js"), meta: {"title":""} }],
   ["/Learn_Github/", { loader: () => import(/* webpackChunkName: "Learn_Github_index.html" */"D:/Global_Style_For_Video/project_docs/docs/.vuepress/.temp/pages/Learn_Github/index.html.js"), meta: {"title":"Github"} }],
+  ["/Learn_License/", { loader: () => import(/* webpackChunkName: "Learn_License_index.html" */"D:/Global_Style_For_Video/project_docs/docs/.vuepress/.temp/pages/Learn_License/index.html.js"), meta: {"title":"LICENSE"} }],
   ["/Learn_Vite_Press/", { loader: () => import(/* webpackChunkName: "Learn_Vite_Press_index.html" */"D:/Global_Style_For_Video/project_docs/docs/.vuepress/.temp/pages/Learn_Vite_Press/index.html.js"), meta: {"title":"Vite Press"} }],
   ["/Learn_Vue/animate_css.html", { loader: () => import(/* webpackChunkName: "Learn_Vue_animate_css.html" */"D:/Global_Style_For_Video/project_docs/docs/.vuepress/.temp/pages/Learn_Vue/animate_css.html.js"), meta: {"title":""} }],
   ["/Learn_Vue/axios.html", { loader: () => import(/* webpackChunkName: "Learn_Vue_axios.html" */"D:/Global_Style_For_Video/project_docs/docs/.vuepress/.temp/pages/Learn_Vue/axios.html.js"), meta: {"title":""} }],
@@ -61,7 +62,6 @@ export const routes = Object.fromEntries([
   ["/Learn_Vue/scss.html", { loader: () => import(/* webpackChunkName: "Learn_Vue_scss.html" */"D:/Global_Style_For_Video/project_docs/docs/.vuepress/.temp/pages/Learn_Vue/scss.html.js"), meta: {"title":""} }],
   ["/Learn_Vue/tailwind.html", { loader: () => import(/* webpackChunkName: "Learn_Vue_tailwind.html" */"D:/Global_Style_For_Video/project_docs/docs/.vuepress/.temp/pages/Learn_Vue/tailwind.html.js"), meta: {"title":""} }],
   ["/Learn_Vue/VueDjangoSndData.html", { loader: () => import(/* webpackChunkName: "Learn_Vue_VueDjangoSndData.html" */"D:/Global_Style_For_Video/project_docs/docs/.vuepress/.temp/pages/Learn_Vue/VueDjangoSndData.html.js"), meta: {"title":"Vue Django Send Data"} }],
-  ["/Learn_License/", { loader: () => import(/* webpackChunkName: "Learn_License_index.html" */"D:/Global_Style_For_Video/project_docs/docs/.vuepress/.temp/pages/Learn_License/index.html.js"), meta: {"title":"LICENSE"} }],
   ["/404.html", { loader: () => import(/* webpackChunkName: "404.html" */"D:/Global_Style_For_Video/project_docs/docs/.vuepress/.temp/pages/404.html.js"), meta: {"title":""} }],
 ]);
 

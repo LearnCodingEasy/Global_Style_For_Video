@@ -29,8 +29,7 @@ ALLOWED_HOSTS = [
     "172.23.232.133",
     "localhost:5173",
     "localhost:5174",
-    'https://global-style-for-video.pages.dev/',
-    "https://global-style-for-video.pages.dev/login"
+    "global-style-for-video.pages.dev"
 ]
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
@@ -39,7 +38,7 @@ CSRF_TRUSTED_ORIGINS = [
     "http://192.168.1.5:5174",
     "http://127.0.0.1:5173",
     "http://127.0.0.1:5174",
-    'https://global-style-for-video.pages.dev/'
+    'https://global-style-for-video.pages.dev'
 ]
 AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",
@@ -162,7 +161,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://192.168.1.5:5173",
     "http://127.0.0.1:5173",
     "http://127.0.0.1:5174",
-
+    "https://global-style-for-video.pages.dev",
 ]
 CORS_ALLOW_CREDENTIALS = True
 SECURE_CROSS_ORIGIN_OPENER_POLICY = None
