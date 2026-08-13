@@ -15,12 +15,21 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 
-DEBUG = True
-# DEBUG = config('DEBUG', default=False, cast=bool)
+# DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
 
 
 # 1️⃣ Django_Core
-WEBSITE_URL = "http://127.0.0.1:8000"
+# WEBSITE_URL = "http://127.0.0.1:8000"
+WEBSITE_URL = config(
+    "WEBSITE_URL",
+    default="http://127.0.0.1:8000",
+)
+
+FRONTEND_URL = config(
+    "FRONTEND_URL",
+    default="http://localhost:5173",
+)
 AUTH_USER_MODEL = "users_accounts.User"
 ALLOWED_HOSTS = [
     "localhost",
@@ -45,7 +54,7 @@ AUTHENTICATION_BACKENDS = (
     "allauth.account.auth_backends.AuthenticationBackend",
 )
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = False
 CSRF_COOKIE_SECURE = False
 SESSION_COOKIE_SECURE = False
 
@@ -192,17 +201,39 @@ CHANNEL_LAYERS = {
 # MCP Configuration (اختياري — الـ defaults كويسة)
 # requests per session per minute
 MCP_RATE_LIMIT_PER_MINUTE = 60
+REDIS_HOST = config(
+    "REDIS_HOST",
+    default="127.0.0.1",
+)
+
+REDIS_PORT = config(
+    "REDIS_PORT",
+    default="6379",
+)
+
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379/1",
+        # "LOCATION": "redis://127.0.0.1:6379/1",
+        "LOCATION": f"redis://{REDIS_HOST}:{REDIS_PORT}/1",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
-        }
-    }
+        },
+    },
 }
-CELERY_BROKER_URL = "redis://127.0.0.1:6379/0"
-CELERY_RESULT_BACKEND = "redis://127.0.0.1:6379/0"
+
+
+# CELERY_BROKER_URL = "redis://127.0.0.1:6379/0"
+CELERY_BROKER_URL = config(
+    "CELERY_BROKER_URL",
+    default="redis://127.0.0.1:6379/0",
+)
+
+# CELERY_RESULT_BACKEND = "redis://127.0.0.1:6379/0"
+CELERY_RESULT_BACKEND = config(
+    "CELERY_RESULT_BACKEND",
+    default="redis://127.0.0.1:6379/0",
+)
 CELERY_ACCEPT_CONTENT = ["json"]
 CELERY_TASK_SERIALIZER = "json"
 CELERY_RESULT_SERIALIZER = "json"
@@ -309,11 +340,11 @@ DATABASES = {
         'NAME': config('DB_NAME'),
         'USER': config('DB_USER'),
         'PASSWORD': config('DB_PASSWORD'),
-        'HOST': config('DB_HOST', default='localhost'),
+        # 'HOST': config('DB_HOST', default='localhost'),
+        "HOST": config("DB_HOST"),
         'PORT': config('DB_PORT', default='5432'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators

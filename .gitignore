@@ -22,5 +22,7 @@ Build/
 # إعدادات البيئة
 .env
 *.env
+.env.*
 .env.local
 .env.production
+!.env.example

@@ -8,12 +8,16 @@ import './assets/scss/style.scss'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import axios from 'axios'
-axios.defaults.baseURL = 'http://127.0.0.1:8000'
+// axios.defaults.baseURL = 'http://127.0.0.1:8000'
+axios.defaults.baseURL = import.meta.env.VITE_API_URL
 axios.interceptors.request.use((config) => {
   const token = localStorage.getItem('user.access')
-  if (token) config.headers.Authorization = `Bearer ${token}`
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`
+  }
   return config
 })
+console.log('API URL:', import.meta.env.VITE_API_URL)
 // Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'

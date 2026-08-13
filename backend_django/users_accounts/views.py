@@ -19,6 +19,8 @@ from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
 from rest_framework.decorators import api_view
 from dj_rest_auth.registration.views import SocialLoginView
 
+from django.conf import settings
+
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     def validate(self, attrs):
@@ -83,7 +85,8 @@ class GoogleLoginToJWTView(APIView):
             'refresh': str(refresh)
         }
 
-        frontend_url = f"http://localhost:5173/profile/{user.id}"
+        # frontend_url = f"http://localhost:5173/profile/{user.id}"
+        frontend_url = f"{settings.FRONTEND_URL}/profile/{user.id}"
         redirect_url = f"{frontend_url}?access={tokens['access']}&refresh={tokens['refresh']}"
 
         return redirect(redirect_url)
