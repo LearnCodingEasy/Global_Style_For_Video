@@ -1,0 +1,57 @@
+{
+  "version": "2.0.0",
+
+  "tasks": [
+    {
+      "label": "📚 Docs",
+      "type": "shell",
+      "command": "npm run docs:dev",
+      "options": {
+        "cwd": "${workspaceFolder}/project_docs"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "focus": false
+      },
+      "problemMatcher": []
+    },
+
+    {
+      "label": "🐍 Django Backend",
+      "type": "shell",
+      "command": "python manage.py runserver 0.0.0.0:8000",
+      "options": {
+        "cwd": "${workspaceFolder}/backend_django"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "focus": false
+      },
+      "problemMatcher": []
+    },
+
+    {
+      "label": "💚 Vue Frontend",
+      "type": "shell",
+      "command": "npm run dev -- --host",
+      "options": {
+        "cwd": "${workspaceFolder}/frontend_vue"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "focus": false
+      },
+      "problemMatcher": []
+    },
+
+    {
+      "label": "🚀 START PROJECT",
+      "dependsOn": ["📚 Docs", "🐍 Django Backend", "💚 Vue Frontend"],
+      "dependsOrder": "parallel",
+      "problemMatcher": []
+    }
+  ]
+}

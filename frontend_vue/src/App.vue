@@ -3,6 +3,9 @@ import { RouterLink, RouterView, useRouter } from 'vue-router'
 import axios from 'axios'
 import { onMounted, ref } from 'vue'
 import { useUserStore } from '@/stores/user'
+import AppLayout from '@/components/AI/layout/AppLayout.vue'
+import Dashboard from '@/views/DashboardView.vue'
+
 const router = useRouter()
 const userStore = useUserStore()
 const isDropdownOpen = ref(false)
@@ -351,6 +354,9 @@ onMounted(() => {
     </div>
     <prime_toast />
     <prime_confirm_dialog />
+    <AppLayout>
+      <Dashboard />
+    </AppLayout>
 
     <RouterView />
   </div>

@@ -4,6 +4,7 @@ import './assets/Tailwind/tailwind.css'
 import 'tailwindcss/tailwind.css'
 // My Style
 import './assets/main.css'
+import './styles/dashboard.css'
 import './assets/scss/style.scss'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
@@ -17,7 +18,6 @@ axios.interceptors.request.use((config) => {
   }
   return config
 })
-console.log('API URL:', import.meta.env.VITE_API_URL)
 // Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'

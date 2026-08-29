@@ -54,6 +54,10 @@ python manage.py startapp mcp_server
 python manage.py startapp ai_app
 ```
 
+```cmd
+python manage.py startapp jobs_opportunity
+```
+
 
 ### 👥 Start App users_accounts
 
